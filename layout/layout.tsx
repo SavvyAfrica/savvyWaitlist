@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Footer from "../features/general/footer/footer";
+import Header from "../features/general/header/header";
 
-function layout() {
+function Layout(props: any) {
   return (
-    <div>layout</div>
-  )
+    <div className="w-full">
+      <Header />
+      {props.children}
+      <Footer />
+    </div>
+  );
 }
 
-export default layout
+export default Layout;

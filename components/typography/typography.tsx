@@ -1,20 +1,12 @@
 const styles = {
-  home_heading_50px:
-    "font-Manrope font-extrabold text-[50px] leading-[50px] text-[#000000]", 
-  home_heading_2_40px:
-    "font-Manrope font-extrabold text-[40px] leading-[40px] text-[#000000]",
-  home_heading_3_32px:
-    "font-Manrope font-bold text-[32px] leading-[32px] text-[#000000]",
-  home_heading_4_32px:
-    "font-Manrope font-semibold text-[32px] leading-[32px] text-[#000000]",
-  paragraph_1:
-    "font-Manrope font-semibold text-xl leading-[20px] text-[#000000]",
-  paragraph_2:
-    "font-Manrope font-medium text-lg leading-[18px] text-[#000000]",
-  paragraph_3:
-    "font-Manrope font-medium text-base leading-[16px] text-[#000000]",
-  paragraph_4:
-    "font-Manrope font-medium text-sm leading-[14px] text-[#000000]",
+  home_heading_50px: "font-Manrope text-[50px]",
+  home_heading_2_40px: "font-Manrope text-[40px]",
+  home_heading_3_32px: "font-Manrope not-italic text-[32px]",
+  home_heading_4_32px: "font-Manrope text-[32px] ",
+  paragraph_1: "font-Manrope text-xl  not-italic ",
+  paragraph_2: "font-Manrope text-lg not-italic",
+  paragraph_3: "font-Manrope text-base  not-italic",
+  paragraph_4: "font-Manrope text-sm  not-italic",
   // lowest_body_medium:
   //   "font-Mplus font-[600] text-[12px] leading-[18px] text-flipeet-black",
   // lowest_body_regular:
@@ -52,12 +44,9 @@ const styles = {
 };
 
 const convertVariant = (item: any) => {
-  if (item === "home_heading_50px")
-    return styles.home_heading_50px;
-  if (item === "home_heading_2_40px")
-    return styles.home_heading_2_40px;
-  if (item === "home_heading_3_32px")
-    return styles.home_heading_3_32px;
+  if (item === "home_heading_50px") return styles.home_heading_50px;
+  if (item === "home_heading_2_40px") return styles.home_heading_2_40px;
+  if (item === "home_heading_3_32px") return styles.home_heading_3_32px;
   if (item === "home_heading_4_32px") return styles.home_heading_4_32px;
   if (item === "paragraph_1") return styles.paragraph_1;
   if (item === "paragraph_2") return styles.paragraph_2;
