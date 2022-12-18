@@ -64,7 +64,7 @@ function footer() {
             </a>
           </Link>
 
-          <Link href="#">
+          <Link href="/terms">
             <a>
               <Text variant="paragraph_3" className="font-light">
                 Terms of Use
@@ -76,7 +76,7 @@ function footer() {
           <Text variant="paragraph_1" className="font-semibold">
             Resources
           </Text>
-          <Link href="#">
+          <Link href="/faq">
             <a>
               <Text variant="paragraph_3" className="font-light">
                 FAQs

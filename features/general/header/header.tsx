@@ -27,7 +27,7 @@ function header() {
               </Text>
             </a>
           </Link>
-          <Link href="t">
+          <Link href="/about">
             <a>
               <Text variant="paragraph_4" className="font-light">
                 About Us
@@ -56,7 +56,7 @@ function header() {
             </Text>
           </Button>
           <Button className="bg-[#00B0F0] w-[118px] h-[39px] rounded-lg">
-            <Text variant="paragraph_4" className="font-light">
+            <Text variant="paragraph_4" className="font-light text-white">
               Get Started
             </Text>
           </Button>
