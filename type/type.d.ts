@@ -38,6 +38,14 @@ interface IButton {
   className?: string;
   onClick?: () => void;
 }
+interface IInput {
+  className?: string;
+  id: string;
+  name: string;
+  type: string;
+  placeholder?: string;
+  pattern?: string;
+}
 
 interface PProps {
   children: React.ReactNode;
