@@ -42,9 +42,14 @@ interface IInput {
   className?: string;
   id: string;
   name: string;
-  type: string;
+  type: any;
   placeholder?: string;
   pattern?: string;
+}
+interface ILabel {
+  className?: string;
+  children: React.ReactNode;
+  htmlFor: string;
 }
 
 interface PProps {
