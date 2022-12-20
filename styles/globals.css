@@ -28,7 +28,7 @@ a {
   background-size: cover;
   background-position: center;
 }
-.signup{
+.signup, .signin{
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
