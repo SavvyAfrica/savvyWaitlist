@@ -51,6 +51,9 @@ interface ILabel {
   children: React.ReactNode;
   htmlFor: string;
 }
+interface IFormHead {
+  children: React.ReactNode;
+}
 
 interface PProps {
   children: React.ReactNode;
