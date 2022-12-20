@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Image from "next/image";
 import Link from 'next/link';
-import Logo from '../assets/png/logo.png';
 import { Text } from '../components/typography/typography';
 import { Button } from '../components/button/button';
 import { Eye, EyeOff } from 'react-feather';
 import { Input } from '../components/inputField/inputField';
 import { Label } from '../components/inputFieldLabel/inputFieldLabel';
+import { FormHead } from '../components/formHeader/formHeader';
 
 
 
@@ -21,13 +20,10 @@ function signup() {
   return (
     <>
       <div className='signup w-full max-w-full mt-16 min-h-screen relative'>
-        <div className="w-full max-w-lg mx-auto my-0 flex flex-col justify-center items-center">
-          <div className="w-60 flex justify-center items-center">
-            <Image src={Logo} alt="Logo" />
-          </div>
+        <FormHead>
           <Text variant='paragraph_1' className='font-extrabold sm:text-2xl text-xl mt-1.5'>Create your Savvy Account</Text>
           <Text variant='paragraph_4' className='font-normal mt-1.5'>Let's get to know you</Text>
-        </div>
+        </FormHead>
 
         <div className="w-full flex flex-col justify-center items-center flex-initial max-w-lg mx-auto my-0 relative p-6 mt-11">
           <form className="w-full">
@@ -83,8 +79,8 @@ function signup() {
 
             <div className="w-full text-center">
               <Text variant="paragraph_4">By continuing, you agree to our&nbsp; 
-                <b className='hover:underline'><Link href='/terms-of-use'> Terms of use&nbsp; </Link></b> and&nbsp; 
-                <b className='hover:underline'><Link href='privacy-policy'> Privacy Policy </Link></b>
+                <strong className='hover:underline'><Link href='/terms-of-use'> Terms of use&nbsp; </Link></strong> &nbsp;and&nbsp;  
+                <strong className='hover:underline'><Link href='privacy-policy'> &nbsp;Privacy Policy </Link></strong>
               </Text>
             </div>
           </form>
