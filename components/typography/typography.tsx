@@ -2,7 +2,7 @@ const styles = {
   home_heading_50px: "font-Manrope text-[50px]",
   home_heading_2_40px: "font-Manrope text-[40px]",
   home_heading_3_32px: "font-Manrope not-italic text-[32px]",
-  home_heading_4_32px: "font-Manrope md:text-[32px] sm:text-2xl text-lg",
+  home_heading_4_32px: "font-Manrope md:text-[32px] md:leading-10 sm:text-2xl text-lg",
   paragraph_1: "font-Manrope text-xl  not-italic ",
   paragraph_2: "font-Manrope text-lg not-italic",
   paragraph_3: "font-Manrope text-base  not-italic",
