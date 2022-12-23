@@ -6,23 +6,18 @@ import {useRouter} from 'next/router';
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  if(router.asPath =='/sign-up') {
+  if(router.pathname ==='/sign-up', '/sign-in', '/dashboard') {
     return (
       <Component {...pageProps} />
     )
   }
-
-  if(router.asPath =='/sign-in') {
+  else {
     return (
-      <Component {...pageProps} />
-    )
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    );
   }
-
-  return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  );
 }
 
 export default MyApp;
