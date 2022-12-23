@@ -21,7 +21,7 @@ function dashboard() {
                 className='w-full flex md:flex-row flex-col h-auto md:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5'
             >
                 <div 
-                    className="max-w-full h-full w-full md:w-4/6 bg-white rounded-2xl flex sm:flex-row flex-col sm:items-center items-start justify-center py-8 px-6"
+                    className="max-w-full h-full w-full md:w-4/6 bg-white rounded-2xl flex sm:flex-row flex-col sm:items-center items-start md:justify-center justify-start py-8 px-6"
                 >
                     <div className="max-w-16 h-16 flex items-center">
                         <Image src={Vector1} alt='vector' />
@@ -73,7 +73,7 @@ function dashboard() {
                                 <Image src={Vector2} alt="Vector" />
                             </div>
 
-                            <div className='md:mr-0 mr-16'>
+                            <div className='md:mr-0 sm:mr-16 mr-0'>
                                 <span className="my-5 block">
                                     <Text variant='paragraph_1' className='font-bold'>Buy A Gadget</Text>
                                 </span>

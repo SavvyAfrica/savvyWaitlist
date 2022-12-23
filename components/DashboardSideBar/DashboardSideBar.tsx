@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Dispatch, forwardRef, SetStateAction } from 'react';
 import { RiHome4Fill } from 'react-icons/ri';
 import { IoMdWallet } from 'react-icons/io';
 import { TbMessage2 } from 'react-icons/tb';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
+import { HiOutlineBars3BottomLeft } from 'react-icons/hi2';
 import { MdLogin } from 'react-icons/md';
 import { SingletonRouter, useRouter } from 'next/router';
 import Link from 'next/router';
@@ -11,15 +12,26 @@ import Logo from '../../assets/png/logo.png';
 import { Text } from '../typography/typography';
 
 
+interface IMyProps {
+  showNav: boolean;
+  setShowNav: Dispatch<SetStateAction<boolean>>;
+}
 
-const DashboardSideBar = () => {
+
+const DashboardSideBar: React.FC<IMyProps> = forwardRef(({ showNav, setShowNav }, ref: any) => {
   const router = useRouter();
 
   return (
-    <div className="h-full">
+    <div ref={ref} className="h-full">
       <div className="flex justify-center mt-7 mb-14">
-        <div className="w-full flex justify-start ml-14">
-          <Image src={Logo} alt="logo" />
+        <div className="w-full flex justify-between items-center ml-12 mr-4">
+          {/* <Link href='/dashboard'> */}
+            <Image src={Logo} alt="logo" />
+          {/* </Link> */}
+          <HiOutlineBars3BottomLeft 
+            className={`h-8 w-8 lg:hidden block cursor-pointer text-gray-700 ${showNav ? 'block' : 'hidden'}`}
+            onClick={() => setShowNav(!showNav)} 
+          />
         </div>
       </div>
 
@@ -125,7 +137,8 @@ const DashboardSideBar = () => {
       </div>
     </div>
   )
-}
+})
 
+DashboardSideBar.displayName = "DashboardSideBar";
 
 export default DashboardSideBar;

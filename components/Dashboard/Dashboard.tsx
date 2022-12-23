@@ -19,6 +19,7 @@ function Dashboard({children}: any) {
             setIsMobile(false);
         }
     }
+    
 
     useEffect(() => {
         if(typeof window != undefined){
@@ -42,17 +43,18 @@ function Dashboard({children}: any) {
             leave="transform duration-[400ms] transition ease-in-out"
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
-            className="fixed left-0 w-72 h-full z-30 bg-white shadow-md"
+            className="fixed left-0 top-0 w-72 h-full z-30 bg-white shadow-md"
         >
-            <DashboardSideBar />
+            <DashboardSideBar showNav={showNav} setShowNav={setShowNav} />
         </Transition>
 
         <main 
+            onClick={() => setShowNav(!showNav)}
             className={`min-h-screen w-full z-0 transition-all duration-[400ms] bg-[#f2f7fc] ${
                 showNav && !isMobile ? 'pl-56' : "pl-0"
             }`}
         >
-            <div className="maxWidth lg:pt-36 pt-52 pl-8 lg:pl-24 pr-8 lg:pr-16">{children}</div>
+            <div className="maxWidth lg:pt-36 pt-16 pl-8 lg:pl-24 pr-8 lg:pr-16">{children}</div>
         </main>
     </>
   )
