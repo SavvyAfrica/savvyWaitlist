@@ -17,7 +17,7 @@ interface IMyProps {
 const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) => {
     return (
         <div 
-            className={`fixed top-0 dashboard__bg shadow-md w-full h-auto z-10 transition-all duration-[400ms] ${showNav ? "pl-56" : "pl-0"}`}
+            className={`fixed top-0 bg-[#f2f7fc] shadow-md w-full h-auto z-10 transition-all duration-[400ms] ${showNav ? "pl-56" : "pl-0"}`}
         >
             <div className="maxWidth pt-6 pr-8 lg:pr-16 pl-8 lg:pl-24 pb-6 w-full flex justify-between items-start">
 
@@ -43,7 +43,7 @@ const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) =>
                     </div>
 
                 
-                    <div className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:shadow-xl">
+                    <div className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:shadow-xl hover:bg-[#dcebf9]">
                         <Link href={'/dashboard/account'}>
                             <a className='flex w-full justify-center items-center'>
                                 <Image 

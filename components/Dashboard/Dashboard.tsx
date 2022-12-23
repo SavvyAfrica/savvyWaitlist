@@ -48,7 +48,7 @@ function Dashboard({children}: any) {
         </Transition>
 
         <main 
-            className={`min-h-screen w-full z-0 transition-all duration-[400ms] dashboard__bg ${
+            className={`min-h-screen w-full z-0 transition-all duration-[400ms] bg-[#f2f7fc] ${
                 showNav && !isMobile ? 'pl-56' : "pl-0"
             }`}
         >
