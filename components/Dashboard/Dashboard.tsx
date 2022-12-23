@@ -19,6 +19,12 @@ function Dashboard({children}: any) {
             setIsMobile(false);
         }
     }
+
+    function handleOnblur() {
+        if(innerWidth < 1024){
+            setShowNav(false);
+        }
+    }
     
 
     useEffect(() => {
@@ -49,7 +55,7 @@ function Dashboard({children}: any) {
         </Transition>
 
         <main 
-            onClick={() => setShowNav(!showNav)}
+            onClick={handleOnblur}
             className={`min-h-screen w-full z-0 transition-all duration-[400ms] bg-[#f2f7fc] ${
                 showNav && !isMobile ? 'pl-56' : "pl-0"
             }`}
