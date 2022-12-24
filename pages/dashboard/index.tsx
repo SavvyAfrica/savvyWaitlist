@@ -9,6 +9,8 @@ import Cart from '../../assets/png/empty_cart.png';
 import Image from 'next/image';
 import { Button } from '../../components/button/button';
 import { Text } from '../../components/typography/typography';
+import DashboardBox1 from '../../components/DashboardBox1/DashboardBox1';
+import DashboardBox2 from '../../components/DashboardBox2/DashboardBox2';
 
 
 
@@ -20,8 +22,8 @@ function dashboard() {
             <section 
                 className='w-full flex md:flex-row flex-col h-auto md:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5'
             >
-                <div 
-                    className="max-w-full h-full w-full md:w-4/6 bg-white rounded-2xl flex sm:flex-row flex-col sm:items-center items-start md:justify-center justify-start py-8 px-6"
+                <DashboardBox1 
+                    className="md:w-4/6 sm:flex-row flex-col sm:items-center items-start md:justify-center justify-start"
                 >
                     <div className="max-w-16 h-16 flex items-center">
                         <Image src={Vector1} alt='vector' />
@@ -32,20 +34,21 @@ function dashboard() {
                     </div>
 
                     <Button className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4'>Go there</Button>
-                </div>
+                </DashboardBox1>
 
-                <div 
-                    className="w-2/6 h-full rounded-2xl md:block hidden bg-white" 
+                <DashboardBox2 
+                    className="md:w-2/6 md:block hidden" 
                 >
                     {/* <Image src={Rectangle} alt='rectangle' className='object-cover' /> */}
-                </div>
+                </DashboardBox2>
             </section>
+
 
             <section 
                 className="w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial mb-3.5"
             >
-                <div 
-                    className="max-w-full h-full w-full md:w-4/6 bg-white gap-3.5 rounded-2xl flex items-center justify-start md:justify-center py-8 px-6"
+                <DashboardBox1 
+                    className="md:w-4/6 items-center justify-start md:justify-center"
                 >
                     <div>
                         <span>
@@ -64,9 +67,9 @@ function dashboard() {
                     <div className="max-w-[267.12px] h-[164.53px] gap-3 flex items-center sm:block hidden">
                         <Image src={Products} alt='products' />
                     </div>
-                </div>
+                </DashboardBox1>
 
-                <div className="max-w-full w-full md:w-2/6 h-full rounded-2xl bg-white pt-8 pb-6 px-6">
+                <DashboardBox2 className="md:w-2/6 pt-8 pb-6 px-6">
                     <div className="flex items-center justify-start md:justify-center">
                         <div className="flex md:flex-col flex-row-reverse md:items-start justify-between items-center">
                             <div className="w-[68px] h-[68px] bg-[#F6F8FD] rounded-full flex justify-center items-center sm:inline-flex hidden">
@@ -88,13 +91,13 @@ function dashboard() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </DashboardBox2>
             </section>
 
             <section 
                 className="w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial pb-8"
             >
-                <div className="max-w-full h-full w-full md:w-4/6 bg-white rounded-2xl flex justify-center py-8 px-6">
+                <DashboardBox1 className="md:w-4/6 justify-center">
                     <div className="flex flex-col items-start">
                         <div className="flex justify-center w-full mb-9">
                             <Text variant="paragraph_3" className='font-bold text-[#292D32]'>My Saved Items</Text>
@@ -110,9 +113,9 @@ function dashboard() {
                             </Text>
                         </div>
                     </div>
-                </div>
+                </DashboardBox1>
 
-                <div className="max-w-full w-full md:w-2/6 h-full rounded-2xl flex justify-center bg-white py-8 px-6">
+                <DashboardBox2 className="md:w-2/6 flex justify-center py-8 px-6">
                     <div className="flex flex-col items-start">
                         <div className="flex justify-center w-full">
                             <Text variant="paragraph_3" className='font-bold text-[#292D32]'>Recently Viewed</Text>
@@ -125,7 +128,7 @@ function dashboard() {
                             <Image src={Vector3} alt='vector' />
                         </div>
                     </div>
-                </div>
+                </DashboardBox2>
             </section>
         </Dashboard>
     </>
