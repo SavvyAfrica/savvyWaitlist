@@ -44,7 +44,7 @@ const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) =>
                     </div>
 
                 
-                    <div className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:shadow-xl shadow-[#f2f7fc] hover:bg-[#dcebf9]">
+                    <div className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]">
                         <Link href={'/dashboard/account'}>
                             <a className='flex w-full justify-center items-center'>
                                 <Image 

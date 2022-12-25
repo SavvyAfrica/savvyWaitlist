@@ -29,35 +29,35 @@ function signup() {
           <form className="w-full">
             <div className="pb-1.5 mb-1.5">
               <Label htmlFor='fname'>
-                <Text variant='paragraph_4'>First Name</Text>
+                <Text variant='paragraph_4' className='font-semibold'>First Name</Text>
               </Label>
               <Input id='fname' name='fname' type='text' />
             </div>
 
             <div className="pb-1.5 mb-1.5">
               <Label htmlFor='lname'>
-                <Text variant='paragraph_4'>Last Name</Text>
+                <Text variant='paragraph_4' className='font-semibold'>Last Name</Text>
               </Label>
               <Input id='lname' name='lname' type='text' />
             </div>
 
             <div className="pb-1.5 mb-1.5"> 
               <Label htmlFor='phone'>
-                <Text variant='paragraph_4'>Mobile Number</Text>
+                <Text variant='paragraph_4' className='font-semibold'>Mobile Number</Text>
               </Label>
               <Input id='phone' name='phone' type='tel' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' />
             </div>
 
             <div className="pb-1.5 mb-1.5">
               <Label htmlFor='email'>
-                <Text variant='paragraph_4'>Email Address</Text>
+                <Text variant='paragraph_4' className='font-semibold'>Email Address</Text>
               </Label>
               <Input id='email' name='email' type='email' />
             </div>
 
             <div className="pb-3 mb-3 relative">
               <Label htmlFor='password'>
-                <Text variant='paragraph_4'>Password</Text>
+                <Text variant='paragraph_4' className='font-semibold'>Password</Text>
               </Label>
               <Input id='password' name='password' type={passwordShown ? "text" : "password"} placeholder='8+ characters' />
 

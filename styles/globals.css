@@ -79,3 +79,13 @@ a {
   max-width: 1440px;
 }
 
+
+
+.modal__content{
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}

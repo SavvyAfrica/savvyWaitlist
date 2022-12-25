@@ -28,14 +28,14 @@ function signin() {
                 <form className="w-full">
                     <div className="pb-1.5 mb-1.5">
                         <Label htmlFor='email'>
-                            <Text variant='paragraph_4'>Email Address</Text>
+                            <Text variant='paragraph_4' className='font-semibold'>Email Address</Text>
                         </Label>
                         <Input id='email' name='email' type='email' />
                     </div>
 
                     <div className="pb-3 mb-3 relative">
                         <Label htmlFor='password'>
-                            <Text variant='paragraph_4'>Password</Text>
+                            <Text variant='paragraph_4' className='font-semibold'>Password</Text>
                         </Label>
                         <Input id='password' name='password' type={passwordShown ? "text" : "password"} placeholder='8+ characters' />
 

@@ -39,17 +39,17 @@ interface IButton {
   onClick?: () => void;
 }
 interface IInput {
-  className?: string;
-  id: string;
-  name: string;
+  className?: any;
+  id: any;
+  name: any;
   type: any;
-  placeholder?: string;
-  pattern?: string;
+  placeholder?: any;
+  pattern?: any;
 }
 interface ILabel {
-  className?: string;
+  className?: any;
   children: React.ReactNode;
-  htmlFor: string;
+  htmlFor: any;
 }
 interface IFormHead {
   children: React.ReactNode;
