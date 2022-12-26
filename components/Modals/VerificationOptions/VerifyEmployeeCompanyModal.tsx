@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import { Text } from '../typography/typography'
+import { Text } from '../../typography/typography'
 import { BsArrowLeft } from 'react-icons/bs'
 import { BsArrowRight } from 'react-icons/bs'
-import { Input } from '../inputField/inputField'
-import { Label } from '../inputFieldLabel/inputFieldLabel'
-import { Button } from '../button/button'
+import { Input } from '../../inputField/inputField'
+import { Label } from '../../inputFieldLabel/inputFieldLabel'
+import { Button } from '../../button/button'
 
 
 interface IMyProp {

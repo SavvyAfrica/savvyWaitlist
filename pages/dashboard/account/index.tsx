@@ -7,12 +7,15 @@ import { Text } from '../../../components/typography/typography'
 import DbTransactionBox from '../../../components/DbTransactionBox/DbTransactionBox'
 import Vector3 from '../../../assets/png/Vector3.png'
 import Image from 'next/image';
+import DashboardContentBox from '../../../components/DashboardContentBox/DashboardContentBox'
 import FundWalletModal from '../../../components/Modals/FundWalletModal'
 import SetupAccountModal from '../../../components/Modals/SetupAccountModal'
-import VerifyEmp_StudModal from '../../../components/Modals/VerifyEmp_StudModal'
-import VerifyEmployeeCompanyModal from '../../../components/Modals/VerifyEmployeeCompanyModal'
-import DashboardContentBox from '../../../components/DashboardContentBox/DashboardContentBox'
-import RenewOptionsModal from '../../../components/Modals/RenewOptionsModal'
+import VerifyEmp_StudModal from '../../../components/Modals/VerificationOptions/VerifyEmp_StudModal'
+import VerifyEmployeeCompanyModal from '../../../components/Modals/VerificationOptions/VerifyEmployeeCompanyModal'
+import ActionOptionsModal from '../../../components/Modals/RenewOptions/RenewOption1'
+import RenewOptionModal from '../../../components/Modals/RenewOptions/RenewOption2'
+import ReturnOptionModal from '../../../components/Modals/RenewOptions/ReturnOption1'
+import Return_EndOptionModal from '../../../components/Modals/RenewOptions/ReturnOption2'
 
 
 function account() {
@@ -45,8 +48,14 @@ function account() {
   const [verifyEmp_StudIsOpen, setVerifyEmp_StudIsOpen] = useState(false);
   const [verifyEmpCompanyIsOpen, setVerifyEmpCompanyIsOpen] = useState(false);
 
-  //RenewalOptions State
-  const [renewOptionsIsOpen, setRenewOptionsIsOpen] = useState(false);
+  //Renewal Option State
+  const [actionOptionsIsOpen, setActionOptionsIsOpen] = useState(false);
+  const [renewOptionIsOpen, setRenewOptionIsOpen] = useState(false);
+  const [returnOptionIsOpen, setReturnOptionIsOpen] = useState(false);
+  const [return_EndOptionIsOpen, setReturn_EndOptionIsOpen] = useState(false)
+
+
+  // Swap Option State
 
   return (
       <>
@@ -114,8 +123,17 @@ function account() {
                   currentDate={transaction.currentDate}
                   ctaBtn={transaction.ctaBtn}
                   className={transaction.className}
-                  setRenewOptionsIsOpen={setRenewOptionsIsOpen}
-                  renewOptionsIsOpen={renewOptionsIsOpen}
+                  // setActionOptionsIsOpen={setActionOptionsIsOpen}
+                  // setActionOptionsIsOpen={setActionOptionsIsOpen}
+
+                  // setRenewOptionIsOpen={setRenewOptionIsOpen}
+                  // renewOptionIsOpen={renewOptionIsOpen}
+                  
+                  // setReturnOptionIsOpen={setReturnOptionIsOpen}
+                  // returnOptionIsOpen={returnOptionIsOpen}
+
+                  setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen}
+                  return_EndOptionIsOpen={return_EndOptionIsOpen}
                 />
               ))}
               </div>
@@ -134,17 +152,47 @@ function account() {
               </div>
             </DashboardContentBox>
           </section>
-       </Dashboard>
+        </Dashboard>
+        
+        {/* Fund Wallet Modal  */}
+        {fundWalletIsOpen 
+        ? <FundWalletModal setFundWalletIsOpen={setFundWalletIsOpen} fundWalletIsOpen={fundWalletIsOpen} /> 
+        : null 
+        }
 
-       {fundWalletIsOpen ? <FundWalletModal setFundWalletIsOpen={setFundWalletIsOpen} fundWalletIsOpen={fundWalletIsOpen} /> : '' }
+
+        {/* Setup Account Modal  */}
+        {setupAccountIsOpen 
+        ? <SetupAccountModal setSetupAccountIsOpen={setSetupAccountIsOpen} setupAccountIsOpen={setupAccountIsOpen} /> 
+        : null 
+        }
+        {/* {verifyEmp_StudIsOpen 
+        ? <VerifyEmp_StudModal setVerifyEmp_StudIsOpen={setVerifyEmp_StudIsOpen} verifyEmp_StudIsOpen={verifyEmp_StudIsOpen} /> 
+        : null 
+        } */}
+        {/* {verifyEmpCompanyIsOpen 
+        ? <VerifyEmployeeCompanyModal setVerifyEmpCompanyIsOpen={setVerifyEmpCompanyIsOpen} verifyEmpCompanyIsOpen={verifyEmpCompanyIsOpen} /> 
+        : null 
+        } */}
 
 
-       {setupAccountIsOpen ? <SetupAccountModal setSetupAccountIsOpen={setSetupAccountIsOpen} setupAccountIsOpen={setupAccountIsOpen} /> : '' }
-       {/* {verifyEmp_StudIsOpen ? <VerifyEmp_StudModal setVerifyEmp_StudIsOpen={setVerifyEmp_StudIsOpen} verifyEmp_StudIsOpen={verifyEmp_StudIsOpen} /> : '' } */}
-       {/* {verifyEmpCompanyIsOpen ? <VerifyEmployeeCompanyModal setVerifyEmpCompanyIsOpen={setVerifyEmpCompanyIsOpen} verifyEmpCompanyIsOpen={verifyEmpCompanyIsOpen} /> : '' } */}
-
-       
-       {renewOptionsIsOpen ? <RenewOptionsModal setRenewOptionsIsOpen={setRenewOptionsIsOpen} renewOptionsIsOpen={renewOptionsIsOpen} /> : ''}
+        {/* Renewal Option Modal  */}
+        {/* {actionOptionsIsOpen 
+        ? <ActionOptionsModal setActionOptionsIsOpen={setActionOptionsIsOpen} actionOptionsIsOpen={actionOptionsIsOpen} /> 
+        : ''
+        } */}
+        {/* {renewOptionIsOpen
+        ? <RenewOptionModal setRenewOptionIsOpen={setRenewOptionIsOpen} renewOptionIsOpen={renewOptionIsOpen} />
+        : null
+        } */}
+        {/* {returnOptionIsOpen
+        ? <ReturnOptionModal setReturnOptionIsOpen={setReturnOptionIsOpen} returnOptionIsOpen={returnOptionIsOpen} />
+        : null
+        } */}
+        {return_EndOptionIsOpen
+        ? <Return_EndOptionModal setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen} return_EndOptionIsOpen={return_EndOptionIsOpen} />
+        : null
+        }
       </>
   )
 }
