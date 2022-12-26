@@ -12,13 +12,41 @@ import SetupAccountModal from '../../../components/Modals/SetupAccountModal'
 import VerifyEmp_StudModal from '../../../components/Modals/VerifyEmp_StudModal'
 import VerifyEmployeeCompanyModal from '../../../components/Modals/VerifyEmployeeCompanyModal'
 import DashboardContentBox from '../../../components/DashboardContentBox/DashboardContentBox'
+import RenewOptionsModal from '../../../components/Modals/RenewOptionsModal'
 
 
 function account() {
-  const [fundWalletIsOpen, setFundWalletIsOpen] = useState(false)
+  const [transactions, setTransactions] = useState([
+    {
+      id: 1,
+      productName: 'Apple iPhone 13 (128GB)', 
+      unitPrice: '₦39,700', 
+      dueDate: 'Rent due on Jun 16, 2022',
+      currentDate: 'May 16, 2022',
+      ctaBtn: 'Renew',
+      className: 'mb-5'
+    },
+    {
+      id: 2,
+      productName: 'Mac book pro', 
+      unitPrice: '₦45,000', 
+      dueDate: 'To be swapped on or before Jun 16, 2022',
+      currentDate: 'May 16, 2022',
+      ctaBtn: 'Swap',
+      className: 'mb-5'
+    }
+  ]);
+
+  // Fund Wallet State
+  const [fundWalletIsOpen, setFundWalletIsOpen] = useState(false);
+  
+  // Account Setup State
   const [setupAccountIsOpen, setSetupAccountIsOpen] = useState(false);
   const [verifyEmp_StudIsOpen, setVerifyEmp_StudIsOpen] = useState(false);
   const [verifyEmpCompanyIsOpen, setVerifyEmpCompanyIsOpen] = useState(false);
+
+  //RenewalOptions State
+  const [renewOptionsIsOpen, setRenewOptionsIsOpen] = useState(false);
 
   return (
       <>
@@ -44,7 +72,6 @@ function account() {
                 <BiPlus className='mr-2' />
                 Add Fund
               </Button>
-              {fundWalletIsOpen ? <FundWalletModal setFundWalletIsOpen={setFundWalletIsOpen} fundWalletIsOpen={fundWalletIsOpen} /> : '' }
             </DashboardContentBox>
 
             <DashboardContentBox className='xl:w-2/6 sm:flex-row flex-col justify-center items-center'>
@@ -57,20 +84,17 @@ function account() {
 
               <div 
                 className="w-[40px] h-[40px] rounded-full bg-[#F4F7FE] hover:bg-[#dcebf9] flex items-center justify-center sm:ml-auto ml-0 cursor-pointer"
-                // onClick={() => setSetupAccountIsOpen(!setupAccountIsOpen)}
+                onClick={() => setSetupAccountIsOpen(!setupAccountIsOpen)}
                 // onClick={() => setVerifyEmp_StudIsOpen(!verifyEmp_StudIsOpen)}
-                onClick={() => setVerifyEmpCompanyIsOpen(!verifyEmpCompanyIsOpen)}
+                // onClick={() => setVerifyEmpCompanyIsOpen(!verifyEmpCompanyIsOpen)}
               >
                 <BsArrowRight />
               </div>
-              {/* {setupAccountIsOpen ? <SetupAccountModal setSetupAccountIsOpen={setSetupAccountIsOpen} setupAccountIsOpen={setupAccountIsOpen} /> : '' } */}
-              {/* {verifyEmp_StudIsOpen ? <VerifyEmp_StudModal setVerifyEmp_StudIsOpen={setVerifyEmp_StudIsOpen} verifyEmp_StudIsOpen={verifyEmp_StudIsOpen} /> : '' } */}
-              {verifyEmpCompanyIsOpen ? <VerifyEmployeeCompanyModal setVerifyEmpCompanyIsOpen={setVerifyEmpCompanyIsOpen} verifyEmpCompanyIsOpen={verifyEmpCompanyIsOpen} /> : '' }
             </DashboardContentBox>
           </section>
 
           <section 
-            className='w-full h-auto xl:h-[340px] flex flex-col xl:flex-row items-start justify-start gap-3.5 flex-initial pb-8'
+            className='w-full h-auto xl:h-[340px] flex flex-col xl:flex-row items-start justify-start gap-3.5 flex-initial'
           >
             <DashboardContentBox className='xl:w-4/6 flex-col'>
               <div className="mb-8 sm:text-left text-center">
@@ -81,23 +105,19 @@ function account() {
               </div>
 
               <div className="overflow-auto">
+                {transactions.map(transaction => (
                 <DbTransactionBox 
-                  productName='Apple iPhone 13 (128GB)' 
-                  unitPrice='₦39,700' 
-                  dueDate='Rent due on Jun 16, 2022'
-                  currentDate='May 16, 2022'
-                  ctaBtn='Renew'
-                  className='mb-5'
+                  key={transaction.id}
+                  productName={transaction.productName}
+                  unitPrice={transaction.unitPrice}
+                  dueDate={transaction.dueDate}
+                  currentDate={transaction.currentDate}
+                  ctaBtn={transaction.ctaBtn}
+                  className={transaction.className}
+                  setRenewOptionsIsOpen={setRenewOptionsIsOpen}
+                  renewOptionsIsOpen={renewOptionsIsOpen}
                 />
-
-                <DbTransactionBox 
-                  productName='Apple iPhone 13 (128GB)' 
-                  unitPrice='₦39,700' 
-                  dueDate='Rent due on Jun 16, 2022'
-                  currentDate='May 16, 2022'
-                  ctaBtn='Swap'
-                  className='mb-5'
-                />
+              ))}
               </div>
             </DashboardContentBox>
 
@@ -115,6 +135,16 @@ function account() {
             </DashboardContentBox>
           </section>
        </Dashboard>
+
+       {fundWalletIsOpen ? <FundWalletModal setFundWalletIsOpen={setFundWalletIsOpen} fundWalletIsOpen={fundWalletIsOpen} /> : '' }
+
+
+       {setupAccountIsOpen ? <SetupAccountModal setSetupAccountIsOpen={setSetupAccountIsOpen} setupAccountIsOpen={setupAccountIsOpen} /> : '' }
+       {/* {verifyEmp_StudIsOpen ? <VerifyEmp_StudModal setVerifyEmp_StudIsOpen={setVerifyEmp_StudIsOpen} verifyEmp_StudIsOpen={verifyEmp_StudIsOpen} /> : '' } */}
+       {/* {verifyEmpCompanyIsOpen ? <VerifyEmployeeCompanyModal setVerifyEmpCompanyIsOpen={setVerifyEmpCompanyIsOpen} verifyEmpCompanyIsOpen={verifyEmpCompanyIsOpen} /> : '' } */}
+
+       
+       {renewOptionsIsOpen ? <RenewOptionsModal setRenewOptionsIsOpen={setRenewOptionsIsOpen} renewOptionsIsOpen={renewOptionsIsOpen} /> : ''}
       </>
   )
 }

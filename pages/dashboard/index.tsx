@@ -94,7 +94,7 @@ function dashboard() {
             </section>
 
             <section 
-                className="w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial pb-8"
+                className="w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial"
             >
                 <DashboardContentBox className="md:w-4/6 justify-center">
                     <div className="flex flex-col items-start">

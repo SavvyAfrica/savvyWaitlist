@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import DashboardSideBar from '../DashboardSideBar/DashboardSideBar';
 import DashboardTopBar from '../DashboardTopBar/DashboardTopBar';
-import { Transition } from "@headlessui/react";
 
 
 
@@ -37,30 +36,29 @@ function DashboardLayout({children}: any) {
         }
     }, []);
 
+    // Prevents child element from inheriting parent element's onClick
+    const handleChildElementClick = (e: any) => {
+        e.stopPropagation()
+    }
+
+
   return (
     <>
-        <DashboardTopBar showNav={showNav} setShowNav={setShowNav} />
-        <Transition
-            as="div"
-            show={showNav}
-            enter="transform transition duration-[400ms]"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transform duration-[400ms] transition ease-in-out"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-            className="fixed left-0 top-0 w-72 max-w-full h-full z-30 bg-white shadow-md"
-        >
-            <DashboardSideBar showNav={showNav} setShowNav={setShowNav} />
-        </Transition>
+        <DashboardSideBar showNav={showNav} setShowNav={setShowNav} />
 
         <main 
             onClick={handleOnblur}
-            className={`min-h-screen w-full z-10 transition-all duration-[400ms] bg-[#f2f7fc] ${
-                showNav && !isMobile ? 'pl-56' : "pl-0"
+            className={`h-full w-full transition-all duration-[400ms] bg-[#f2f7fc] ${
+                showNav && !isMobile ? 'pl-80' : "pl-0"
             }`}
         >
-            <div className="maxWidth lg:pt-36 pt-16 pl-8 lg:pl-24 pr-8 lg:pr-16">{children}</div>
+            <div className="maxWidth">
+                <DashboardTopBar showNav={showNav} setShowNav={setShowNav} />
+
+                <div className="w-full h-auto">
+                    <div className="pt-9 pb-9 pl-9 lg:pl-0 pr-9">{children}</div>
+                </div>
+            </div>
         </main>
     </>
   )

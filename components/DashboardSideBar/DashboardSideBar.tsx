@@ -1,15 +1,13 @@
-import React, { Dispatch, forwardRef, SetStateAction } from 'react';
-import { RiHome4Fill } from 'react-icons/ri';
-import { IoMdWallet } from 'react-icons/io';
-import { TbMessage2 } from 'react-icons/tb';
-import { MdOutlineFavoriteBorder } from 'react-icons/md';
-import { HiOutlineBars3BottomLeft } from 'react-icons/hi2';
-import { MdLogin } from 'react-icons/md';
+import React, { Dispatch, forwardRef, SetStateAction, useCallback, useState } from 'react';
+import { AiFillMessage } from 'react-icons/ai';
+import { IoIosClose } from 'react-icons/io';
+import { MdLogin, MdManageAccounts } from 'react-icons/md';
 import { SingletonRouter, useRouter } from 'next/router';
 import Link from 'next/router';
 import Image from 'next/image';
 import Logo from '../../assets/png/logo.png';
 import { Text } from '../typography/typography';
+import { BsFillStarFill, BsHouseFill } from 'react-icons/bs';
 
 
 interface IMyProps {
@@ -18,116 +16,77 @@ interface IMyProps {
 }
 
 
-const DashboardSideBar: React.FC<IMyProps> = forwardRef(({ showNav, setShowNav }, ref: any) => {
+const DashboardSideBar: React.FC<IMyProps> = ({ showNav, setShowNav }: IMyProps) => {
+  const [currentRoute, setCurrentRoute] = useState("Home");
+
+  const renderIcon = useCallback((element: React.ReactNode) => {
+    switch (element) {
+      case "Home":
+        return <BsHouseFill className='h-4 w-4' />;
+      case "Account":
+        return <MdManageAccounts className='h-5 w-5' />;
+      case "Messages":
+        return <AiFillMessage className='h-4.5 w-4.5' />;
+      case "Favourites":
+        return <BsFillStarFill className='h-4 w-4' />;
+    }
+  }, []);
+  const navigationData = ["Home", "Account", "Messages", "Favourites"];
+
+  
   const router = useRouter();
 
   return (
-    <div ref={ref} className="h-full">
+    <div 
+      className={`fixed left-0 top-0 w-60 sm:w-72 duration-[400ms] h-full z-30 bg-white shadow-md
+        ${showNav
+        ? '-translate-x-full lg:translate-x-0'
+        : '-translate-x-0 origin-right'
+        }`}
+    >
+      <>
       <div className="flex justify-center mt-7 mb-14">
         <div className="w-full flex justify-between items-center ml-12 mr-4">
           {/* <Link href='/dashboard'> */}
             <Image src={Logo} alt="logo" />
           {/* </Link> */}
-          <HiOutlineBars3BottomLeft 
-            className={`h-8 w-8 lg:hidden block cursor-pointer text-gray-700 ${showNav ? 'block' : 'hidden'}`}
+          <IoIosClose
+            className={`h-8 w-8 lg:hidden block cursor-pointer text-gray-700 `}
             onClick={() => setShowNav(!showNav)} 
           />
         </div>
       </div>
 
-      <div className="flex flex-col mb-24">
-        {/* <Link href="/"> */}
-          <div 
-            className={`pl-6 py-3 mx-7 mb-3 rounded text-center cursor-pointer flex items-center transition-colors ${
-              router.pathname == "/"
-              ? "bg-[#00B0f0]"
-              : "text-gray-600 hover:bg-[#00B0f0] hover:text-neutral-800"
-            }`}
-          >
-            <div className="mr-2">
-              <RiHome4Fill className='h-5 w-5' />
-            </div>
+      <ul className="flex flex-col mb-24 block">
+        {navigationData.map((element, index): React.ReactNode => {
+          return (
+            <li
+              key={index}
+              onClick={() => setCurrentRoute(element)}
+              className={`pl-6 py-3 mx-7 mb-3 rounded text-center cursor-pointer flex items-center transition-colors block 
+                ${currentRoute === element
+                ? "bg-[#00B0F0]"
+                : "text-[#292D32] hover:bg-[#dcebf9]"
+                }`}
+            >
+              {/* <Link href=''> */}
+                <span className="mr-2 inline-block">
+                  {renderIcon(element)}
+                </span>
 
-            <div>
-              <Text 
-                variant='paragraph_3' 
-                className={`${router.pathname == "/" ? "font-bold" : "font-medium"}`}
-              >
-                Home
-              </Text>
-            </div>
-          </div>
-        {/* </Link> */}
-
-        {/* <Link href="/account"> */}
-          <div 
-            className={`pl-6 py-3 mx-7 mb-3 rounded text-center cursor-pointer flex items-center transition-colors ${
-              router.pathname == "/account"
-              ? "bg-[#00B0f0]"
-              : "text-gray-600 hover:bg-[#00B0f0] hover:text-neutral-800"
-            }`}
-          >
-            <div className="mr-2">
-              <IoMdWallet className='h-5 w-5' />
-            </div>
-
-            <div>
-              <Text 
-                variant='paragraph_3' 
-                className={`${router.pathname == "/" ? "font-bold" : "font-medium"}`}
-              >
-                Account
-              </Text>
-            </div>
-          </div>
-        {/* </Link> */}
-
-        {/* <Link href="/messages"> */}
-          <div 
-            className={`pl-6 py-3 mx-7 mb-3 rounded text-center cursor-pointer flex items-center transition-colors ${
-              router.pathname == "/messages"
-              ? "bg-[#00B0f0]"
-              : "text-gray-600 hover:bg-[#00B0f0] hover:text-neutral-800"
-            }`}
-          >
-            <div className="mr-2">
-              <TbMessage2 className='h-5 w-5' />
-            </div>
-
-            <div>
-              <Text 
-                variant='paragraph_3' 
-                className={`${router.pathname == "/" ? "font-bold" : "font-medium"}`}
-              >
-                Messages
-              </Text>
-            </div>
-          </div>
-        {/* </Link> */}
-
-        {/* <Link href="/favourites"> */}
-          <div 
-            className={`pl-6 py-3 mx-7 mb-3 rounded text-center cursor-pointer flex items-center transition-colors ${
-              router.pathname == "/favourites"
-              ? "bg-[#00B0f0]"
-              : "text-gray-600 hover:bg-[#00B0f0] hover:text-neutral-800"
-            }`}
-          >
-            <div className="mr-2">
-              <MdOutlineFavoriteBorder className='h-5 w-5' />
-            </div>
-
-            <div>
-              <Text 
-                variant='paragraph_3' 
-                className={`${router.pathname == "/" ? "font-bold" : "font-medium"}`}
-              >
-                Favourites
-              </Text>
-            </div>
-          </div>
-        {/* </Link> */}
-      </div>
+                <span className="inline-block">
+                  <Text
+                    variant='paragraph_3'
+                    className="font-bold"
+                  >
+                    {element}
+                  </Text>
+                </span>
+              {/* </Link> */}
+            </li>
+          )
+        })}
+      </ul>
 
       <div className="flex items-center pl-6 py-3 mx-7 mb-3 text-center cursor-pointer">
         {/* <Link href=''> */}
@@ -135,10 +94,10 @@ const DashboardSideBar: React.FC<IMyProps> = forwardRef(({ showNav, setShowNav }
           <Text variant='paragraph_3' className='font-medium'>Log Out</Text>
         {/* </Link> */}
       </div>
+      </>
     </div>
   )
-})
+}
 
-DashboardSideBar.displayName = "DashboardSideBar";
 
 export default DashboardSideBar;

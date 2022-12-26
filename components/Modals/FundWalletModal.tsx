@@ -18,7 +18,7 @@ function FundWalletModal({setFundWalletIsOpen, fundWalletIsOpen}: IMyProp) {
   return (
     <>
         <div 
-            className="fixed z-50 left-0 top-0 w-full h-full bg-black opacity-75"
+            className="fixed z-[999999] left-0 top-0 w-full h-full bg-black opacity-75"
             onClick={() => setFundWalletIsOpen(!fundWalletIsOpen)}
         >
             <div 

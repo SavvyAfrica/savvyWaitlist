@@ -17,10 +17,9 @@ interface IMyProps {
 const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) => {
     return (
         <div 
-            className={`lg:fixed static top-0 bg-[#f2f7fc] shadow-md w-full h-auto z-10 transition-all duration-[400ms] 
-            ${showNav ? "lg:pl-56 pl-0" : "pl-0"}`}
+            className="w-full h-auto"
         >
-            <div className="maxWidth pt-6 pr-8 lg:pr-16 pl-8 lg:pl-24 pb-6 w-full flex justify-between items-start">
+            <div className="py-6 pr-9 pl-9 lg:pl-0 w-full flex justify-between items-start">
 
                 <div>
                     <div className="lg:hidden block -translate-x-1">
