@@ -9,12 +9,12 @@ interface IMyProp {
     dueDate: string;
     currentDate: string;
     ctaBtn: string;
-    return_EndOptionIsOpen: boolean;
-    setReturn_EndOptionIsOpen: Dispatch<SetStateAction<boolean>>;
+    swapOption2IsOpen: boolean;
+    setSwapOption2IsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 function DbTransactionBox(props: IMyProp) {
-    const { className, productName, unitPrice, dueDate, currentDate, ctaBtn, setReturn_EndOptionIsOpen, return_EndOptionIsOpen } = props
+    const { className, productName, unitPrice, dueDate, currentDate, ctaBtn, setSwapOption2IsOpen, swapOption2IsOpen } = props
 
   return (
     <>
@@ -30,7 +30,7 @@ function DbTransactionBox(props: IMyProp) {
                     <p className="sm:text-[10px] text-[12px] font-medium leading-4 opacity-50 text-[#2F294D] mb-1 sm:text-left text-center">{currentDate}</p>
                     <button 
                         className='bg-white hover:bg-[#dcebf9] w-[140px] h-[41px] rounded-lg flex justify-center items-center'
-                        onClick={() => setReturn_EndOptionIsOpen(!return_EndOptionIsOpen)}
+                        onClick={() => setSwapOption2IsOpen(!swapOption2IsOpen)}
                     >
                         <span className='inline-block text-sm font-medium text-[#0F2137]'>{ctaBtn}</span>
                     </button>
