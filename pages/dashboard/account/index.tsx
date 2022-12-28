@@ -16,6 +16,8 @@ import ActionOptionsModal from '../../../components/Modals/RenewOptions/RenewOpt
 import RenewOptionModal from '../../../components/Modals/RenewOptions/RenewOption2'
 import ReturnOptionModal from '../../../components/Modals/RenewOptions/ReturnOption1'
 import Return_EndOptionModal from '../../../components/Modals/RenewOptions/ReturnOption2'
+import SwapOption1 from '../../../components/Modals/SwapOptions/SwapOption1'
+import SwapOption2 from '../../../components/Modals/SwapOptions/SwapOption2'
 
 
 function account() {
@@ -56,6 +58,8 @@ function account() {
 
 
   // Swap Option State
+  // const [swapOption1IsOpen, setSwapOption1IsOpen] = useState(false)
+  const [swapOption2IsOpen, setSwapOption2IsOpen] = useState(false)
 
   return (
       <>
@@ -132,8 +136,11 @@ function account() {
                   // setReturnOptionIsOpen={setReturnOptionIsOpen}
                   // returnOptionIsOpen={returnOptionIsOpen}
 
-                  setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen}
-                  return_EndOptionIsOpen={return_EndOptionIsOpen}
+                  // setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen}
+                  // return_EndOptionIsOpen={return_EndOptionIsOpen}
+
+                  setSwapOption2IsOpen={setSwapOption2IsOpen}
+                  swapOption2IsOpen={swapOption2IsOpen}
                 />
               ))}
               </div>
@@ -176,6 +183,7 @@ function account() {
         } */}
 
 
+
         {/* Renewal Option Modal  */}
         {/* {actionOptionsIsOpen 
         ? <ActionOptionsModal setActionOptionsIsOpen={setActionOptionsIsOpen} actionOptionsIsOpen={actionOptionsIsOpen} /> 
@@ -189,8 +197,20 @@ function account() {
         ? <ReturnOptionModal setReturnOptionIsOpen={setReturnOptionIsOpen} returnOptionIsOpen={returnOptionIsOpen} />
         : null
         } */}
-        {return_EndOptionIsOpen
+        {/* {return_EndOptionIsOpen
         ? <Return_EndOptionModal setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen} return_EndOptionIsOpen={return_EndOptionIsOpen} />
+        : null
+        } */}
+        
+
+
+        {/* Swap Option State */}
+        {/* {swapOption1IsOpen
+        ? <SwapOption1 setSwapOption1IsOpen={setSwapOption1IsOpen} swapOption1IsOpen={swapOption1IsOpen} />
+        : null
+        } */}
+        {swapOption2IsOpen
+        ? <SwapOption2 setSwapOption2IsOpen={setSwapOption2IsOpen} swapOption2IsOpen={swapOption2IsOpen} />
         : null
         }
       </>
