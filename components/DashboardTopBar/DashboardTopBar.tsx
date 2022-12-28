@@ -7,14 +7,13 @@ import { CgProfile } from 'react-icons/cg';
 import Image from 'next/image';
 import Profile from '../../assets/png/profile.png';
 import { Text } from '../typography/typography';
+import { useGlobalContext } from '../../Global/GlobalContext';
 
 
-interface IMyProps {
-    showNav: boolean;
-    setShowNav: Dispatch<SetStateAction<boolean>>;
-}
 
-const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) => {
+const DashboardTopBar = () => {
+    const { showNav, setShowNav } = useGlobalContext()
+
     return (
         <div 
             className="w-full h-auto"
@@ -31,13 +30,13 @@ const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) =>
                 
                     <div className="w-auto lg:mt-0 mt-7">
                         <Text variant='paragraph_4' className='text-color1 font-bold'>Hi Andrei,</Text>
-                        <Text variant='home_heading_4_32px' className='font-bold text-color2'>Welcome to Savvy!</Text>
+                        <Text variant='home_heading_4_32px' className='font-bold text-color2 lg:text-[30px] sm:text-2xl text-lg lg:leading-10'>Welcome to Savvy!</Text>
                     </div>
                 </div>
 
                 <div className="flex md:flex-row flex-row-reverse items-center">
                     <div className="md:mr-5 mr-0 md:ml-0 ml-2.5 lg:mr-8 cursor-pointer text-gray-700 bg-white rounded-full">
-                        {/* <Link href={''}> */}
+                        {/* <Link href=''> */}
                             <MdOutlineShoppingCart className="h-10 w-10 p-2" />
                         {/* </Link> */}
                     </div>
@@ -45,7 +44,7 @@ const DashboardTopBar: React.FC<IMyProps> = ({showNav, setShowNav}: IMyProps) =>
                 
                     <div className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]">
                         <Link href={'/dashboard/account'}>
-                            <a className='flex w-full justify-center items-center'>
+                            <a className='inline-block flex w-full justify-center items-center'>
                                 <Image 
                                     src={Profile} 
                                     width={40} 
