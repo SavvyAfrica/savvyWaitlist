@@ -1,7 +1,5 @@
 import React from 'react';
 import DashboardSideBar from '../DashboardSideBar/DashboardSideBar';
-import DashboardTopBar from '../DashboardTopBar/DashboardTopBar';
-import { useRouter } from 'next/router';
 
 
 interface IMyProps {
@@ -9,14 +7,13 @@ interface IMyProps {
 }
 
 function DashboardLayout({ children}: IMyProps) {
-    const router = useRouter();
 
   return (
     <>
         <DashboardSideBar  />
 
         <main 
-            className={`h-full w-full transition-all duration-[400ms] bg-[#f2f7fc] lg:pl-80 pl-0`}
+            className={`h-full w-full transition-all duration-[400ms] bg-[#f2f7fc] lg:pl-[270px] xl:pl-80 pl-0`}
         >
             <div className="maxWidth">
                 <div className="w-full h-auto">

@@ -120,7 +120,7 @@ function account() {
                 </Text>
               </div>
 
-              <div className="overflow-auto">
+              <div className="scrollbar overflow-auto">
                 {transactions.map(transaction => (
                 <DbTransactionBox 
                   key={transaction.id}
@@ -145,7 +145,7 @@ function account() {
                   setSwapOption2IsOpen={setSwapOption2IsOpen}
                   swapOption2IsOpen={swapOption2IsOpen}
                 />
-              ))}
+                ))}
               </div>
             </DashboardContentBox>
 
