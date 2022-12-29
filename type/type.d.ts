@@ -2,7 +2,7 @@ interface IText {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
-  variant:
+  variant?:
     | "home_heading_50px"
     | "home_heading_2_40px"
     | "home_heading_3_32px"
