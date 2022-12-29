@@ -19,11 +19,6 @@ function DashboardLayout({ children}: IMyProps) {
             className={`h-full w-full transition-all duration-[400ms] bg-[#f2f7fc] lg:pl-80 pl-0`}
         >
             <div className="maxWidth">
-                {router.asPath === '/dashboard/messages'
-                ? null
-                : <DashboardTopBar />
-                }
-
                 <div className="w-full h-auto">
                     <div className="pt-9 pb-9 pl-9 lg:pl-0 pr-9">{children}</div>
                 </div>

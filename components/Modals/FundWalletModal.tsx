@@ -18,11 +18,11 @@ function FundWalletModal({setFundWalletIsOpen, fundWalletIsOpen}: IMyProp) {
   return (
     <>
         <div 
-            className="fixed z-50 left-0 top-0 w-full h-full bg-black opacity-75 overflow-auto"
+            className="fixed z-[100] left-0 top-0 w-full h-full bg-black opacity-75 overflow-auto"
             onClick={() => setFundWalletIsOpen(!fundWalletIsOpen)}
         >
             <div 
-                className="modal__content bg-[#FEFEFE] bg-red rounded-xl m-[8%] mx-auto max-w-[700px] lg:w-w-2/4 sm:w-4/6 w-full relative shadow-lg"
+                className="modal__content bg-[#FEFEFE] rounded-xl m-[8%] mx-auto max-w-[700px] lg:w-w-2/4 sm:w-4/6 w-full relative shadow-lg"
                 onClick={(e) => handleChildElementClick(e)}
             >
                 <div className="border-b-2 border-solid border-[#DFDFE6] flex justify-center items-center pt-6 pb-8 md:px-8 px-6">

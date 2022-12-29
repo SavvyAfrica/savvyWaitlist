@@ -18,7 +18,7 @@ const DashboardTopBar = () => {
         <div 
             className="w-full h-auto"
         >
-            <div className="py-6 pr-9 pl-9 lg:pl-0 w-full flex justify-between items-start">
+            <div className="pb-6 w-full flex justify-between items-start">
 
                 <div>
                     <div className="lg:hidden block -translate-x-1">
@@ -29,8 +29,8 @@ const DashboardTopBar = () => {
                     </div>
                 
                     <div className="w-auto lg:mt-0 mt-7">
-                        <Text variant='paragraph_4' className='text-color1 font-bold'>Hi Andrei,</Text>
-                        <Text variant='home_heading_4_32px' className='font-bold text-color2 lg:text-[30px] sm:text-2xl text-lg lg:leading-10'>Welcome to Savvy!</Text>
+                        <Text variant='paragraph_4' className='text-[#707eae] font-bold'>Hi Andrei,</Text>
+                        <Text className='font-bold text-[#292d32] lg:text-[30px] sm:text-2xl text-lg lg:leading-10'>Welcome to Savvy!</Text>
                     </div>
                 </div>
 

@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Button } from '../../components/button/button';
 import { Text } from '../../components/typography/typography';
 import DashboardContentBox from '../../components/DashboardContentBox/DashboardContentBox';
+import DashboardTopBar from '../../components/DashboardTopBar/DashboardTopBar';
 
 
 
@@ -18,6 +19,8 @@ function dashboard() {
   return (
     <>
         <DashboardLayout>
+            <DashboardTopBar />
+            
             <section 
                 className='w-full flex md:flex-row flex-col h-auto md:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5'
             >

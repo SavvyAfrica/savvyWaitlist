@@ -3,7 +3,7 @@ import React from 'react'
 import Profile from '../../../assets/png/profile.png'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 import { Text } from '../../../components/typography/typography'
-import Image from 'next/image';
+import Image from 'next/image'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout'
 import { useGlobalContext } from '../../../Global/GlobalContext'
@@ -15,7 +15,7 @@ function messages() {
   return (
     <>
         <DashboardLayout>
-            <div className="pl-9 lg:pl-0 w-full flex justify-between items-start">
+            <div className="w-full flex justify-between items-start">
                 <div>
                     <div className="lg:hidden -translate-x-1">
                         <HiOutlineBars3BottomLeft 
@@ -25,7 +25,7 @@ function messages() {
                     </div>
                 
                     <div className="w-auto lg:mt-0 mt-7">
-                        <Text variant='home_heading_4_32px' className='font-bold text-color2'>Messages & Notifications</Text>
+                        <Text className='font-bold text-[#292d32] lg:text-[30px] sm:text-2xl text-lg lg:leading-10'>Messages & Notifications</Text>
                     </div>
                 </div>
 
