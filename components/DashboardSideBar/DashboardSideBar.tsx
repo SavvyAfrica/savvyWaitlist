@@ -51,7 +51,7 @@ const DashboardSideBar = () => {
               }`}
             >
               <span className="mr-2 inline-block">
-                <AiTwotoneHome className='h-4 w-4 mr-1' />
+                <AiTwotoneHome className='h-[24px] w-[24px] mr-1' />
               </span>
 
               <span className="inline-block">
@@ -76,7 +76,7 @@ const DashboardSideBar = () => {
               }`}
             >
               <span className="mr-2 inline-block">
-                <MdManageAccounts className='h-5 w-5' />
+                <MdManageAccounts className='h-7 w-7' />
               </span>
 
               <span className="inline-block">
@@ -101,7 +101,7 @@ const DashboardSideBar = () => {
               }`}
             >
               <span className="mr-2 inline-block">
-                <AiFillMessage className='h-4.5 w-4.5' />
+                <AiFillMessage className='h-[22px] w-[22px]' />
               </span>
 
               <span className="inline-block">
@@ -126,7 +126,7 @@ const DashboardSideBar = () => {
               }`}
             >
               <span className="mr-2 inline-block">
-                <BsFillStarFill className='h-4 w-4' />
+                <BsFillStarFill className='h-[22px] w-[22px]' />
               </span>
 
               <span className="inline-block">

@@ -11,6 +11,7 @@ import { Button } from '../../components/button/button';
 import { Text } from '../../components/typography/typography';
 import DashboardContentBox from '../../components/DashboardContentBox/DashboardContentBox';
 import DashboardTopBar from '../../components/DashboardTopBar/DashboardTopBar';
+import Link from 'next/link';
 
 
 
@@ -66,7 +67,9 @@ function dashboard() {
                         <div className="flex sm:justify-start justify-center">
                             <Button 
                                 className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>
-                                    Rent Now
+                                    <Link href='/dashboard/products'>
+                                        <a>Rent Now</a>
+                                    </Link>
                             </Button>
                         </div>
                     </div>
