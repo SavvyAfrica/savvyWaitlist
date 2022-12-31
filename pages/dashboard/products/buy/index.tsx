@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
-import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout'
-import { Text } from '../../../components/typography/typography'
-import { useGlobalContext } from '../../../Global/GlobalContext'
+import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
+import { Text } from '../../../../components/typography/typography'
+import { useGlobalContext } from '../../../../Global/GlobalContext'
 import Image from 'next/image'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-import Profile from '../../../assets/png/profile.png'
+import Profile from '../../../../assets/png/profile.png'
 import Link from 'next/link'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
-import Product from '../../../components/Product/Product'
-import ProductInfo from '../../../components/Product/ProductInfo'
+import Product from '../../../../components/Product/Product'
+import ProductInfo from '../../../../components/Product/ProductInfo'
 import Iphone13promax from '../../../assets/png/iphone13promax.png'
 import microsoftsurface from '../../../assets/png/microsoft-surface.png'
 import samsunggalaxy from '../../../assets/png/samsung-galaxy.png'
 import applewatchseries from '../../../assets/png/apple-watch-series.png'
 import nokiatablet from '../../../assets/png/nokia-tablet.png'
-import ProductsCategoryBox from '../../../components/ProductsCategoryBox/ProductsCategoryBox'
+import ProductsCategoryBox from '../../../../components/ProductsCategoryBox/ProductsCategoryBox'
 import Vector3 from '../../../assets/png/Vector3.png'
 import Apple from '../../../assets/png/Apple.png'
 
@@ -154,7 +154,7 @@ const categories = [
 
 
 
-function products() {
+function products_buy() {
   const { showNav, setShowNav } = useGlobalContext();
   
   const [search, setSearch] = useState('');
@@ -311,4 +311,4 @@ function products() {
   )
 }
 
-export default products
+export default products_buy

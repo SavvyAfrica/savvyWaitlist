@@ -36,7 +36,12 @@ function dashboard() {
                         <p className="text-xl font-medium text-center sm:px-5 px-0">Do you know how to complete account set up?</p>
                     </div>
 
-                    <Button className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 sm:mr-auto mr-0'>Go there</Button>
+                    <Button 
+                        className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 sm:mr-auto mr-0'>
+                            <Link href='/dashboard/account'>
+                                <a>Go there</a>
+                            </Link>
+                    </Button>
                 </DashboardContentBox>
 
                 <DashboardContentBox 
@@ -67,7 +72,7 @@ function dashboard() {
                         <div className="flex sm:justify-start justify-center">
                             <Button 
                                 className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>
-                                    <Link href='/dashboard/products'>
+                                    <Link href='/dashboard/products/rent'>
                                         <a>Rent Now</a>
                                     </Link>
                             </Button>
@@ -99,7 +104,9 @@ function dashboard() {
 
                                 <div className="flex justify-center">
                                     <Button className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>
-                                        Buy Now
+                                        <Link href='/dashboard/products/buy'>
+                                            <a>Buy Now</a>
+                                        </Link>
                                     </Button>
                                 </div>
                             </div>
