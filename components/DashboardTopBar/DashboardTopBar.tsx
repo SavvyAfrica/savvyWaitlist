@@ -30,14 +30,14 @@ const DashboardTopBar = () => {
                 
                     <div className="w-auto lg:mt-0 mt-7">
                         <Text variant='paragraph_4' className='text-[#707eae] font-bold'>Hi Andrei,</Text>
-                        <Text className='font-bold text-[#292d32] lg:text-[30px] sm:text-2xl text-lg lg:leading-10'>Welcome to Savvy!</Text>
+                        <Text className='font-bold text-[#292d32] lg:text-[30px] sm:text-2xl text-sm'>Welcome to Savvy!</Text>
                     </div>
                 </div>
 
                 <div className="flex md:flex-row flex-row-reverse items-center">
                     <div className="md:mr-5 mr-0 md:ml-0 ml-2.5 lg:mr-8 cursor-pointer text-gray-700 bg-white rounded-full">
                         {/* <Link href=''> */}
-                            <MdOutlineShoppingCart className="h-10 w-10 p-2" />
+                            <MdOutlineShoppingCart className="sm:h-10 h-[25px] sm:w-10 w-[25px] sm:p-2 p-1" />
                         {/* </Link> */}
                     </div>
 
@@ -45,13 +45,15 @@ const DashboardTopBar = () => {
                     <div className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]">
                         <Link href={'/dashboard/account'}>
                             <a className='inline-block flex w-full justify-center items-center'>
-                                <Image 
-                                    src={Profile} 
-                                    width={40} 
-                                    height={40} 
-                                    alt="profile picture" 
-                                    className="rounded-full h-8 md:mr-4 border-2 border-white shadow-xl" 
-                                />
+                                <span className="inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]">
+                                    <Image 
+                                        src={Profile} 
+                                        width='100%' 
+                                        height='100%' 
+                                        alt="profile picture" 
+                                        className="rounded-full h-8 md:mr-4 border-2 border-white shadow-xl" 
+                                    />
+                                </span>
                             
                                 <div className="md:block hidden ml-3 flex flex-col items-start">
                                     <Text variant='paragraph_4' className="font-semibold text-gray-700">Karim Andrei</Text>
