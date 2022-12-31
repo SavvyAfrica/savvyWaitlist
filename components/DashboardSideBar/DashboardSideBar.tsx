@@ -101,7 +101,7 @@ const DashboardSideBar = () => {
               }`}
             >
               <span className="mr-2 inline-block">
-                <AiFillMessage className='h-[22px] w-[22px]' />
+                <AiFillMessage className='h-[22px] w-[22px] mr-1' />
               </span>
 
               <span className="inline-block">
@@ -126,7 +126,7 @@ const DashboardSideBar = () => {
               }`}
             >
               <span className="mr-2 inline-block">
-                <BsFillStarFill className='h-[22px] w-[22px]' />
+                <BsFillStarFill className='h-[22px] w-[22px] mr-1' />
               </span>
 
               <span className="inline-block">
