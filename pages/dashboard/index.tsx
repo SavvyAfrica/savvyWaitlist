@@ -10,6 +10,8 @@ import Image from 'next/image';
 import { Button } from '../../components/button/button';
 import { Text } from '../../components/typography/typography';
 import DashboardContentBox from '../../components/DashboardContentBox/DashboardContentBox';
+import DashboardTopBar from '../../components/DashboardTopBar/DashboardTopBar';
+import Link from 'next/link';
 
 
 
@@ -18,21 +20,23 @@ function dashboard() {
   return (
     <>
         <DashboardLayout>
+            <DashboardTopBar />
+            
             <section 
                 className='w-full flex md:flex-row flex-col h-auto md:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5'
             >
                 <DashboardContentBox 
-                    className="md:w-4/6 sm:flex-row flex-col sm:items-center items-start md:justify-center justify-start"
+                    className="md:w-4/6 sm:flex-row flex-col items-center justify-center"
                 >
-                    <div className="max-w-16 h-16 flex items-center">
-                        <Image src={Vector1} alt='vector' />
+                    <div className="flex items-center sm:ml-auto ml-0">
+                        <Image src={Vector1} alt='vector' className='w-16 h-16' />
                     </div>
 
-                    <div className="max-w-xs sm:mr-2.5 mr-0 sm:ml-5 ml-0 sm:my-0 my-6">
-                        <p className="text-xl font-medium">Do you know how to complete account set up?</p>
+                    <div className="max-w-[280px] sm:my-0 my-6">
+                        <p className="text-xl font-medium text-center sm:px-5 px-0">Do you know how to complete account set up?</p>
                     </div>
 
-                    <Button className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4'>Go there</Button>
+                    <Button className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 sm:mr-auto mr-0'>Go there</Button>
                 </DashboardContentBox>
 
                 <DashboardContentBox 
@@ -47,9 +51,9 @@ function dashboard() {
                 className="w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial mb-3.5"
             >
                 <DashboardContentBox 
-                    className="md:w-4/6 items-center justify-start md:justify-center"
+                    className="md:w-4/6 items-center justify-center"
                 >
-                    <div>
+                    <div className='sm:ml-auto ml-0 sm:text-left text-center'>
                         <span>
                             <Text variant='paragraph_1' className='font-bold'>Rent A Gadget</Text>
                         </span>
@@ -60,22 +64,29 @@ function dashboard() {
                             </Text>
                         </span>
 
-                        <Button className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>Rent Now</Button>
+                        <div className="flex sm:justify-start justify-center">
+                            <Button 
+                                className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>
+                                    <Link href='/dashboard/products'>
+                                        <a>Rent Now</a>
+                                    </Link>
+                            </Button>
+                        </div>
                     </div>
 
-                    <div className="max-w-[267.12px] h-[164.53px] gap-3 flex items-center sm:block hidden">
-                        <Image src={Products} alt='products' />
+                    <div className="max-w-[267.12px] h-[164.53px] gap-3 flex items-center sm:block hidden sm:mr-auto mr-0">
+                        <Image src={Products} alt='products' className='w-full h-full' />
                     </div>
                 </DashboardContentBox>
 
-                <DashboardContentBox className="md:w-2/6 pt-8 pb-6 px-6">
-                    <div className="flex items-center justify-start md:justify-center">
-                        <div className="flex md:flex-col flex-row-reverse md:items-start justify-between items-center">
-                            <div className="w-[68px] h-[68px] bg-[#F6F8FD] rounded-full flex justify-center items-center sm:inline-flex hidden">
-                                <Image src={Vector2} alt="Vector" />
+                <DashboardContentBox className="md:w-2/6 pt-8 pb-6 px-6 justify-center">
+                    <div className="flex items-center justify-center">
+                        <div className="flex md:flex-col flex-row-reverse justify-center items-center">
+                            <div className="w-[68px] h-[68px] bg-[#F6F8FD] rounded-full flex justify-center items-center md:inline-flex hidden">
+                                <Image src={Vector2} alt="Vector" className='w-full h-full' />
                             </div>
 
-                            <div className='md:mr-0 sm:mr-16 mr-0'>
+                            <div className='text-center'>
                                 <span className="my-5 block">
                                     <Text variant='paragraph_1' className='font-bold'>Buy A Gadget</Text>
                                 </span>
@@ -86,7 +97,11 @@ function dashboard() {
                                     </Text>
                                 </span>
 
-                                <Button className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>Buy Now</Button>
+                                <div className="flex justify-center">
+                                    <Button className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>
+                                        Buy Now
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     </div>

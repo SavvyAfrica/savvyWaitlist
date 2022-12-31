@@ -18,6 +18,7 @@ import ReturnOptionModal from '../../../components/Modals/RenewOptions/ReturnOpt
 import Return_EndOptionModal from '../../../components/Modals/RenewOptions/ReturnOption2'
 import SwapOption1 from '../../../components/Modals/SwapOptions/SwapOption1'
 import SwapOption2 from '../../../components/Modals/SwapOptions/SwapOption2'
+import DashboardTopBar from '../../../components/DashboardTopBar/DashboardTopBar'
 
 
 function account() {
@@ -64,6 +65,8 @@ function account() {
   return (
       <>
         <Dashboard>
+          <DashboardTopBar />
+          
           <section 
             className="w-full flex xl:flex-row flex-col h-auto xl:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5"
           >
@@ -117,7 +120,7 @@ function account() {
                 </Text>
               </div>
 
-              <div className="overflow-auto">
+              <div className="scrollbar overflow-auto">
                 {transactions.map(transaction => (
                 <DbTransactionBox 
                   key={transaction.id}
@@ -142,7 +145,7 @@ function account() {
                   setSwapOption2IsOpen={setSwapOption2IsOpen}
                   swapOption2IsOpen={swapOption2IsOpen}
                 />
-              ))}
+                ))}
               </div>
             </DashboardContentBox>
 
