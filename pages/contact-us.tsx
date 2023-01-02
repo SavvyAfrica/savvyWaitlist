@@ -29,18 +29,49 @@ function Contactus() {
           />
         </div>
       </div>
-      <div className='px-5 w-full h-full'>
-        <div className='w-full border-2'>
-          <div>
-            <div className='relative w-full h-fulll'>
-              <Image src={'/location.svg'} layout='fill' objectFit='contain' />
+      <div className='px-5 w-full h-full mt-5 mb-5'>
+        <div className='w-full space-y-6 border-l-2 border-r-2 border-b-4 p-5'>
+          <div className='flex items-center space-x-4'>
+            <div className=''>
+              <Image src={'/location.svg'} width={30} height={30} />
             </div>
             <div>
-              <p>ADDRESS</p>
-              <div>
-                <p>ADDRESS</p>
-                <p>ADDRESS</p>
-              </div>
+              <Text variant='paragraph_4' className='font-semibold mb-1'>
+                Address
+              </Text>
+
+              <Text variant='paragraph_4' className='font-thin'>
+                Spectrum Plaza, Zomputer Village, No 18, Otigba Street, Ikeja,
+                Lagos.
+              </Text>
+            </div>
+          </div>
+          <div className='flex items-center space-x-4'>
+            <div className=''>
+              <Image src={'/phone.svg'} width={30} height={30} />
+            </div>
+            <div>
+              <Text variant='paragraph_4' className='font-semibold mb-1'>
+                Phone
+              </Text>
+
+              <Text variant='paragraph_4' className='font-thin'>
+                08081676438
+              </Text>
+            </div>
+          </div>
+          <div className='flex items-center space-x-4'>
+            <div className=''>
+              <Image src={'/email.svg'} width={30} height={30} />
+            </div>
+            <div>
+              <Text variant='paragraph_4' className='font-semibold mb-1'>
+                Email
+              </Text>
+
+              <Text variant='paragraph_4' className='font-thin'>
+                info@savvy.africa
+              </Text>
             </div>
           </div>
         </div>
