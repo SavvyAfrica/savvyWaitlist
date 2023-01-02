@@ -34,7 +34,7 @@ function header() {
               </Text>
             </a>
           </Link>
-          <Link href="b">
+          <Link href="/blog">
             <a>
               <Text variant="paragraph_4" className="font-light">
                 Blog
