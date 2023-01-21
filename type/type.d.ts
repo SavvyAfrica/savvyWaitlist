@@ -1,3 +1,5 @@
+import { UseFormRegisterReturn } from "react-hook-form";
+
 interface IText {
   children: React.ReactNode;
   className?: string;
@@ -38,19 +40,22 @@ interface IButton {
   className?: string;
   onClick?: () => void;
 }
-interface IInput {
-  className?: any;
-  id: any;
-  name: any;
-  type: any;
-  placeholder?: any;
-  pattern?: any;
+// interface IInput {
+//   className?: string;
+//   placeholder?: string;
+// }
+interface IFormValues {
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: number;
+  email?: string;
+  password?: string;
 }
-interface ILabel {
-  className?: any;
-  children: React.ReactNode;
-  htmlFor: any;
-}
+// interface ILabel {
+//   className?: any;
+//   children: React.ReactNode;
+//   htmlFor: any;
+// }
 interface IFormHead {
   children: React.ReactNode;
 }

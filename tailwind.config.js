@@ -11,6 +11,9 @@ module.exports = {
         sans: ["Inter", "sans-serif"],
         Manrope: ["Manrope", "sans-serif"],
       },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      }
     },
   },
   plugins: [],

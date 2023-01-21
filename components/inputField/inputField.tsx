@@ -1,12 +1,25 @@
 import React from "react";
+import { Path, UseFormRegister } from "react-hook-form"
+import { IFormValues } from "../../type/type";
 
-export const Input = (props: IInput) => {
-  const { className, id, name, type, placeholder, pattern } = props;
+
+
+type InputProps = {
+  name: Path<IFormValues>;
+  register: UseFormRegister<IFormValues>;
+  required: boolean;
+  className?: string;
+  placeholder?: string;
+  type?: string;
+};
+
+
+export const Input = ({ name, register, required, className, placeholder, type }: InputProps) => {
   
   return (
-    <input id={id} name={name} type={type} placeholder={placeholder} pattern={pattern} 
-        className={`block text-gray-400 flex-auto w-full p-2 rounded bg-white 
-            border-[#DFDFE6] border-2 outline-[#DFDFE6] outline-0 ${className}`}
+    <input {...register(name, { required })} placeholder={placeholder} type={type}
+      className={`block text-gray-400 flex-auto w-full p-2 rounded bg-white 
+      border-[#DFDFE6] border-2 outline-[#DFDFE6] outline-0 ${className}`}
     />
   );
 };

@@ -22,10 +22,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         </MyGlobalContext.Provider>
       )
 
-    if (router.pathname.startsWith(`/sign`))
+    if (router.pathname.startsWith(`/login`))
       return (
         <Component {...pageProps} />
       )
+    if (router.pathname.startsWith(`/register`))
+      return (
+        <Component {...pageProps} />
+      )
+      
 
     return (
       <Layout>

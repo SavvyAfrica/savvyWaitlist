@@ -100,8 +100,8 @@ function account() {
 
               <div 
                 className="w-[40px] h-[40px] rounded-full bg-[#F4F7FE] hover:bg-[#dcebf9] flex items-center justify-center sm:ml-auto ml-0 cursor-pointer"
-                onClick={() => setSetupAccountIsOpen(!setupAccountIsOpen)}
-                // onClick={() => setVerifyEmp_StudIsOpen(!verifyEmp_StudIsOpen)}
+                // onClick={() => setSetupAccountIsOpen(!setupAccountIsOpen)}
+                onClick={() => setVerifyEmp_StudIsOpen(!verifyEmp_StudIsOpen)}
                 // onClick={() => setVerifyEmpCompanyIsOpen(!verifyEmpCompanyIsOpen)}
               >
                 <BsArrowRight />
@@ -172,14 +172,14 @@ function account() {
 
 
         {/* Setup Account Modal  */}
-        {setupAccountIsOpen 
+        {/* {setupAccountIsOpen 
         ? <SetupAccountModal setSetupAccountIsOpen={setSetupAccountIsOpen} setupAccountIsOpen={setupAccountIsOpen} /> 
         : null 
-        }
-        {/* {verifyEmp_StudIsOpen 
+        } */}
+        {verifyEmp_StudIsOpen 
         ? <VerifyEmp_StudModal setVerifyEmp_StudIsOpen={setVerifyEmp_StudIsOpen} verifyEmp_StudIsOpen={verifyEmp_StudIsOpen} /> 
         : null 
-        } */}
+        }
         {/* {verifyEmpCompanyIsOpen 
         ? <VerifyEmployeeCompanyModal setVerifyEmpCompanyIsOpen={setVerifyEmpCompanyIsOpen} verifyEmpCompanyIsOpen={verifyEmpCompanyIsOpen} /> 
         : null 
