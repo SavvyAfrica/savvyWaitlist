@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +9,7 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 a {
@@ -117,4 +117,71 @@ a {
     top: 0;
     opacity: 1;
   }
+}
+
+
+
+/* footer */
+
+.ft-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.ft-icon {
+  display: none;
+  height: 17px;
+  fill: currentColor;
+  transition: transform .3s ease;
+  width: auto;
+  cursor: pointer;
+}
+
+.ft-nav {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ft-section {
+  flex: 0 1 auto;
+}
+.ft-section.isOpen .ft-nav{
+  height: auto;
+}
+
+
+
+@media screen and (max-width: 768px){
+  .ft-head {
+    align-items: center;
+  }
+
+  .ft-icon {
+    display: block;
+  }
+
+  .ft-nav {
+    height: 0;
+    overflow: hidden;
+  }
+
+  .ft-section {
+    width: 100%;
+  }
+}
+
+
+
+/* landing */
+.carousel-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+.carousel-item {
+  width: 100%;
+  transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
 }

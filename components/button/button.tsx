@@ -1,4 +1,5 @@
 import React from "react";
+import { IButton } from "../../type/type";
 
 export const Button = (props: IButton) => {
   const { className, children, onClick } = props;

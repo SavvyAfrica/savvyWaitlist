@@ -1,98 +1,165 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter } from "react-feather";
 import Logo from "../../../assets/png/logo.png";
 import { Text } from "../../../components/typography/typography";
+import { GoPlusSmall } from 'react-icons/go'
+import { BiMinus } from 'react-icons/bi'
+import Collapsible from 'react-collapsible';
+
 
 function footer() {
+  const [websiteIsOpen, setWebsiteIsOpen] = useState<boolean>(false);
+  const [companyIsOpen, setCompanyIsOpen] = useState<boolean>(false);
+  const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
+
+  
   return (
-    <div className="w-full flex flex-col px-5">
-      <div className="w-full flex justify-between h-full py-5 mb-10">
-        <div className="w-[20%]">
+    <div className="maxWidth mx-auto w-full flex flex-col px-5">
+      <div className="w-full flex md:flex-row flex-col justify-between h-full py-5 mb-[90px]">
+        <div className="md:w-[30%] w-[35%] md:mb-0 mb-[34px]">
           <div className="w-full">
             <Image src={Logo} alt="Logo" />
-            <Text variant="paragraph_1" className="text-[#A6A6A6] font-light">
+
+            <Text variant="paragraph_1" className="lg:w-[55%] md:w-[65%] w-full text-[#A6A6A6] font-light mt-[18px]">
               The smartest way to buy and rent tech gadgets.
             </Text>
           </div>
         </div>
-        <div className="flex flex-col space-y-1 items-start w-[20%]">
-          <Text variant="paragraph_1" className="font-semibold">
-            Website
-          </Text>
 
-          <Link href="#">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                Login
-              </Text>
-            </a>
-          </Link>
-          <Link href="#">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                Rent & Renew
-              </Text>
-            </a>
-          </Link>
-          <Link href="#">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                Buy & Return
-              </Text>
-            </a>
-          </Link>
+        <div className={`ft-section flex flex-col items-start w-[23.333%] md:mb-0 mb-[30px] ${websiteIsOpen ?  '' : 'isOpen'}`}>
+          <div className={`ft-head md:w-auto w-full`}>
+            <Text variant="paragraph_1" className="font-semibold inline-block">
+              Website
+            </Text>
+
+            <span className="ft-icon inline-block">
+              {websiteIsOpen 
+              ? 
+              <div className="w-[20px] h-[20px] rounded-full flex items-center justify-center shadow1">
+                <GoPlusSmall onClick={() => setWebsiteIsOpen(active => !active)} className='text-xl' />
+              </div>
+              : 
+              <div className="w-[20px] h-[20px] rounded-full flex items-center justify-center shadow1">
+                <BiMinus onClick={() => setWebsiteIsOpen(active => !active)} className='text-xl w-[16px]' />
+              </div>
+              }
+            </span>
+          </div>
+
+          <div className="ft-nav mt-4">
+            <Link href="login">
+              <a>
+                <Text variant="paragraph_3" className="font-medium mb-4">
+                  Login
+                </Text>
+              </a>
+            </Link>
+            <Link href="#">
+              <a>
+                <Text variant="paragraph_3" className="font-medium mb-4">
+                  Rent & Renew
+                </Text>
+              </a>
+            </Link>
+            <Link href="#">
+              <a>
+                <Text variant="paragraph_3" className="font-medium">
+                  Buy & Return
+                </Text>
+              </a>
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col space-y-1 items-start w-[20%]">
-          <Text variant="paragraph_1" className="font-semibold">
-            Company{" "}
-          </Text>
-          <Link href="#">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                About Us
-              </Text>
-            </a>
-          </Link>
 
-          <Link href="#">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                Contact Us
-              </Text>
-            </a>
-          </Link>
+        <div className={`ft-section flex flex-col items-start w-[23.333%] md:mb-0 mb-[30px] ${companyIsOpen ?  '' : 'isOpen'}`}>
+          <div className={`ft-head md:w-auto w-full`}>
+            <Text variant="paragraph_1" className="font-semibold inline-block">
+              Comapny
+            </Text>
 
-          <Link href="/terms">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                Terms of Use
-              </Text>
-            </a>
-          </Link>
+            <span className="ft-icon inline-block">
+              {companyIsOpen 
+              ? 
+              <div className="w-[20px] h-[20px] rounded-full flex items-center justify-center shadow1">
+                <GoPlusSmall onClick={() => setCompanyIsOpen(active => !active)} className='text-xl' />
+              </div>
+              : 
+              <div className="w-[20px] h-[20px] rounded-full flex items-center justify-center shadow1">
+                <BiMinus onClick={() => setCompanyIsOpen(active => !active)} className='text-xl w-[16px]' />
+              </div>
+              }
+            </span>
+          </div>
+
+          <div className="ft-nav mt-4">
+            <Link href="#">
+              <a>
+                <Text variant="paragraph_3" className="font-medium mb-4">
+                  About Us
+                </Text>
+              </a>
+            </Link>
+
+            <Link href="#">
+              <a>
+                <Text variant="paragraph_3" className="font-medium mb-4">
+                  Contact Us
+                </Text>
+              </a>
+            </Link>
+
+            <Link href="/terms">
+              <a>
+                <Text variant="paragraph_3" className="font-medium">
+                  Terms of Use
+                </Text>
+              </a>
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col space-y-1 items-start w-[20%]">
-          <Text variant="paragraph_1" className="font-semibold">
-            Resources
-          </Text>
-          <Link href="/faq">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                FAQs
-              </Text>
-            </a>
-          </Link>
-          <Link href="#">
-            <a>
-              <Text variant="paragraph_3" className="font-light">
-                Blog
-              </Text>
-            </a>
-          </Link>
+
+        <div className={`ft-section flex flex-col items-start w-[23.333%] md:mb-0 mb-[30px] ${resourcesIsOpen ?  '' : 'isOpen'}`}>
+          <div className={`ft-head md:w-auto w-full`}>
+            <Text variant="paragraph_1" className="font-semibold inline-block">
+              Comapny
+            </Text>
+
+            <span className="ft-icon inline-block">
+              {resourcesIsOpen 
+              ? 
+              <div className="w-[20px] h-[20px] rounded-full flex items-center justify-center shadow1">
+                <GoPlusSmall onClick={() => setResourcesIsOpen(active => !active)} className='text-xl' />
+              </div>
+              : 
+              <div className="w-[20px] h-[20px] rounded-full flex items-center justify-center shadow1">
+                <BiMinus onClick={() => setResourcesIsOpen(active => !active)} className='text-xl w-[16px]' />
+              </div>
+              }
+            </span>
+          </div>
+
+          <div className="ft-nav mt-4">
+            <Link href="/faq">
+              <a>
+                <Text variant="paragraph_3" className="font-medium mb-4">
+                  FAQs
+                </Text>
+              </a>
+            </Link>
+            <Link href="#">
+              <a>
+                <Text variant="paragraph_3" className="font-medium">
+                  Blog
+                </Text>
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
-      <div className="w-full flex flex-col justify-center space-y-5 items-center">
+
+      <div className="w-full flex flex-col justify-center space-y-5 md:items-center items-start mb-[25px]">
         <Text variant="paragraph_4" className="font-semibold">
           Info@savvy.africa
         </Text>
