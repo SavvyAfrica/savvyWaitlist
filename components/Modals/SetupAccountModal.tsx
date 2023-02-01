@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useCallback, useState } from 'react'
-import { Button } from '../button/button';
+import { Button } from '../Button/Button';
 import { Text } from '../typography/typography'
 import { GrStatusGood } from 'react-icons/gr'
 

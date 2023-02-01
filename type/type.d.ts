@@ -35,27 +35,25 @@ interface ITypography {
   children: React.ReactNode;
   className?: string;
 }
+
+
 interface IButton {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
 }
-// interface IInput {
-//   className?: string;
-//   placeholder?: string;
-// }
+
+
 interface IFormValues {
   firstName?: string;
   lastName?: string;
-  phoneNumber?: number;
+  phoneNumber?: string;
+  countryCode?: string;
   email?: string;
   password?: string;
 }
-// interface ILabel {
-//   className?: any;
-//   children: React.ReactNode;
-//   htmlFor: any;
-// }
+
+
 interface IFormHead {
   children: React.ReactNode;
 }

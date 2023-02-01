@@ -1,7 +1,7 @@
 import React from 'react'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout'
-import { useGlobalContext } from '../../../Global/GlobalContext'
+import { useGlobalContext } from '../../../global/GlobalContext'
 import { Text } from '../../../components/typography/typography'
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';

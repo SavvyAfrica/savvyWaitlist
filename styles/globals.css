@@ -93,11 +93,11 @@ a {
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #555;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(52, 52, 52);
 }
 
 .maxWidth {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from '../../../components/typography/typography'
 import Link from 'next/link'
-import { Button } from '../../../components/button/button'
+import { Button } from '../../../components/Button/Button'
 
 function BlogPost() {
   return (

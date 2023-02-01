@@ -14,7 +14,7 @@ module.exports = {
   },
   publicRuntimeConfig: {
     apiUrl: process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3002/api' // development api
-      : 'http://localhost:3002/api' // production api
+      ? 'https://savvy-backend.onrender.com/api/v1' // development api
+      : 'https://savvy-backend.onrender.com/api/v1' // production api
   }
 }

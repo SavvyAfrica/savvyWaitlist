@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Mask from "../../../assets/png/mask.png";
 import Mask2 from "../../../assets/png/mask2.png";
 import Mask3 from "../../../assets/png/mask3.png";
-import { Button } from "../../../components/button/button";
+import { Button } from "../../../components/Button/Button";
 import { Text } from "../../../components/typography/typography";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';

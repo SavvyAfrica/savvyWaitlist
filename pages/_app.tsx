@@ -3,21 +3,18 @@ import Layout from "../layout/layout";
 import "../styles/globals.css";
 import {useRouter} from 'next/router';
 import { useState } from "react";
-import { MyGlobalContext } from '../Global/GlobalContext'
+import { MyGlobalContext } from '../global/GlobalContext';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [showNav, setShowNav] = useState<boolean>(true);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [showNav, setShowNav] = useState<boolean>(true);  // dashboard state
 
-  
   const router = useRouter();
 
-  
   const getContent = () => {
     if (router.pathname.startsWith(`/dashboard`))
       return (
-        <MyGlobalContext.Provider value= {{showNav, setShowNav, isMobile, setIsMobile}}>
+        <MyGlobalContext.Provider value= {{showNav, setShowNav}}>
           <Component {...pageProps} />
         </MyGlobalContext.Provider>
       )

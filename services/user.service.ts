@@ -11,8 +11,7 @@ function handleGetItem(){
     const getItem = localStorage.getItem('user');
     if (typeof getItem === 'string'){
         return JSON.parse(getItem);
-    }
-    if (typeof getItem === null){
+    }else if (typeof getItem === null){
         return null;
     }
 }
@@ -20,7 +19,7 @@ function handleGetItem(){
 
 
 const { publicRuntimeConfig } = getConfig();
-const baseUrl = `${publicRuntimeConfig.apiUrl}/users`;
+const baseUrl = `${publicRuntimeConfig.apiUrl}/auth`;
 const userSubject = new BehaviorSubject(typeof window !== 'undefined' ? handleGetItem() : null);
 
 const userService = {
@@ -29,16 +28,16 @@ const userService = {
     login,
     logout,
     register,
+    update,
+    delete: _delete,
     getAll,
     getById,
-    update,
-    delete: _delete
 };
 export default userService;
 
 
 async function login(user: IFormValues) {
-    const userLogin = await fetchWrapper.post(`${baseUrl}/authenticate`, user);
+    const userLogin = await fetchWrapper.post(`${baseUrl}/login`, user);
     // publish user to subscribers and store in local storage to stay logged in between page refreshes
     userSubject.next(userLogin);
 
@@ -60,15 +59,7 @@ function logout() {
 }
 
 function register(user: IFormValues) {
-    return fetchWrapper.post(`${baseUrl}/form`, user)
-}
-
-function getAll() {
-    return fetchWrapper.get(baseUrl);
-}
-
-function getById(id: any) {
-    return fetchWrapper.get(`${baseUrl}/${id}`);
+    return fetchWrapper.post(`${baseUrl}/register`, user)
 }
 
 async function update(id: any, params: IFormValues) {
@@ -91,4 +82,13 @@ async function update(id: any, params: IFormValues) {
 // prefixed with underscored because delete is a reserved word in javascript
 function _delete(id: any) {
     return fetchWrapper.delete(`${baseUrl}/${id}`);
+}
+
+
+function getAll() {
+    return fetchWrapper.get(baseUrl);
+}
+
+function getById(id: any) {
+    return fetchWrapper.get(`${baseUrl}/${id}`);
 }

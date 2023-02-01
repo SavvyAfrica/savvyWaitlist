@@ -1,26 +1,26 @@
 import React, { useState } from 'react'
+import { Eye, EyeOff } from 'react-feather';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { Input } from '../components/Input/Input';
+import { Label } from '../components/Label/Label';
 import { FormHead } from '../components/formHeader/formHeader';
 import { Text } from '../components/typography/typography';
-import { Input } from '../components/inputField/inputField';
-import { Eye, EyeOff } from 'react-feather';
-import { Button } from '../components/button/button';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import { IFormValues } from "../type/type";
-import { Label } from '../components/inputFieldLabel/inputFieldLabel';
-import { userService } from '../services';
-import { useRouter } from 'next/router';
+import { Button } from '../components/Button/Button';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { TypeOptions } from 'react-toastify/dist/types';
 
+import useForm from '../Hooks/useForm';
+import { userService } from '../services';
+import { IFormValues } from "../type/type";
+
 
 
 function login() {
-    const [passwordShown, setPasswordShown] = useState(false);
+    const [passwordShown, setPasswordShown] = useState(false);  // password field visibility state
     const togglePassword = () => {
       setPasswordShown(!passwordShown);
     };
@@ -28,69 +28,27 @@ function login() {
     const router = useRouter();
 
     const notify = (text: string, type: TypeOptions) => toast(text, { type });
-    
-    // form validation rules
-    const validationSchema = Yup.object().shape({
-        email: Yup.string()
-          .required('Email is required')
-          .email('Email is invalid'),
-        password: Yup.string()
-          .required('Password is required')
-          .min(6, 'Password must be at least 6 characters')
-          .max(40, 'Password must not exceed 40 characters'),
-    });
-    const formOptions = { resolver: yupResolver(validationSchema) };
+
+    const {handleChange, handleLoginSubmit, formData, formErrors} = useForm(loginForm);
 
 
-    // get functions to build form with useForm() hook
-    const {register, handleSubmit, formState} = useForm<IFormValues>(formOptions);
-    const { errors } = formState;
 
+    // Callback function when form is submitted!
+    async function loginForm(formData: IFormValues) {
+        console.log("Callback function when form is submitted!");
 
-    async function onSubmit(user: IFormValues) {
         try {
-            await userService.login(user);
+            await userService.login(formData);
             // get return url from query parameters or default to '/'
             const returnUrl = (router.query.returnUrl || '/') as string;
             router.push(returnUrl);
-            // notify('Logged In successful');
-        } catch { 
-            // notify('Logging In unsuccessful');
+            notify('Logged in successfully', 'success');
+            router.push('login');
+        } catch {
+            notify('Please verify details', 'error');
         }
     }
 
-
-    // const onSubmit = async (data: IFormValues) => {
-    //     // Send the data to the server in JSON format.
-    //     const JSONdata = JSON.stringify(data)
-      
-      
-    //     // API endpoint where we send form data.
-    //     const endpoint = '/api/form'
-      
-      
-    //     // Form the request for sending data to the server.
-    //     const options = {
-    //       // The method is POST because we are sending data.
-    //       method: 'POST',
-    //       // Tell the server we're sending JSON.
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       // Body of the request is the JSON data we created above.
-    //       body: JSONdata,
-    //     }
-      
-      
-    //     // Send the form data to our forms API and get a response.
-    //     const response = await fetch(endpoint, options)
-      
-      
-    //     // Get the response data from server as JSON.
-    //     // If server returns the name submitted, that means the form works.
-    //     const result = await response.json()
-    //     alert(`this your full data: ${result.data}`)
-    //   };
 
   return (
     <>
@@ -100,30 +58,38 @@ function login() {
                 <Text variant='paragraph_4' className='font-normal mt-1.5'>Welcome back</Text>
             </FormHead>
 
+            <>
+                <ToastContainer />
+            </>
+
             <div className="w-full flex flex-col justify-center items-center flex-initial max-w-lg mx-auto my-0 relative p-6 mt-11">
-                <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+                <form onSubmit={handleLoginSubmit} className="w-full">
                     <div className="pb-1.5 mb-1.5">
-                        <Label>Email Address</Label>
+                        <Label htmlFor='email'>Email Address</Label>
                         <Input 
-                            name="email"
-                            register={register} 
-                            required
-                            className={` ${errors.email ? 'border-red-600' : null} `}
+                            name='email'
+                            type='email'
+                            value={formData.email}
+                            id='email'
+                            placeholder="Email Address"
+                            onChange={handleChange}
+                            className={` ${formErrors.email ? 'border-red-600' : 'border-[#DFDFE6]'} `}
                         />
-                        <div className="text-red-600 text-sm">{errors.email?.message}</div>
+                        {formErrors.email && <h3 className="text-red-600 text-xs pt-1">{formErrors.email}</h3>}
                     </div>
 
                     <div className="pb-3 mb-3 relative">
-                        <Label>Password</Label>
+                        <Label htmlFor='password'>Password</Label>
                         <Input 
-                            type={passwordShown ? "text" : "password"} 
-                            name="password" 
-                            register={register} 
-                            required
-                            className={` ${errors.password ? 'border-red-600' : null} `}
-                            placeholder='8+ characters' 
+                            name='password'
+                            type={passwordShown ? "text" : "password"}
+                            value={formData.password}
+                            id='password'
+                            placeholder="Password"
+                            onChange={handleChange}
+                            className={` ${formErrors.password ? 'border-red-600' : 'border-[#DFDFE6]'} `}
                         />
-                        <div className="text-red-600 text-sm">{errors.password?.message}</div>
+                        {formErrors.password && <h3 className="text-red-600 text-xs pt-1">{formErrors.password}</h3>}
 
                         {passwordShown ? <Eye size={15} className="text-gray-400 inline-block absolute right-4 top-11" onClick={togglePassword} /> : 
                         <EyeOff size={15} className="text-gray-400 inline-block absolute right-4 top-11" onClick={togglePassword} />}

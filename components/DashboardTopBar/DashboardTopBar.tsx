@@ -7,7 +7,7 @@ import { CgProfile } from 'react-icons/cg';
 import Image from 'next/image';
 import Profile from '../../assets/png/profile.png';
 import { Text } from '../typography/typography';
-import { useGlobalContext } from '../../Global/GlobalContext';
+import { useGlobalContext } from '../../global/GlobalContext';
 
 
 

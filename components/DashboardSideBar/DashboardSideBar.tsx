@@ -9,7 +9,7 @@ import Logo from '../../assets/png/logo.png';
 import { Text } from '../typography/typography';
 import { BsFillStarFill } from 'react-icons/bs';
 import { AiTwotoneHome } from 'react-icons/ai';
-import { useGlobalContext } from '../../Global/GlobalContext';
+import { useGlobalContext } from '../../global/GlobalContext';
 
 
 

@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { Button } from '../button/button'
+import { Button } from '../Button/Button'
 import { Text } from '../typography/typography'
 
 

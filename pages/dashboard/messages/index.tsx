@@ -6,7 +6,7 @@ import { Text } from '../../../components/typography/typography'
 import Image from 'next/image'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout'
-import { useGlobalContext } from '../../../Global/GlobalContext'
+import { useGlobalContext } from '../../../global/GlobalContext'
 
 
 function messages() {

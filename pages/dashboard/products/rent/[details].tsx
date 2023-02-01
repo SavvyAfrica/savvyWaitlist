@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { useRouter } from 'next/router'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
-import { useGlobalContext } from '../../../../Global/GlobalContext';
+import { useGlobalContext } from '../../../../global/GlobalContext';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import { Text } from '../../../../components/typography/typography'
 import { MdOutlineShoppingCart } from 'react-icons/md';
@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import Profile from '../../../../assets/png/profile.png'
 import { GrStatusGood } from 'react-icons/gr';
-import { Button } from '../../../../components/button/button';
+import { Button } from '../../../../components/Button/Button';
 import iphone13pro from '../../../../assets/png/iphone13promax.png';
 import cameraSystem1 from '../../../../assets/png/camera_system1.png';
 import cameraSystem2 from '../../../../assets/png/camera_system2.png';

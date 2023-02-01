@@ -26,7 +26,6 @@ async function post(url: string, user: IFormValues) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },
-        // credentials: 'include',
         body: JSON.stringify(user)
     };
     const response = await fetch(url, requestOptions);

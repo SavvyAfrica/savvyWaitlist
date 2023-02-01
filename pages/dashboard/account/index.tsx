@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from '../../../components/button/button'
+import { Button } from '../../../components/Button/Button'
 import { BiPlus } from 'react-icons/bi'
 import { BsArrowRight } from 'react-icons/bs'
 import Dashboard from '../../../components/DashboardLayout/DashboardLayout'
