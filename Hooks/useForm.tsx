@@ -8,8 +8,8 @@ import { TypeOptions } from 'react-toastify/dist/types';
 
 
 const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
-    //Form values
-    const [formData, setFormData] = useState<any>({
+    //Register Form values
+    const [formRegData, setFormRegData] = useState<any>({
         firstName:'',
         lastName:'',
         countryCode: 'Nigeria',
@@ -17,6 +17,12 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
         email:'',
         password:''
     });
+
+    //Login Form values
+    const [formLogData, setFormLogData] = useState<any>({
+        email:'', 
+        password:''
+    })
 
     //Errors
     const [formErrors, setFormErrors] = useState<IFormValues>({
@@ -218,50 +224,56 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
         validate(event, name, val);
 
         //Let's set these values in state
-        setFormData({
-            ...formData,   //spread operator to store old values
-            [name]:val,
+        setFormRegData({
+            ...formRegData,   //spread operator to store old values
+            [name]:val
+        })
+        setFormLogData({
+            ...formLogData,
+            [name]:val
         })
     }
 
-
+    // Register Form
     const handleRegisterSubmit = (event: any) => {
         if(event) event.preventDefault();
 
 
         if(
-            formData.firstName, formData.lastName, formData.phoneNumber, 
-            formData.email, formData.password === '' && Object.keys(formErrors).length !== 0
+            formRegData.firstName, formRegData.lastName, formRegData.phoneNumber, 
+            formRegData.email, formRegData.password === '' && Object.keys(formErrors).length !== 0
         ){
             notify('Please complete the required details', 'error');
         }
         else{
             // Callback function that recieves the form data as an argument
-            callback(formData);
+            callback(formRegData);
 
             // Reset the form fields after submission 
-            setFormData({firstName: '',lastName: '',countryCode: 'Nigeria',phoneNumber: '',email: '',password: ''})
+            setFormRegData({firstName: '',lastName: '',countryCode: 'Nigeria',phoneNumber: '',email: '',password: ''})
         }
     }
 
-
+    
+    // Login Form
     const handleLoginSubmit = (event: any) => {
         if(event) event.preventDefault();
 
-        if(formData.email, formData.password === '' && Object.keys(formErrors).length !== 4){
+        if(formLogData.email, formLogData.password === '' && Object.keys(formErrors).length !== 4){
             notify('Please complete your login details', 'error')
-        }else{
+        }else if(Object.keys(formErrors).length === 4){
             // Callback function that recieves the form data as an argument
-            callback(formData);
+            callback(formLogData);
 
              // Reset the form fields after submission 
-             setFormData({email: '',password: ''})
+             setFormLogData({email: '',password: ''})
         }
     }
     
 
     return {
-        formData,
+        formRegData,
+        formLogData,
         formErrors,
         handleRegisterSubmit,
         handleLoginSubmit,
