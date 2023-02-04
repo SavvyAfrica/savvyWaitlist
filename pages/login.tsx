@@ -29,23 +29,20 @@ function login() {
 
     const notify = (text: string, type: TypeOptions) => toast(text, { type });
 
-    const {handleChange, handleLoginSubmit, formData, formErrors} = useForm(loginForm);
+    const {handleChange, handleLoginSubmit, formLogData, formErrors} = useForm(loginForm);
 
 
 
     // Callback function when form is submitted!
-    async function loginForm(formData: IFormValues) {
-        console.log("Callback function when form is submitted!");
-
+    async function loginForm(formLogData: IFormValues) {
         try {
-            await userService.login(formData);
+            await userService.login(formLogData);
             // get return url from query parameters or default to '/'
-            const returnUrl = (router.query.returnUrl || '/') as string;
+            const returnUrl = (router.query.returnUrl || '/home') as string;
             router.push(returnUrl);
             notify('Logged in successfully', 'success');
-            router.push('login');
         } catch {
-            notify('Please verify details', 'error');
+            notify('Please verify details provided', 'error');
         }
     }
 
@@ -69,7 +66,7 @@ function login() {
                         <Input 
                             name='email'
                             type='email'
-                            value={formData.email}
+                            value={formLogData.email}
                             id='email'
                             placeholder="Email Address"
                             onChange={handleChange}
@@ -83,7 +80,7 @@ function login() {
                         <Input 
                             name='password'
                             type={passwordShown ? "text" : "password"}
-                            value={formData.password}
+                            value={formLogData.password}
                             id='password'
                             placeholder="Password"
                             onChange={handleChange}
