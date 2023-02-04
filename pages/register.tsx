@@ -30,17 +30,15 @@ function register() {
 
   const notify = (text: string, type: TypeOptions) => toast(text, { type });
 
-  const {handleChange, handleRegisterSubmit, formData, formErrors} = useForm(registerForm);
+  const {handleChange, handleRegisterSubmit, formRegData, formErrors} = useForm(registerForm);
 
 
   // Callback function when form is submitted!
-  async function registerForm(formData: IFormValues) {
-    console.log("Callback function when form is submitted!");
-
+  async function registerForm(formRegData: IFormValues) {
     try {
-      await userService.register(formData);
-      notify('Registration successful', 'success');
+      await userService.register(formRegData);
       router.push('/login');
+      notify('Registration successful', 'success');
     } catch {
       notify('Unsuccessful registration', 'error');
     }
@@ -69,7 +67,7 @@ function register() {
               <Input 
                 name='firstName'
                 type='text'
-                value={formData.firstName}
+                value={formRegData.firstName}
                 placeholder="First Name"
                 id='firstName'
                 onChange={handleChange}
@@ -84,7 +82,7 @@ function register() {
               <Input 
                 name='lastName'
                 type='text'
-                value={formData.lastName}
+                value={formRegData.lastName}
                 placeholder="Last Name"
                 id='lastName'
                 onChange={handleChange}
@@ -97,9 +95,9 @@ function register() {
             <div className="pb-1.5 mb-1.5"> 
               <Label htmlFor="countryCode">Country Select</Label>
               <PhoneNumInput
-                phoneNumber={formData.phoneNumber}
+                phoneNumber={formRegData.phoneNumber}
                 phoneNumberError={formErrors.phoneNumber}
-                countryCode={formData.countryCode}
+                countryCode={formRegData.countryCode}
                 handleChange={handleChange}
               />
             </div>
@@ -110,7 +108,7 @@ function register() {
               <Input 
                 name='email'
                 type='email'
-                value={formData.email}
+                value={formRegData.email}
                 id='email'
                 placeholder="Email Address"
                 onChange={handleChange}
@@ -125,7 +123,7 @@ function register() {
               <Input 
                 name='password'
                 type={passwordShown ? "text" : "password"}
-                value={formData.password}
+                value={formRegData.password}
                 id='password'
                 placeholder="Password"
                 onChange={handleChange}
