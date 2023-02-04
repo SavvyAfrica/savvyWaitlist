@@ -11,8 +11,6 @@ function handleGetItem(){
     const getItem = localStorage.getItem('user');
     if (typeof getItem === 'string'){
         return JSON.parse(getItem);
-    }else if (typeof getItem === null){
-        return null;
     }
 }
 
@@ -55,7 +53,7 @@ function logout() {
         : null
 
     userSubject.next(null);
-    Router.push('/login');
+    Router.push('/');
 }
 
 function register(user: IFormValues) {
