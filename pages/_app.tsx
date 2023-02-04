@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const getContent = () => {
-    if (router.pathname.startsWith(`/dashboard`))
+    if (router.pathname.startsWith(`/home`))
       return (
         <MyGlobalContext.Provider value= {{showNav, setShowNav}}>
           <Component {...pageProps} />
