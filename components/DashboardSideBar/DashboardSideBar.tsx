@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillMessage } from 'react-icons/ai';
 import { IoIosClose } from 'react-icons/io';
 import { MdLogin, MdManageAccounts } from 'react-icons/md';
@@ -10,6 +10,8 @@ import { Text } from '../typography/typography';
 import { BsFillStarFill } from 'react-icons/bs';
 import { AiTwotoneHome } from 'react-icons/ai';
 import { useGlobalContext } from '../../global/GlobalContext';
+import { userService } from '../../services';
+import { Button } from '../Button/Button';
 
 
 
@@ -17,6 +19,10 @@ const DashboardSideBar = () => {
   const { showNav, setShowNav } = useGlobalContext();
 
   const router = useRouter();
+
+  const handleLogout = () => {
+    return userService.logout();
+  }
 
   return (
     <div 
@@ -28,7 +34,7 @@ const DashboardSideBar = () => {
     >
       <div className="flex justify-center mt-7 mb-14 border-b border-[#F4F7FE] border-solid pb-5">
         <div className="w-full flex justify-between items-center ml-12 mr-4">
-          <Link href='/dashoard'>
+          <Link href='/home'>
             <a>
               <Image src={Logo} alt="logo" />
             </a>
@@ -42,22 +48,24 @@ const DashboardSideBar = () => {
 
       <ul className="flex flex-col mb-24 block">
         <li className='block'>
-          <Link href='/dashboard'>
+          <Link href='/home'>
             <a className={`block flex items-center pl-6 py-3 mx-7 mb-3 rounded 
               text-center cursor-pointer transition-colors text-[#292D32]
-              ${router.asPath === '/dashboard'
+              ${router.asPath === '/home'
               ? 'bg-[#00B0F0]'
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
               <span className="mr-2 inline-block">
-                <AiTwotoneHome className='h-[24px] w-[24px] mr-1' />
+                <AiTwotoneHome 
+                  className={`h-[24px] w-[24px] mr-1 ${router.asPath === '/home' ? 'fill-white' : 'fill-black'}`} 
+                />
               </span>
 
               <span className="inline-block">
                 <Text
                   variant='paragraph_3'
-                  className="font-bold capitalize"
+                  className={`font-bold capitalize ${router.asPath === '/home' ? 'text-white' : 'text-black'}`}
                 >
                   Home
                 </Text>
@@ -67,22 +75,24 @@ const DashboardSideBar = () => {
         </li>
 
         <li className='block'>
-          <Link href='/dashboard/account'>
+          <Link href='/home/account'>
             <a className={`block flex items-center pl-6 py-3 mx-7 mb-3 rounded 
               text-center cursor-pointer transition-colors text-[#292D32]
-              ${router.asPath === '/dashboard/account'
+              ${router.asPath === '/home/account'
               ? 'bg-[#00B0F0]'
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
               <span className="mr-2 inline-block">
-                <MdManageAccounts className='h-7 w-7' />
+                <MdManageAccounts 
+                  className={`h-7 w-7 ${router.asPath === '/home/account' ? 'fill-white' : 'fill-black'}`} 
+                />
               </span>
 
               <span className="inline-block">
                 <Text
                   variant='paragraph_3'
-                  className="font-bold capitalize"
+                  className={`font-bold capitalize ${router.asPath === '/home/account' ? 'text-white' : 'text-black'}`}
                 >
                   Account
                 </Text>
@@ -92,22 +102,24 @@ const DashboardSideBar = () => {
         </li>
 
         <li className='block'>
-          <Link href='/dashboard/messages'>
+          <Link href='/home/messages'>
             <a className={`block flex items-center pl-6 py-3 mx-7 mb-3 rounded 
               text-center cursor-pointer transition-colors text-[#292D32]
-              ${router.asPath === '/dashboard/messages'
+              ${router.asPath === '/home/messages'
               ? 'bg-[#00B0F0]'
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
               <span className="mr-2 inline-block">
-                <AiFillMessage className='h-[22px] w-[22px] mr-1' />
+                <AiFillMessage 
+                  className={`h-[22px] w-[22px] mr-1 ${router.asPath === '/home/messages' ? 'fill-white' : 'fill-black'}`} 
+                />
               </span>
 
               <span className="inline-block">
                 <Text
                   variant='paragraph_3'
-                  className="font-bold capitalize"
+                  className={`font-bold capitalize ${router.asPath === '/home/messages' ? 'text-white' : 'text-black'}`}
                 >
                   Messages
                 </Text>
@@ -117,22 +129,24 @@ const DashboardSideBar = () => {
         </li>
 
         <li className='block'>
-          <Link href='/dashboard/favourites'>
+          <Link href='/home/favourites'>
             <a className={`block flex items-center pl-6 py-3 mx-7 mb-3 rounded 
               text-center cursor-pointer transition-colors text-[#292D32]
-              ${router.asPath === '/dashboard/favourites'
+              ${router.asPath === '/home/favourites'
               ? 'bg-[#00B0F0]'
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
               <span className="mr-2 inline-block">
-                <BsFillStarFill className='h-[22px] w-[22px] mr-1' />
+                <BsFillStarFill 
+                  className={`h-[22px] w-[22px] mr-1 ${router.asPath === '/home/favourites' ? 'fill-white' : 'fill-black'}`}  
+                />
               </span>
 
               <span className="inline-block">
                 <Text
                   variant='paragraph_3'
-                  className="font-bold capitalize"
+                  className={`font-bold capitalize ${router.asPath === '/home/favourites' ? 'text-white' : 'text-black'}`}
                 >
                   Favourites
                 </Text>
@@ -142,14 +156,13 @@ const DashboardSideBar = () => {
         </li>
       </ul>
 
-      <div>
-        <Link href='/'>
-          <a className='block flex items-center pl-6 py-3 mx-7 mb-3 text-center cursor-pointer'>
-            <MdLogin className='mr-2.5 h-5 w-5'/>
-            <Text variant='paragraph_3' className='font-bold'>Log Out</Text>
-          </a>
-        </Link>
-      </div>
+      <Button 
+        className='block flex items-center pl-6 py-3 mx-7 mb-3 text-center cursor-pointer'
+        onClick={handleLogout}
+      >
+          <MdLogin className='mr-2.5 h-5 w-5'/>
+          <Text variant='paragraph_3' className='font-bold'>Log Out</Text>
+      </Button>
     </div>
   )
 }

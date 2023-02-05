@@ -8,19 +8,23 @@ import DbTransactionBox from '../../../components/DbTransactionBox/DbTransaction
 import Vector3 from '../../../assets/png/Vector3.png'
 import Image from 'next/image';
 import DashboardContentBox from '../../../components/DashboardContentBox/DashboardContentBox';
-
-import { FundWalletModal, SetupAccountModal, VerifyEmp_StudModal } from '../../../components/Modals';
-
-
-
-import VerifyEmployeeCompanyModal from '../../../components/Modals/VerificationOptions/VerifyEmployeeCompanyModal'
-import ActionOptionsModal from '../../../components/Modals/RenewOptions/RenewOption1'
-import RenewOptionModal from '../../../components/Modals/RenewOptions/RenewOption2'
-import ReturnOptionModal from '../../../components/Modals/RenewOptions/ReturnOption1'
-import Return_EndOptionModal from '../../../components/Modals/RenewOptions/ReturnOption2'
-import SwapOption1 from '../../../components/Modals/SwapOptions/SwapOption1'
-import SwapOption2 from '../../../components/Modals/SwapOptions/SwapOption2'
 import DashboardTopBar from '../../../components/DashboardTopBar/DashboardTopBar'
+
+import { 
+  FundWalletModal, 
+  SetupAccountModal, 
+  VerifyEmp_StudModal, 
+  VerifyEmployeeCompanyModal, 
+  RenewOption1, 
+  RenewOption2, 
+  ReturnOption1, 
+  ReturnOption2,
+  SwapOption1,
+  SwapOption2,
+  SwapOption3,
+} from '../../../components/Modals';
+
+
 
 
 function account() {
@@ -45,20 +49,6 @@ function account() {
     }
   ]);
 
-  
-  // Account Setup State
-  const [verifyEmpCompanyIsOpen, setVerifyEmpCompanyIsOpen] = useState(false);
-
-  //Renewal Option State
-  const [actionOptionsIsOpen, setActionOptionsIsOpen] = useState(false);
-  const [renewOptionIsOpen, setRenewOptionIsOpen] = useState(false);
-  const [returnOptionIsOpen, setReturnOptionIsOpen] = useState(false);
-  const [return_EndOptionIsOpen, setReturn_EndOptionIsOpen] = useState(false)
-
-
-  // Swap Option State
-  // const [swapOption1IsOpen, setSwapOption1IsOpen] = useState(false)
-  const [swapOption2IsOpen, setSwapOption2IsOpen] = useState(false)
 
   return (
       <>
@@ -89,16 +79,10 @@ function account() {
                   In just a few simple steps complete your status
                 </Text>
               </div>
-
-              {/* <div 
-                className="w-[40px] h-[40px] rounded-full bg-[#F4F7FE] hover:bg-[#dcebf9] flex items-center justify-center sm:ml-auto ml-0 cursor-pointer"
-                // onClick={() => setVerifyEmpCompanyIsOpen(!verifyEmpCompanyIsOpen)}
-              >
-                <BsArrowRight />
-              </div> */}
               
-              {/* <SetupAccountModal /> */}
-              <VerifyEmp_StudModal />
+              <SetupAccountModal />
+              {/* <VerifyEmp_StudModal /> */}
+              {/* <VerifyEmployeeCompanyModal /> */}
             </DashboardContentBox>
           </section>
 
@@ -121,23 +105,17 @@ function account() {
                   unitPrice={transaction.unitPrice}
                   dueDate={transaction.dueDate}
                   currentDate={transaction.currentDate}
-                  ctaBtn={transaction.ctaBtn}
                   className={transaction.className}
-                  // setActionOptionsIsOpen={setActionOptionsIsOpen}
-                  // setActionOptionsIsOpen={setActionOptionsIsOpen}
+                >
+                  {/* <RenewOption1 ctaBtn={transaction.ctaBtn} /> */}
+                  {/* <RenewOption2 ctaBtn={transaction.ctaBtn} /> */}
+                  {/* <ReturnOption1 ctaBtn={transaction.ctaBtn} /> */}
+                  {/* <ReturnOption2 ctaBtn={transaction.ctaBtn} /> */}
 
-                  // setRenewOptionIsOpen={setRenewOptionIsOpen}
-                  // renewOptionIsOpen={renewOptionIsOpen}
-                  
-                  // setReturnOptionIsOpen={setReturnOptionIsOpen}
-                  // returnOptionIsOpen={returnOptionIsOpen}
-
-                  // setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen}
-                  // return_EndOptionIsOpen={return_EndOptionIsOpen}
-
-                  setSwapOption2IsOpen={setSwapOption2IsOpen}
-                  swapOption2IsOpen={swapOption2IsOpen}
-                />
+                  {/* <SwapOption1 ctaBtn={transaction.ctaBtn} /> */}
+                  <SwapOption2 ctaBtn={transaction.ctaBtn} />
+                  {/* <SwapOption3 ctaBtn={transaction.ctaBtn} /> */}
+                </DbTransactionBox>
                 ))}
               </div>
             </DashboardContentBox>
@@ -156,47 +134,6 @@ function account() {
             </DashboardContentBox>
           </section>
         </Dashboard>
-        
-    
-
-
-        {/* Setup Account Modal  */}
-        {/* {verifyEmpCompanyIsOpen 
-        ? <VerifyEmployeeCompanyModal setVerifyEmpCompanyIsOpen={setVerifyEmpCompanyIsOpen} verifyEmpCompanyIsOpen={verifyEmpCompanyIsOpen} /> 
-        : null 
-        } */}
-
-
-
-        {/* Renewal Option Modal  */}
-        {/* {actionOptionsIsOpen 
-        ? <ActionOptionsModal setActionOptionsIsOpen={setActionOptionsIsOpen} actionOptionsIsOpen={actionOptionsIsOpen} /> 
-        : ''
-        } */}
-        {/* {renewOptionIsOpen
-        ? <RenewOptionModal setRenewOptionIsOpen={setRenewOptionIsOpen} renewOptionIsOpen={renewOptionIsOpen} />
-        : null
-        } */}
-        {/* {returnOptionIsOpen
-        ? <ReturnOptionModal setReturnOptionIsOpen={setReturnOptionIsOpen} returnOptionIsOpen={returnOptionIsOpen} />
-        : null
-        } */}
-        {/* {return_EndOptionIsOpen
-        ? <Return_EndOptionModal setReturn_EndOptionIsOpen={setReturn_EndOptionIsOpen} return_EndOptionIsOpen={return_EndOptionIsOpen} />
-        : null
-        } */}
-        
-
-
-        {/* Swap Option State */}
-        {/* {swapOption1IsOpen
-        ? <SwapOption1 setSwapOption1IsOpen={setSwapOption1IsOpen} swapOption1IsOpen={swapOption1IsOpen} />
-        : null
-        } */}
-        {swapOption2IsOpen
-        ? <SwapOption2 setSwapOption2IsOpen={setSwapOption2IsOpen} swapOption2IsOpen={swapOption2IsOpen} />
-        : null
-        }
       </>
   )
 }

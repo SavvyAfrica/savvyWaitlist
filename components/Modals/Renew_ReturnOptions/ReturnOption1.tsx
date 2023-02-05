@@ -9,11 +9,11 @@ interface IMyProp {
 }
 
 
-function SwapOption1({ctaBtn}: IMyProp) {
+function ReturnOption1({ctaBtn}: IMyProp) {
     const [showModal, setShowModal] = React.useState(false);
 
 
-    const [selected, setSelected] = useState("Swap");
+    const [selected, setSelected] = useState("I am returning the device today");
 
     const renderIcon = useCallback((element: React.ReactNode) => {
       if(element) {
@@ -21,9 +21,10 @@ function SwapOption1({ctaBtn}: IMyProp) {
       }
     }, []);
   
-    const swapOption1Data = [
-      "Swap", 
-      "Sell on Savvy"
+    const returnData = [
+      "I am returning the device today", 
+      "I will return the device tomorrow ", 
+      "Later this week"
     ];
 
 
@@ -36,10 +37,10 @@ function SwapOption1({ctaBtn}: IMyProp) {
   return (
     <>
         <button 
-          className='bg-white hover:bg-[#dcebf9] w-[140px] h-[41px] rounded-lg flex justify-center items-center'
-          onClick={() => setShowModal(true)}
+            className='bg-white hover:bg-[#dcebf9] w-[140px] h-[41px] rounded-lg flex justify-center items-center'
+            onClick={() => setShowModal(true)}
         >
-          <span className='inline-block text-sm font-medium text-[#0F2137]'>{ctaBtn}</span>
+            <span className='inline-block text-sm font-medium text-[#0F2137]'>{ctaBtn}</span>
         </button>
 
         {showModal ? (
@@ -58,32 +59,29 @@ function SwapOption1({ctaBtn}: IMyProp) {
 
                     {/*header*/}
                     <div className="flex items-center justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                      <Text variant='paragraph_1' className='font-bold text-base md:text-xl text-[#0F2137] mr-auto'>Choose an action</Text>
+                      <Text variant='paragraph_1' className='font-bold text-base md:text-xl text-[#0F2137] mr-auto'>Return iPhone 13 - 64GB</Text>
                       <span 
                         className="text-[#23262F] ml-auto my-1.5 inline-block text-2xl font-bold hover:cursor-pointer"
                         onClick={() => setShowModal(false)}
-                      >          
+                      >
                         &times;
                       </span>
                     </div>
 
                     {/*body*/}
                     <div className="relative p-6 flex-auto">
-                      <div className="flex sm:flex-row flex-col justify-center items-center mb-8 w-full">
-                        <span className="text-center sm:text-left block mr-0 sm:mr-auto mb-4 sm:mb-0">
-                          <Text variant='paragraph_4' className='font-medium text-[#2F294D]'>Mac book core i5</Text>
-                          <span className="font-bold text-[#2F294D] text-base">₦450,000</span>
-                        </span>
-
-                        <span className="text-center sm:text-left block ml-0 sm:ml-auto">
-                          <Text variant='paragraph_4' className='font-medium text-xs text-[#2F294D]'>May 16, 2022 <br />
-                            To be swapped on or before Jun 16, 2023
-                          </Text>
-                        </span>
+                      <div className="flex flex-col justify-center items-center mb-8 w-full">
+                        <Text 
+                          variant='paragraph_4' 
+                          className='font-medium text-center text-[#2F294D]'
+                        >
+                          Choose when you would prefer to return or end your rent. An expert will reach 
+                          out to you for device pickup. <br/> <br /> (All agents are available during business hours: 8:00am to 8:00pm)
+                        </Text>
                       </div>
 
-                      <div className="flex flex-col w-full mb-8">
-                        {swapOption1Data.map((element, index): React.ReactNode => {
+                      <div className="flex flex-col w-full">
+                        {returnData.map((element, index): React.ReactNode => {
                           return (
                             <span 
                               key={index}
@@ -102,7 +100,7 @@ function SwapOption1({ctaBtn}: IMyProp) {
                       </div>
 
                       <Button className='py-2.5 px-4 mt-6 w-full flex-auto block bg-[#00B0F0] rounded-xl'>
-                        <Text variant='paragraph_4' className="font-bold text-white">Continue</Text>
+                        <Text variant='paragraph_4' className="font-bold text-white">Next</Text>
                       </Button>
                     </div>
                   </div>
@@ -115,4 +113,4 @@ function SwapOption1({ctaBtn}: IMyProp) {
   );
 }
 
-export default SwapOption1;
+export default ReturnOption1;

@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
+import { RenewOption1 } from '../Modals';
 import { Text } from '../typography/typography';
 
 
@@ -8,13 +9,11 @@ interface IMyProp {
     unitPrice: string;
     dueDate: string;
     currentDate: string;
-    ctaBtn: string;
-    swapOption2IsOpen: boolean;
-    setSwapOption2IsOpen: Dispatch<SetStateAction<boolean>>;
+    children: React.ReactNode;
 }
 
 function DbTransactionBox(props: IMyProp) {
-    const { className, productName, unitPrice, dueDate, currentDate, ctaBtn, setSwapOption2IsOpen, swapOption2IsOpen } = props
+    const { className, productName, unitPrice, dueDate, currentDate, children } = props
 
   return (
     <>
@@ -28,12 +27,8 @@ function DbTransactionBox(props: IMyProp) {
 
                 <div className="sm:ml-auto ml-0">
                     <p className="sm:text-[10px] text-[12px] font-medium leading-4 opacity-50 text-[#2F294D] mb-1 sm:text-left text-center">{currentDate}</p>
-                    <button 
-                        className='bg-white hover:bg-[#dcebf9] w-[140px] h-[41px] rounded-lg flex justify-center items-center'
-                        onClick={() => setSwapOption2IsOpen(!swapOption2IsOpen)}
-                    >
-                        <span className='inline-block text-sm font-medium text-[#0F2137]'>{ctaBtn}</span>
-                    </button>
+
+                    {children}
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ function DashboardLayout({ children}: IMyProps) {
         >
             <div className="maxWidth">
                 <div className="w-full h-auto">
-                    <div className="pt-9 pb-9 pl-6 sm:pl-9 lg:pl-0 sm:pr-9 pr-6">{children}</div>
+                    <div className="pb-9 pl-6 sm:pl-9 lg:pl-0 sm:pr-9 pr-6">{children}</div>
                 </div>
             </div>
         </main>
