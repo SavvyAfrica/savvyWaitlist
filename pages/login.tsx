@@ -96,7 +96,8 @@ function login() {
 
                     <Button 
                         isLoading={isLoading}  
-                        className={`py-2.5 px-4 mb-6 w-full flex-auto block bg-[#00B0F0] rounded`}
+                        className={`py-2.5 px-4 mb-6 w-full flex-auto block 
+                            bg-[#00B0F0] rounded ${isLoading ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                     >
                         <Text variant='paragraph_4' className="font-bold text-white">Log in</Text>
                     </Button>
