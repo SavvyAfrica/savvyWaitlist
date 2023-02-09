@@ -50,9 +50,9 @@ function VerifyEmp_StudModal({setShowVerifyEmp_StudModal}: MyProps) {
       {
         id: 4,
         children: <>What's your address?<span className='text-red-600'>*</span></>,
-        htmlFor: 'address',
-        inputId: 'address',
-        name: 'address',
+        htmlFor: 'homeAddress',
+        inputId: 'homeAddress',
+        name: 'homeAddress',
         type: 'text'
       },
       {
@@ -84,17 +84,17 @@ function VerifyEmp_StudModal({setShowVerifyEmp_StudModal}: MyProps) {
       {
         id: 3,
         children: <>What's your matric number?<span className='text-red-600'>*</span></>,
-        htmlFor: 'matricNumber',
-        inputId: 'matricNumber',
-        name: 'matricNumber',
+        htmlFor: 'matricNo',
+        inputId: 'matricNo',
+        name: 'matricNo',
         type: 'text'
       },
       {
         id: 4,
         children: <>What's your address?<span className='text-red-600'>*</span></>,
-        htmlFor: 'address',
-        inputId: 'address',
-        name: 'address',
+        htmlFor: 'homeAddress',
+        inputId: 'homeAddress',
+        name: 'homeAddress',
         type: 'text'
       },
       {

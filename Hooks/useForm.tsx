@@ -25,14 +25,14 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         bvn:'',
         income:'',
         residentState:'',
-        address:'',
+        homeAddress:'',
         idUpload:'',
     })
     const [studentState, setStudentState] = useState<any>({
         bvn:'',
         schoolName:'',
         matricNumber:'',
-        address:'',
+        homeAddress:'',
         idUpload:'',
     })
 
