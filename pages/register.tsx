@@ -16,11 +16,13 @@ import { TypeOptions } from 'react-toastify/dist/types';
 
 import useForm from '../Hooks/useForm';
 import { userService } from '../services';
-import { IFormValues } from "../type/type";
+
 
 
 
 function register() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [passwordShown, setPasswordShown] = useState(false);  // password field visibility state
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -30,16 +32,19 @@ function register() {
 
   const notify = (text: string, type: TypeOptions) => toast(text, { type });
 
-  const {handleChange, handleRegisterSubmit, formRegData, formErrors} = useForm(registerForm);
+  const {handleChange, handleRegisterSubmit, registerState, formErrors} = useForm(registerForm);
 
 
   // Callback function when form is submitted!
-  async function registerForm(formRegData: IFormValues) {
+  async function registerForm(formData: any) {
     try {
-      await userService.register(formRegData);
+      setIsLoading(true)
+      await userService.register(formData);
       router.push('/login');
+      setIsLoading(false)
       notify('Registration successful', 'success');
     } catch {
+      setIsLoading(false)
       notify('Unsuccessful registration', 'error');
     }
   }
@@ -67,7 +72,7 @@ function register() {
               <Input 
                 name='firstName'
                 type='text'
-                value={formRegData.firstName}
+                value={registerState.firstName}
                 placeholder="First Name"
                 id='firstName'
                 onChange={handleChange}
@@ -82,7 +87,7 @@ function register() {
               <Input 
                 name='lastName'
                 type='text'
-                value={formRegData.lastName}
+                value={registerState.lastName}
                 placeholder="Last Name"
                 id='lastName'
                 onChange={handleChange}
@@ -95,9 +100,9 @@ function register() {
             <div className="pb-1.5 mb-1.5"> 
               <Label htmlFor="countryCode">Country Select</Label>
               <PhoneNumInput
-                phoneNumber={formRegData.phoneNumber}
+                phoneNumber={registerState.phoneNumber}
                 phoneNumberError={formErrors.phoneNumber}
-                countryCode={formRegData.countryCode}
+                countryCode={registerState.countryCode}
                 handleChange={handleChange}
               />
             </div>
@@ -108,7 +113,7 @@ function register() {
               <Input 
                 name='email'
                 type='email'
-                value={formRegData.email}
+                value={registerState.email}
                 id='email'
                 placeholder="Email Address"
                 onChange={handleChange}
@@ -123,7 +128,7 @@ function register() {
               <Input 
                 name='password'
                 type={passwordShown ? "text" : "password"}
-                value={formRegData.password}
+                value={registerState.password}
                 id='password'
                 placeholder="Password"
                 onChange={handleChange}
@@ -136,7 +141,10 @@ function register() {
               <EyeOff size={15} className="text-gray-400 inline-block absolute right-4 top-11" onClick={togglePassword} />}
             </div>
 
-            <Button className='py-2.5 px-4 mb-6 w-full flex-auto block bg-[#00B0F0] rounded'>
+            <Button 
+              className='py-2.5 px-4 mb-6 w-full flex-auto block bg-[#00B0F0] rounded'
+              isLoading={isLoading}
+            >
               <Text variant='paragraph_4' className="font-bold text-white">Create your Account</Text>
             </Button>
 

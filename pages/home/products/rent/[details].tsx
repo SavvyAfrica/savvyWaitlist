@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { useRouter } from 'next/router'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
-import { useGlobalContext } from '../../../../global/GlobalContext';
+import { useGlobalContext } from '../../../../global/store';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import { Text } from '../../../../components/typography/typography'
 import { MdOutlineShoppingCart } from 'react-icons/md';

@@ -1,28 +1,14 @@
 import React, { useState } from 'react';
-import { Button } from '../../../components/Button/Button';
-import { BiPlus } from 'react-icons/bi';
-import { BsArrowRight } from 'react-icons/bs';
 import Dashboard from '../../../components/DashboardLayout/DashboardLayout';
 import { Text } from '../../../components/typography/typography';
 import DbTransactionBox from '../../../components/DbTransactionBox/DbTransactionBox';
 import Vector3 from '../../../assets/png/Vector3.png'
 import Image from 'next/image';
 import DashboardContentBox from '../../../components/DashboardContentBox/DashboardContentBox';
-import DashboardTopBar from '../../../components/DashboardTopBar/DashboardTopBar'
+import DashboardTopBar from '../../../components/DashboardTopBar/DashboardTopBar';
 
-import { 
-  FundWalletModal, 
-  SetupAccountModal, 
-  VerifyEmp_StudModal, 
-  VerifyEmployeeCompanyModal, 
-  RenewOption1, 
-  RenewOption2, 
-  ReturnOption1, 
-  ReturnOption2,
-  SwapOption1,
-  SwapOption2,
-  SwapOption3,
-} from '../../../components/Modals';
+import FundWalletModal from '../../../components/Modals/FundWalletModal';
+import VerificationOptions from '../../../components/Modals/VerificationOptions';
 
 
 
@@ -79,10 +65,8 @@ function account() {
                   In just a few simple steps complete your status
                 </Text>
               </div>
-              
-              <SetupAccountModal />
-              {/* <VerifyEmp_StudModal /> */}
-              {/* <VerifyEmployeeCompanyModal /> */}
+
+              <VerificationOptions />
             </DashboardContentBox>
           </section>
 
@@ -113,7 +97,7 @@ function account() {
                   {/* <ReturnOption2 ctaBtn={transaction.ctaBtn} /> */}
 
                   {/* <SwapOption1 ctaBtn={transaction.ctaBtn} /> */}
-                  <SwapOption2 ctaBtn={transaction.ctaBtn} />
+                  {/* <SwapOption2 ctaBtn={transaction.ctaBtn} /> */}
                   {/* <SwapOption3 ctaBtn={transaction.ctaBtn} /> */}
                 </DbTransactionBox>
                 ))}

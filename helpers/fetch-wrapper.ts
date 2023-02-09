@@ -32,7 +32,7 @@ async function post(url: string, user: IFormValues) {
     return handleResponse(response);
 }
 
-async function put(url: string, body: IFormValues) {
+async function put(url: string, body: any) {
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },

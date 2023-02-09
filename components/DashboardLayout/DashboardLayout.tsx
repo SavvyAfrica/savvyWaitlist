@@ -13,7 +13,7 @@ function DashboardLayout({ children}: IMyProps) {
         <DashboardSideBar  />
 
         <main 
-            className={`h-full w-full transition-all duration-[400ms] bg-[#f2f7fc] lg:pl-[270px] xl:pl-80 pl-0`}
+            className={`min-h-screen w-full transition-all duration-[400ms] bg-[#f2f7fc] lg:pl-[270px] xl:pl-80 pl-0`}
         >
             <div className="maxWidth">
                 <div className="w-full h-auto">

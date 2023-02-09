@@ -5,18 +5,22 @@ import { MdLogin, MdManageAccounts } from 'react-icons/md';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '../../assets/png/logo.png';
 import { Text } from '../typography/typography';
 import { BsFillStarFill } from 'react-icons/bs';
 import { AiTwotoneHome } from 'react-icons/ai';
-import { useGlobalContext } from '../../global/GlobalContext';
+import { useAppStore } from '../../global/store';
 import { userService } from '../../services';
 import { Button } from '../Button/Button';
+import Logo from '../../assets/png/logo.png';
+import HomeIcon from '../../assets/png/homeIcon.png';
+import AccountIcon from '../../assets/png/walletIcon.png';
+import MessageIcon from '../../assets/png/messageIcon.png';
+import FavouriteIcon from '../../assets/png/favouriteIcon.png';
 
 
 
 const DashboardSideBar = () => {
-  const { showNav, setShowNav } = useGlobalContext();
+  const { showNav, setShowNav } = useAppStore();
 
   const router = useRouter();
 
@@ -56,16 +60,13 @@ const DashboardSideBar = () => {
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
-              <span className="mr-2 inline-block">
-                <AiTwotoneHome 
-                  className={`h-[24px] w-[24px] mr-1 ${router.asPath === '/home' ? 'fill-white' : 'fill-black'}`} 
-                />
-              </span>
-
-              <span className="inline-block">
+              
+              <Image src={HomeIcon} alt="home" className="w-full h-full" />
+             
+              <span className="inline-block ml-4">
                 <Text
                   variant='paragraph_3'
-                  className={`font-bold capitalize ${router.asPath === '/home' ? 'text-white' : 'text-black'}`}
+                  className={`font-bold capitalize`}
                 >
                   Home
                 </Text>
@@ -83,16 +84,13 @@ const DashboardSideBar = () => {
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
-              <span className="mr-2 inline-block">
-                <MdManageAccounts 
-                  className={`h-7 w-7 ${router.asPath === '/home/account' ? 'fill-white' : 'fill-black'}`} 
-                />
-              </span>
+              
+              <Image src={AccountIcon} alt="account" className="w-full h-full" />
 
-              <span className="inline-block">
+              <span className="inline-block ml-4">
                 <Text
                   variant='paragraph_3'
-                  className={`font-bold capitalize ${router.asPath === '/home/account' ? 'text-white' : 'text-black'}`}
+                  className={`font-bold capitalize`}
                 >
                   Account
                 </Text>
@@ -110,16 +108,13 @@ const DashboardSideBar = () => {
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
-              <span className="mr-2 inline-block">
-                <AiFillMessage 
-                  className={`h-[22px] w-[22px] mr-1 ${router.asPath === '/home/messages' ? 'fill-white' : 'fill-black'}`} 
-                />
-              </span>
+              
+              <Image src={MessageIcon} alt="message" className="w-full h-full" />
 
-              <span className="inline-block">
+              <span className="inline-block ml-4">
                 <Text
                   variant='paragraph_3'
-                  className={`font-bold capitalize ${router.asPath === '/home/messages' ? 'text-white' : 'text-black'}`}
+                  className={`font-bold capitalize`}
                 >
                   Messages
                 </Text>
@@ -137,16 +132,13 @@ const DashboardSideBar = () => {
               : 'bg-white hover:bg-[#dcebf9]'
               }`}
             >
-              <span className="mr-2 inline-block">
-                <BsFillStarFill 
-                  className={`h-[22px] w-[22px] mr-1 ${router.asPath === '/home/favourites' ? 'fill-white' : 'fill-black'}`}  
-                />
-              </span>
 
-              <span className="inline-block">
+              <Image src={FavouriteIcon} alt="favourite" className="w-full h-full" />
+
+              <span className="inline-block ml-4">
                 <Text
                   variant='paragraph_3'
-                  className={`font-bold capitalize ${router.asPath === '/home/favourites' ? 'text-white' : 'text-black'}`}
+                  className={`font-bold capitalize`}
                 >
                   Favourites
                 </Text>

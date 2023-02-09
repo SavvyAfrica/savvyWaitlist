@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2';
 import DashboardLayout from '../../../components/DashboardLayout/DashboardLayout';
-import { useGlobalContext } from '../../../global/GlobalContext';
+import { useAppStore } from '../../../global/store';
 import { Text } from '../../../components/typography/typography';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ import { userService } from '../../../services';
 
 
 function favourites() {
-    const { showNav, setShowNav } = useGlobalContext();
+    const { showNav, setShowNav } = useAppStore();
 
     const [currentSubject, setCurrentSubject] = useState<any>();
 

@@ -15,11 +15,12 @@ import { TypeOptions } from 'react-toastify/dist/types';
 
 import useForm from '../Hooks/useForm';
 import { userService } from '../services';
-import { IFormValues } from "../type/type";
 
 
 
 function login() {
+    const [isLoading, setIsLoading] = useState(false)
+
     const [passwordShown, setPasswordShown] = useState(false);  // password field visibility state
     const togglePassword = () => {
       setPasswordShown(!passwordShown);
@@ -29,20 +30,21 @@ function login() {
 
     const notify = (text: string, type: TypeOptions) => toast(text, { type });
 
-    const {handleChange, handleLoginSubmit, formLogData, formErrors} = useForm(loginForm);
-
+    const {handleChange, handleLoginSubmit, loginState, formErrors} = useForm(loginForm);
 
 
     // Callback function when form is submitted!
-    async function loginForm(formLogData: IFormValues) {
+    async function loginForm(formData: any) {
         try {
-            await userService.login(formLogData);
-            // get return url from query parameters or default to '/'
+            setIsLoading(true)
+            await userService.login(formData);
             const returnUrl = (router.query.returnUrl || '/home') as string;
             router.push(returnUrl);
+            setIsLoading(false)
             notify('Logged in successfully', 'success');
         } catch {
-            notify('Please verify details provided', 'error');
+            setIsLoading(false)
+            notify('Invalid User', 'error');
         }
     }
 
@@ -66,7 +68,7 @@ function login() {
                         <Input 
                             name='email'
                             type='email'
-                            value={formLogData.email}
+                            value={loginState.email}
                             id='email'
                             placeholder="Email Address"
                             onChange={handleChange}
@@ -80,7 +82,7 @@ function login() {
                         <Input 
                             name='password'
                             type={passwordShown ? "text" : "password"}
-                            value={formLogData.password}
+                            value={loginState.password}
                             id='password'
                             placeholder="Password"
                             onChange={handleChange}
@@ -92,7 +94,10 @@ function login() {
                         <EyeOff size={15} className="text-gray-400 inline-block absolute right-4 top-11" onClick={togglePassword} />}
                     </div>
 
-                    <Button className='py-2.5 px-4 mb-6 w-full flex-auto block bg-[#00B0F0] rounded'>
+                    <Button 
+                        isLoading={isLoading}  
+                        className={`py-2.5 px-4 mb-6 w-full flex-auto block bg-[#00B0F0] rounded`}
+                    >
                         <Text variant='paragraph_4' className="font-bold text-white">Log in</Text>
                     </Button>
 

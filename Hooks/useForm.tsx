@@ -1,40 +1,63 @@
-import React, { useState } from 'react';
-import { IFormValues } from '../type/type';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { TypeOptions } from 'react-toastify/dist/types';
+import { useState } from 'react';
 
 
-
-const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
-    //Register Form values
-    const [formRegData, setFormRegData] = useState<any>({
+const useForm = (callback: { (formData: any): Promise<void>;}) => {
+    const [registerState, setRegisterState] = useState<any>({
         firstName:'',
         lastName:'',
-        countryCode: 'Nigeria',
+        countryCode:'Nigeria',
         phoneNumber:'',
         email:'',
-        password:''
+        password:'',
     });
-
-    //Login Form values
-    const [formLogData, setFormLogData] = useState<any>({
-        email:'', 
-        password:''
+    const [loginState, setLoginState] = useState<any>({
+        email:'',
+        password:'',
+    });
+    const [employeeCompanyState, setEmployeeCompanystate] = useState<any>({
+        bvn:'',
+        companyRole:'',
+        companyReg:'',
+        companyLoc:'',
+        validDoc:'',
+    });
+    const [employeeState, setEmployeeState] = useState<any>({
+        bvn:'',
+        income:'',
+        residentState:'',
+        address:'',
+        idUpload:'',
+    })
+    const [studentState, setStudentState] = useState<any>({
+        bvn:'',
+        schoolName:'',
+        matricNumber:'',
+        address:'',
+        idUpload:'',
     })
 
-    //Errors
-    const [formErrors, setFormErrors] = useState<IFormValues>({
+    //FormErrors
+    const [formErrors, setFormErrors] = useState<any>({
         firstName:'',
         lastName:'',
         countryCode:'',
         phoneNumber:'',
         email:'',
-        password:''
+        password:'',
+        bvn:'',
+        companyRole:'',
+        companyReg:'',
+        companyLoc:'',
+        validDoc:'',
+        income:'',
+        residentState:'',
+        address:'',
+        idUpload:'',
+        schoolName:'',
+        matricNumber:'',
     });
 
-    const notify = (text: string, type: TypeOptions) => toast(text, { type });
+
 
     // Omit Function for Omitting Properties From an Object
     function omit(obj: { [x: string]: any; }, ...props: any[]) {
@@ -47,7 +70,7 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
     }
 
 
-    const validate = (_event: any, name: string, value: string) => {
+    const validate = (event: any, name: string, value: string) => {
         // A function to validate each input values
         switch (name) {
             case 'firstName':
@@ -70,7 +93,7 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
                 }else if(!new RegExp(/^[a-zA-Z]+$/).test(value)){
                     setFormErrors({
                         ...formErrors,
-                        firstName:'First name must contain letters'
+                        firstName:'First name must contain letters only'
                     })
                 }
                 else{
@@ -81,7 +104,6 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
                     setFormErrors(errorObj);
                 }
                 break;
-
 
             case 'lastName':
                 if(value.length <= 1){
@@ -103,7 +125,7 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
                 }else if(!new RegExp(/^[a-zA-Z]+$/).test(value)){
                     setFormErrors({
                         ...formErrors,
-                        lastName:'Last name must contain letters'
+                        lastName:'Last name must contain letters only'
                     })
                 }
                 else{
@@ -114,7 +136,6 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
                     setFormErrors(errorObj);
                 }
                 break;
-
 
             case 'phoneNumber':
                 if(!new RegExp(/^[0-9]+$/).test(value)){
@@ -128,7 +149,7 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
     
                         setFormErrors({
                             ...formErrors,
-                            phoneNumber:'Please provide a valid phone number'
+                            phoneNumber:'Enter a valid phone number'
                         })
     
                         if(value.trim().length === 0){
@@ -146,7 +167,7 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
 
                     setFormErrors({
                         ...formErrors,
-                        phoneNumber:'confirm the provided phone number'
+                        phoneNumber:'Enter a valid phone number'
                     })
                 }
                 else{
@@ -157,7 +178,6 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
                     setFormErrors(errorObj);
                 }
                 break;
-
         
             case 'email':
                 if(
@@ -208,13 +228,110 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
                     setFormErrors(errorObj);
                 }
                 break;
+
+            case 'bvn':
+                if(value.length !== 11){
+                    setFormErrors({
+                        ...formErrors,
+                        bvn:'Enter a valid bvn number'
+                    })
+
+                    if(value.trim().length === 0){
+                        setFormErrors({
+                            ...formErrors,
+                            bvn:'Bvn number is required'
+                        })
+                    }
+
+                    if(value.length >= 12){
+                        setFormErrors({
+                            ...formErrors,
+                            bvn:'Enter a valid bvn number'
+                        })
+                    }
+                    
+                }else{
+                    let errorObj = omit(formErrors, "bvn");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'companyRole':
+                if(value.trim().length === 0){
+                    setFormErrors({
+                        ...formErrors,
+                        companyRole:'Field is required'
+                    })
+                }else if(!new RegExp(/^[a-zA-Z]+$/).test(value)){
+                    setFormErrors({
+                        ...formErrors,
+                        companyRole:'Field must contain letters only'
+                    })
+                }else{
+                    let errorObj = omit(formErrors, "companyRole");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'companyReg':
+                if(value.trim().length === 0){
+                    setFormErrors({
+                        ...formErrors,
+                        companyReg:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "companyReg");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'companyLoc':
+                if(value.trim().length === 0){
+                    setFormErrors({
+                        ...formErrors,
+                        companyLoc:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "companyLoc");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'validDoc':
+                if(value === ""){
+                    setFormErrors({
+                        ...formErrors,
+                        validDoc:'Please select a file'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "validDoc");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'income':
+                if(value === ""){
+                    setFormErrors({
+                        ...formErrors,
+                        income:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "income");
+                    setFormErrors(errorObj);
+                }
+                break;
             
             default:
                 break;
         }
     }
 
-
+    
+    // Handle  Input Change 
     const handleChange = (event: any) => {
         event.preventDefault();
         
@@ -224,56 +341,63 @@ const useForm = (callback: { (formData: IFormValues): Promise<void>;}) => {
         validate(event, name, val);
 
         //Let's set these values in state
-        setFormRegData({
-            ...formRegData,   //spread operator to store old values
+        setRegisterState({
+            ...registerState,
             [name]:val
         })
-        setFormLogData({
-            ...formLogData,
+        setLoginState({
+            ...loginState,
             [name]:val
         })
     }
 
-    // Register Form
+    // Handle Register
     const handleRegisterSubmit = (event: any) => {
         if(event) event.preventDefault();
 
 
-        if(
-            formRegData.firstName, formRegData.lastName, formRegData.phoneNumber, 
-            formRegData.email, formRegData.password === '' && Object.keys(formErrors).length !== 0
-        ){
-            notify('Please complete the required details', 'error');
-        }
-        else{
+        if(Object.keys(formErrors).length === 11){
             // Callback function that recieves the form data as an argument
-            callback(formRegData);
+            callback(registerState);
 
             // Reset the form fields after submission 
-            setFormRegData({firstName: '',lastName: '',countryCode: 'Nigeria',phoneNumber: '',email: '',password: ''})
+            setRegisterState({firstName: '',lastName: '',countryCode: 'Nigeria',phoneNumber: '',email: '',password: ''})
         }
     }
-
     
-    // Login Form
+    // Handle Login
     const handleLoginSubmit = (event: any) => {
         if(event) event.preventDefault();
 
-        if(formLogData.email, formLogData.password === '' && Object.keys(formErrors).length !== 4){
-            notify('Please complete your login details', 'error')
-        }else if(Object.keys(formErrors).length === 4){
-            // Callback function that recieves the form data as an argument
-            callback(formLogData);
 
-             // Reset the form fields after submission 
-             setFormLogData({email: '',password: ''})
+        if(Object.keys(formErrors).length === 15){
+            // Callback function that recieves the form data as an argument
+            callback(loginState);
+
+            // Reset the form fields after submission 
+            setLoginState({email: '',password: ''})
+        }
+    }
+
+    const handleEmployeeCompanySubmit = (event: any) => {
+        if(event) event.preventDefault();
+        
+        if(Object.keys(formErrors).length === 12){
+            // Callback function that recieves the form data as an argument
+            callback(employeeCompanyState);
+
+            // Reset the form fields after submission 
+            setEmployeeCompanystate({bvn:'',companyRole:'',companyReg:'',companyLoc:'',validDoc:''})
         }
     }
     
 
     return {
-        formRegData,
-        formLogData,
+        registerState,
+        loginState,
+        employeeCompanyState,
+        employeeState,
+        studentState,
         formErrors,
         handleRegisterSubmit,
         handleLoginSubmit,

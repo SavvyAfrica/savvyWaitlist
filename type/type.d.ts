@@ -40,6 +40,7 @@ interface ITypography {
 interface IButton {
   children: React.ReactNode;
   className?: string;
+  isLoading?: boolean;
   onClick?: () => void;
 }
 

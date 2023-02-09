@@ -5,13 +5,13 @@ import { HiOutlineBars3BottomLeft } from 'react-icons/hi2';
 import Image from 'next/image';
 import defaultProfile from '../../assets/png/defaultProfile.png';
 import { Text } from '../typography/typography';
-import { useGlobalContext } from '../../global/GlobalContext';
+import { useAppStore } from '../../global/store';
 import { userService } from '../../services';
 
 
 
 const DashboardTopBar = () => {
-    const { showNav, setShowNav } = useGlobalContext()
+    const { showNav, setShowNav } = useAppStore();
 
     const [currentSubject, setCurrentSubject] = useState<any>();
 
