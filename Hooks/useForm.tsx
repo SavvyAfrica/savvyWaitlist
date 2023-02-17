@@ -359,9 +359,6 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         if(Object.keys(formErrors).length === 11){
             // Callback function that recieves the form data as an argument
             callback(registerState);
-
-            // Reset the form fields after submission 
-            setRegisterState({firstName: '',lastName: '',countryCode: 'Nigeria',phoneNumber: '',email: '',password: ''})
         }
     }
     
@@ -373,9 +370,6 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         if(Object.keys(formErrors).length === 15){
             // Callback function that recieves the form data as an argument
             callback(loginState);
-
-            // Reset the form fields after submission 
-            setLoginState({email: '',password: ''})
         }
     }
 

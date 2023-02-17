@@ -4,7 +4,7 @@ import { Button } from "../Button/Button";
 import { Text } from '../typography/typography';
 
 
-function FundWalletModal() {
+function FundWalletModal({accountNumber, accountName, bankName}: any) {
     const [showModal, setShowModal] = React.useState(false);
 
 
@@ -56,12 +56,20 @@ function FundWalletModal() {
                             </Text>
 
                             <div className="mb-8 w-full bg-[#F6F6F6] rounded-lg flex flex-col items-center">
-                                <span className="w-full inline-block py-1.5 px-2.5 font-normal text-center text-sm text-[#2F294D]">Wema Bank Plc</span>
-                                <span className="w-full inline-block py-1.5 px-2.5 font-normal text-center text-sm text-[#2F294D]">3364501234</span>
-                                <span className="w-full inline-block py-1.5 px-2.5 font-normal text-center text-sm text-[#2F294D]">Karim Adrei</span>
+                                <span className="w-full inline-block py-1.5 px-2.5 font-normal text-center text-sm text-[#2F294D]">
+                                    {bankName}
+                                </span>
+                                <span className="w-full inline-block py-1.5 px-2.5 font-normal text-center text-sm text-[#2F294D]">
+                                    {accountNumber}
+                                </span>
+                                <span className="w-full inline-block py-1.5 px-2.5 font-normal text-center text-sm text-[#2F294D]">
+                                    {accountName}
+                                </span>
                             </div>
 
-                            <Button className='w-full rounded-xl font-semibold text-center py-2.5 px-4 bg-[#00B0F0]'>
+                            <Button 
+                                className='button w-full rounded-xl font-semibold text-center py-2.5 px-4 bg-[#00B0F0]'
+                            >
                                 <Text variant='paragraph_4' className="font-bold text-white">Copy</Text>
                             </Button>
                         </div>

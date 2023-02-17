@@ -22,7 +22,7 @@ async function get(url: string) {
     return handleResponse(response);
 }
 
-async function post(url: string, user: IFormValues) {
+async function post(url: string, user: any) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },

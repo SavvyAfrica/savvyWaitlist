@@ -143,7 +143,7 @@ function register() {
 
             <Button 
               className={`py-2.5 px-4 mb-6 w-full flex-auto block 
-                bg-[#00B0F0] rounded ${isLoading ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                bg-[#00B0F0] rounded ${isLoading ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-100'}`}
               isLoading={isLoading}
             >
               <Text variant='paragraph_4' className="font-bold text-white">Create your Account</Text>

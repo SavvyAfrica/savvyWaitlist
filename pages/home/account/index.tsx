@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dashboard from '../../../components/DashboardLayout/DashboardLayout';
 import { Text } from '../../../components/typography/typography';
 import DbTransactionBox from '../../../components/DbTransactionBox/DbTransactionBox';
-import Vector3 from '../../../assets/png/Vector3.png'
+import Vector3 from '../../../assets/png/Vector3.png';
+import { fetchWrapper } from '../../../helpers/fetch-wrapper';
+
 import Image from 'next/image';
 import DashboardContentBox from '../../../components/DashboardContentBox/DashboardContentBox';
 import DashboardTopBar from '../../../components/DashboardTopBar/DashboardTopBar';
 
 import FundWalletModal from '../../../components/Modals/FundWalletModal';
 import VerificationOptions from '../../../components/Modals/VerificationOptions';
+import getConfig from 'next/config';
 
+
+const { publicRuntimeConfig } = getConfig();
+const baseUrl = `${publicRuntimeConfig.apiUrl}`;
 
 
 
 function account() {
+  const [walletState, setWalletState] = useState<any>();
+  const [transactionHistoryState, setTransactionHistoryState] = useState<Object>({});
+
+
   const [transactions, setTransactions] = useState([
     {
       id: 1,
@@ -36,6 +46,39 @@ function account() {
   ]);
 
 
+  useEffect(() => {
+    async function fetchTransactionData(){
+      try {
+        const transactionHistoryData = await fetchWrapper.get(`${baseUrl}/transactions`);
+    
+        setTransactionHistoryState({
+          ...transactionHistoryState,
+         transactionHistoryData
+        });
+
+      } catch (error) {}
+    };
+
+    async function fetchWalletData(){
+      try {
+        const walletData = await fetchWrapper.get(`${baseUrl}/transactions/wallet`);
+
+        setWalletState(walletData);
+
+      } catch (error) {}
+    };
+
+    fetchTransactionData();
+    fetchWalletData();
+  }, []);
+
+
+  let accountNumber: string = walletState === undefined ? '1230043787' : walletState.wallet[0].accountNumber
+  let accountName: string = walletState === undefined ? 'TEST-MANAGED-ACCOUNT' : walletState.wallet[0].accountName
+  let bankName: string = walletState === undefined ? 'Test Bank' : walletState.wallet[0].bankName
+
+ 
+
   return (
       <>
         <Dashboard>
@@ -47,15 +90,23 @@ function account() {
             <DashboardContentBox className='xl:w-4/6 sm:flex-row flex-col justify-center items-center'>
               <div className="flex flex-col justify-start sm:items-start items-center sm:mb-0 mb-6 ">
                 <Text variant='paragraph_3' className='text-[#A3AED0] font-bold'>Wallet Balance</Text>
-                <span className='block text-[#1B2559] font-bold text-xl'>₦0.00</span>
+                <span className='block text-[#1B2559] font-bold text-xl'>
+                  {walletState === undefined ? '₦0.00' : `₦${walletState.walletBalance}`}
+                </span>
               </div>
 
               <div className="flex flex-col justify-start sm:items-start items-center sm:mx-auto mx-0 sm:mb-0 mb-6">
                 <Text variant='paragraph_3' className='text-[#A3AED0] font-bold'>Account Number</Text>
-                <span className='block text-[#1B2559] font-bold text-xl'>3364501234</span>
+                <span className='block text-[#1B2559] font-bold text-xl'>
+                  {accountNumber}
+                </span>
               </div>
 
-              <FundWalletModal />
+              <FundWalletModal 
+                accountNumber={accountNumber} 
+                accountName={accountName} 
+                bankName={bankName} 
+              />
             </DashboardContentBox>
 
             <DashboardContentBox className='xl:w-2/6 sm:flex-row flex-col justify-center items-center'>
@@ -122,4 +173,9 @@ function account() {
   )
 }
 
+
 export default account
+
+
+
+

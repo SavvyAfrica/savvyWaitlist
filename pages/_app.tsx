@@ -3,7 +3,8 @@ import Layout from "../layout/layout";
 import "../styles/globals.css";
 import { useRouter } from 'next/router';
 import { AppStore } from '../global/store';
-import { globalState } from '../global/store'
+import { globalState } from '../global/store';
+import 'react-tooltip/dist/react-tooltip.css';
 
 
 
