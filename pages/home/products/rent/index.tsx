@@ -19,6 +19,7 @@ import nokiatablet from '../../../../assets/png/nokia-tablet.png'
 import ProductsCategoryBox from '../../../../components/ProductsCategoryBox/ProductsCategoryBox'
 import Vector3 from '../../../../assets/png/Vector3.png'
 import Apple from '../../../../assets/png/Apple.png'
+import { withAuth } from '../../../../components/views/protectedRoute'
 
 const topInterest = [
   {
@@ -332,4 +333,4 @@ function products_rent() {
   )
 }
 
-export default products_rent
+export default withAuth(products_rent)
