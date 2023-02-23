@@ -29,7 +29,7 @@ const DashboardSideBar = () => {
 
   return (
     <div
-      className={`fixed left-0 top-0 w-30 sm:w-80 lg:w-30 xl:w-72 duration-[400ms] h-full z-30 bg-white shadow-md
+      className={`fixed left-0 top-0 w-{20%} sm:w-[20%] lg:w-{20%} xl:w-[20%] duration-[400ms] h-full z-30 bg-white shadow-md
         ${
           showNav
             ? '-translate-x-full lg:translate-x-0'

@@ -13,6 +13,7 @@ import DashboardContentBox from '../../components/DashboardContentBox/DashboardC
 import DashboardTopBar from '../../components/DashboardTopBar/DashboardTopBar'
 import Link from 'next/link'
 import { withAuth } from '../../components/views/protectedRoute'
+import SkeletonLoader from '../../helpers/skeletonLoader'
 
 function dashboard() {
   return (
@@ -43,6 +44,7 @@ function dashboard() {
             {/* <Image src={Rectangle} alt='rectangle' className='object-cover' /> */}
           </DashboardContentBox>
         </section>
+        {/* <SkeletonLoader width='100%' height='50px' borderRadius='5px' /> */}
 
         <section className='w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial mb-3.5'>
           <DashboardContentBox className='md:w-4/6 items-center justify-center'>

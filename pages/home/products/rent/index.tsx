@@ -57,6 +57,13 @@ const topInterest = [
     model: 'Nokia',
     amount: '₦530,500',
   },
+  {
+    id: 6,
+    src: nokiatablet,
+    type: 'Nokia Tablet T267',
+    model: 'Nokia',
+    amount: '₦530,500',
+  },
 ]
 
 const popularBrands = [
@@ -266,7 +273,7 @@ function products_rent() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white inline-block inline-flex items-center flex-wrap rounded-[21.53px]'>
+          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
             {topInterest.map((topInt) => (
               <Product key={topInt.id} src={topInt.src}>
                 <ProductInfo
@@ -294,7 +301,7 @@ function products_rent() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white inline-block inline-flex items-center flex-wrap rounded-[21.53px]'>
+          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
             {popularBrands.map((popularBrand) => (
               <Product key={popularBrand.id} src={popularBrand.src} />
             ))}
@@ -316,7 +323,7 @@ function products_rent() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white inline-block inline-flex items-center flex-wrap rounded-[21.53px]'>
+          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
             {latestModel.map((latestMod) => (
               <Product key={latestMod.id} src={latestMod.src}>
                 <ProductInfo
