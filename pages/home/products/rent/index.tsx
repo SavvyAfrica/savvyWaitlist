@@ -234,6 +234,7 @@ function products_rent() {
       }
       // console.log(response.data, 'This is my products data')
     } catch (error) {
+      console.log(error)
       setError(new Error((error as Error).message))
     }
   }
