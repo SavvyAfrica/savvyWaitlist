@@ -2,14 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Logo from '../../../assets/png/log.png'
-import { Button } from '../../../components/Button/Button'
+import { Button } from '../../../components/button/button'
 import { Text } from '../../../components/typography/typography'
 
 function header() {
   return (
     <>
       <div className='w-full maxWidth mx-auto shadow2 px-5 py-2.5 sticky lg:block hidden'>
-        <div className="flex justify-around items-center">
+        <div className='flex justify-around items-center'>
           <div className='w-[20%]'>
             <Image src={Logo} alt='Logo' />
           </div>
