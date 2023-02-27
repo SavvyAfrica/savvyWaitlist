@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { useRouter } from 'next/router'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
-import { useGlobalContext } from '../../../../global/store'
+// import { useGlobalContext } from '../../../../global/store'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { Text } from '../../../../components/typography/typography'
 import { MdOutlineShoppingCart } from 'react-icons/md'
@@ -16,7 +16,7 @@ import cameraSystem1 from '../../../../assets/png/camera_system1.png'
 import cameraSystem2 from '../../../../assets/png/camera_system2.png'
 
 function products_buy_details() {
-  const { showNav, setShowNav } = useGlobalContext()
+  // const { showNav, setShowNav } = useGlobalContext()
 
   const router = useRouter()
   const { details } = router.query
@@ -54,12 +54,12 @@ function products_buy_details() {
       <DashboardLayout>
         <div className='w-full pb-16 flex justify-between items-start'>
           <div>
-            <div className='lg:hidden -translate-x-1'>
+            {/* <div className='lg:hidden -translate-x-1'>
               <HiOutlineBars3BottomLeft
                 className='h-8 w-8 cursor-pointer text-gray-700'
                 onClick={() => setShowNav(!showNav)}
               />
-            </div>
+            </div> */}
 
             <div className='w-auto lg:mt-0 mt-7 flex flex-row items-center'>
               <IoArrowBackCircleOutline className='text-2xl pt-1' />
