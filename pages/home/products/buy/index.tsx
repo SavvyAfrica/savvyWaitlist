@@ -5,7 +5,7 @@ import { Text } from '../../../../components/typography/typography'
 // import { useGlobalContext } from '../../../../global/store'
 import Image from 'next/image'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-// import Profile from '../../../../assets/png/profile.png'
+// import Profile from '../../../../assets/png/logo.png'
 import Link from 'next/link'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
@@ -24,35 +24,35 @@ import { withAuth } from '../../../../components/views/protectedRoute'
 const topInterest = [
   {
     id: 1,
-    src: Iphone13promax,
+    src: 'Iphone13promax',
     type: 'iPhone 13 Pro Max',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 2,
-    src: microsoftsurface,
+    src: 'microsoftsurface',
     type: 'Microsoft Surface 2',
     model: 'Microsoft',
     amount: '₦240,500',
   },
   {
     id: 3,
-    src: samsunggalaxy,
+    src: 'samsunggalaxy',
     type: 'Samsung Galaxy S22',
     model: 'Samsung',
     amount: '₦530,500',
   },
   {
     id: 4,
-    src: applewatchseries,
+    src: 'applewatchseries',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 5,
-    src: nokiatablet,
+    src: 'nokiatablet',
     type: 'Nokia Tablet T267',
     model: 'Nokia',
     amount: '₦530,500',
@@ -62,58 +62,58 @@ const topInterest = [
 const popularBrands = [
   {
     id: 1,
-    src: Apple,
+    src: 'Apple',
   },
   {
     id: 2,
-    src: Apple,
+    src: 'Apple',
   },
   {
     id: 3,
-    src: Apple,
+    src: 'Apple',
   },
   {
     id: 4,
-    src: Apple,
+    src: 'Apple',
   },
   {
     id: 5,
-    src: Apple,
+    src: 'Apple',
   },
 ]
 
 const latestModel = [
   {
     id: 1,
-    src: Iphone13promax,
+    src: 'Iphone13promax',
     type: 'iPhone 13 Pro Max',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 2,
-    src: applewatchseries,
+    src: 'applewatchseries',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 3,
-    src: applewatchseries,
+    src: 'applewatchseries',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 4,
-    src: applewatchseries,
+    src: 'applewatchseries',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 5,
-    src: applewatchseries,
+    src: 'applewatchseries',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',

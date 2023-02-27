@@ -2,13 +2,13 @@ import React, { Children } from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 interface IMyProp {
-  src: StaticImageData
+  src: string
   children?: React.ReactNode
 }
 
 function Product({ src, children }: IMyProp) {
   return (
-    <div className='flex flex-col flex-initial rounded-[21.53px]'>
+    <div className='flex flex-col flex-initial rounded-[21.53px] curs'>
       <div className='w-full h-[143.51px] bg-[#f2f7fc] flex justify-center items-center rounded-[21.53px] relative'>
         <Image
           src={src}

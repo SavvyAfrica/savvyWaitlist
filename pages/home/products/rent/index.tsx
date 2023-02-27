@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+'use client'
+import React, { SetStateAction, useEffect, useState } from 'react'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { Text } from '../../../../components/typography/typography'
 import { GlobalContent } from '../../../../global/store'
 import Image from 'next/image'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-// import Profile from '../../../../assets/png/profile.png'
+// import Profile from '../../../../assets/png/logo.png'
 import Link from 'next/link'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
@@ -20,6 +21,10 @@ import ProductsCategoryBox from '../../../../components/ProductsCategoryBox/Prod
 import Vector3 from '../../../../assets/png/Vector3.png'
 import Apple from '../../../../assets/png/Apple.png'
 import { withAuth } from '../../../../components/views/protectedRoute'
+import getConfig from 'next/config'
+import axios from 'axios'
+import { API_BASE_URL } from '../../../../constant'
+import SkeletonLoader from '../../../../helpers/skeletonLoader'
 
 const topInterest = [
   {
@@ -52,13 +57,6 @@ const topInterest = [
   },
   {
     id: 5,
-    src: nokiatablet,
-    type: 'Nokia Tablet T267',
-    model: 'Nokia',
-    amount: '₦530,500',
-  },
-  {
-    id: 6,
     src: nokiatablet,
     type: 'Nokia Tablet T267',
     model: 'Nokia',
@@ -157,12 +155,41 @@ const categories = [
     text: 'Others',
   },
 ]
+interface Products {
+  [x: string]: any
+  products: SetStateAction<Products>
+  id: number
+  name: string
+  brand: string
+  price: number
+  images: { image: string }[]
+}
+// interface ApiResponse {
+//   products: Products[]
+// }
 
 function products_rent() {
   // const { showNav, setShowNav } = GlobalContent()
-
   const [search, setSearch] = useState('')
+  const [user, setUser] = useState<any>({})
+  // Initializing the set data states
+  const [data, setData] = useState<any>([])
+  const [loading, setLoading] = useState(false)
 
+  // Initializing the error states
+  const [error, setError] = useState<Error | null>(null)
+  //Getting token from local Storage
+
+  // const localValue =
+  //   typeof window !== 'undefined' ? localStorage.getItem('user') : null
+  // const user = JSON.parse(localValue || '{}')
+  // const authToken = user.token // You can use any method to store the auth token
+  // const localValue =
+  // typeof window !== 'undefined' ? localStorage.getItem('user') : null
+  // const user = JSON.parse(localValue || '{}')
+
+  // const token = JSON.parse(localStorage.getItem('token') || '')
+  // console.log(`token: ${user.token}`)
   // Search filter function
 
   // const searchFilter = (array: any[]) => {
@@ -175,13 +202,46 @@ function products_rent() {
 
   // const filtered = searchFilter(topInterest)
 
+  useEffect(() => {
+    let r =
+      typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('user') || '{}')
+        : ''
+
+    setUser(r)
+  }, [])
+
+  console.log(user.token, 'this is token')
+
   //Handling the input on our search bar
   const handleChange = (e: {
     target: { value: React.SetStateAction<string> }
   }) => {
     setSearch(e.target.value)
   }
+  //Getting all the products
+  const fetchData = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get<Products>(`${API_BASE_URL}/products`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      })
+      if (response.status === 200 || 201) {
+        setLoading(false)
+        setData(response.data.products)
+      }
+      // console.log(response.data, 'This is my products data')
+    } catch (error) {
+      setError(new Error((error as Error).message))
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  }, [user])
 
+  console.log(data, 'This is my products data')
   return (
     <>
       <DashboardLayout>
@@ -272,18 +332,87 @@ function products_rent() {
               <Image src={Vector3} alt='vector' />
             </span>
           </div>
+          {/* <>
+          
+          </> */}
 
-          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
-            {topInterest.map((topInt) => (
-              <Product key={topInt.id} src={topInt.src}>
-                <ProductInfo
-                  type={topInt.type}
-                  model={topInt.model}
-                  amount={topInt.amount}
-                />
-              </Product>
-            ))}
-          </div>
+          {loading ? (
+            <div className=' flex justify-between items-center flex-col space-y-4 w-full bg-white rounded-[21.53px] h-[255.13px] px-4 py-4 overflow-auto'>
+              <SkeletonLoader
+                width='100%'
+                height='30px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='30px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='30px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='30px'
+                borderRadius='21.53px'
+              />
+            </div>
+          ) : (
+            <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4 h-[255.13px]'>
+              {data.map(
+                (topInt: {
+                  id: React.Key | null | undefined
+                  images: string[]
+                  name:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  brand:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  price:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                }) => (
+                  <Product key={topInt.id} src={topInt.images[0]}>
+                    <ProductInfo
+                      type={topInt.name}
+                      model={topInt.brand}
+                      amount={topInt.price}
+                    />
+                  </Product>
+                )
+              )}
+            </div>
+          )}
 
           <div className='mb-2.5 flex justify-between items-center'>
             <Text className='font-bold text-base tracking-tight text-[#292D32]'>
@@ -302,9 +431,14 @@ function products_rent() {
           </div>
 
           <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
-            {popularBrands.map((popularBrand) => (
-              <Product key={popularBrand.id} src={popularBrand.src} />
-            ))}
+            {data.map(
+              (popularBrand: {
+                id: React.Key | null | undefined
+                images: string[]
+              }) => (
+                <Product key={popularBrand.id} src={popularBrand.images[0]} />
+              )
+            )}
           </div>
 
           <div className='mb-2.5 flex justify-between items-center'>
@@ -324,15 +458,56 @@ function products_rent() {
           </div>
 
           <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
-            {latestModel.map((latestMod) => (
-              <Product key={latestMod.id} src={latestMod.src}>
-                <ProductInfo
-                  type={latestMod.type}
-                  model={latestMod.model}
-                  amount={latestMod.amount}
-                />
-              </Product>
-            ))}
+            {data.map(
+              (topInt: {
+                id: React.Key | null | undefined
+                images: string[]
+                name:
+                  | string
+                  | number
+                  | boolean
+                  | React.ReactElement<
+                      any,
+                      string | React.JSXElementConstructor<any>
+                    >
+                  | React.ReactFragment
+                  | React.ReactPortal
+                  | null
+                  | undefined
+                brand:
+                  | string
+                  | number
+                  | boolean
+                  | React.ReactElement<
+                      any,
+                      string | React.JSXElementConstructor<any>
+                    >
+                  | React.ReactFragment
+                  | React.ReactPortal
+                  | null
+                  | undefined
+                price:
+                  | string
+                  | number
+                  | boolean
+                  | React.ReactElement<
+                      any,
+                      string | React.JSXElementConstructor<any>
+                    >
+                  | React.ReactFragment
+                  | React.ReactPortal
+                  | null
+                  | undefined
+              }) => (
+                <Product key={topInt.id} src={topInt.images[0]}>
+                  <ProductInfo
+                    type={topInt.name}
+                    model={topInt.brand}
+                    amount={topInt.price}
+                  />
+                </Product>
+              )
+            )}
           </div>
         </div>
       </DashboardLayout>
