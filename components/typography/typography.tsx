@@ -1,3 +1,5 @@
+import { IText } from "../../type/type";
+
 const styles = {
   home_heading_50px: "font-Manrope text-[50px]",
   home_heading_2_40px: "font-Manrope text-[40px]",

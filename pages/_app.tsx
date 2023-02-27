@@ -1,31 +1,38 @@
 import type { AppProps } from "next/app";
 import Layout from "../layout/layout";
 import "../styles/globals.css";
-import {useRouter} from 'next/router';
-import { useState } from "react";
-import { MyGlobalContext } from '../Global/GlobalContext'
+import { useRouter } from 'next/router';
+import { AppStore } from '../global/store';
+import { globalState } from '../global/store';
+import 'react-tooltip/dist/react-tooltip.css';
 
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [showNav, setShowNav] = useState<boolean>(true);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
 
+
+
+function MyApp({ Component, pageProps }: AppProps) {  
+  const {showNav, setShowNav} = globalState();
   
+
   const router = useRouter();
 
-  
   const getContent = () => {
-    if (router.pathname.startsWith(`/dashboard`))
+    if (router.pathname.startsWith(`/home`))
       return (
-        <MyGlobalContext.Provider value= {{showNav, setShowNav, isMobile, setIsMobile}}>
+        <AppStore.Provider value= {{showNav, setShowNav}}>
           <Component {...pageProps} />
-        </MyGlobalContext.Provider>
+        </AppStore.Provider>
       )
 
-    if (router.pathname.startsWith(`/sign`))
+    if (router.pathname.startsWith(`/login`))
       return (
         <Component {...pageProps} />
       )
+    if (router.pathname.startsWith(`/register`))
+      return (
+        <Component {...pageProps} />
+      )
+      
 
     return (
       <Layout>
