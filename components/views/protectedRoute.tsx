@@ -1,35 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import jwt from 'jsonwebtoken'
-
-const isAuthenticated = (): boolean => {
-  const localValue =
-    typeof window !== 'undefined' ? localStorage.getItem('user') : null
-  const user = JSON.parse(localValue || '{}')
-  // Check if the user is authenticated
-  const authToken = user.token // You can use any method to store the auth token
-  if (!authToken) {
-    // If the auth token doesn't exist, the user is not authenticated
-    return false
-  }
-
-  try {
-    // Try to decode the auth token to get the user information
-    const decodedToken: any = jwt.decode(authToken)
-    const expirationTime: number = decodedToken.exp * 1000 // Convert the expiration time from seconds to milliseconds
-    if (expirationTime < Date.now()) {
-      // If the token has expired, the user is not authenticated
-      return false
-    }
-
-    // If we've made it this far, the user is authenticated
-    return true
-  } catch (e) {
-    console.error(e)
-    // If there was an error decoding the token, assume the user is not authenticated
-    return false
-  }
-}
+import AuthChecker from './authChecker'
 
 type WithAuthProps<T> = T & {
   // Add any additional props that you want to pass to the wrapped component here
@@ -44,12 +15,14 @@ export const withAuth = <T extends Record<string, unknown>>(
     const router = useRouter()
 
     useEffect(() => {
-      if (!isAuthenticated()) {
+      const user = JSON.parse(localStorage.getItem('user') || '{}') // You can use any method to store the auth token
+      const authToken = user.token
+      if (!authToken) {
         router.push('/login') // Redirect to login if not authenticated
       }
-    }, [])
+    }, [router])
 
-    return isAuthenticated() ? <WrappedComponent {...props} /> : null
+    return <AuthChecker /> ? <WrappedComponent {...props} /> : null
   }
 
   return AuthComponent

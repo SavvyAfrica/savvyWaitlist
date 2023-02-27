@@ -171,8 +171,9 @@ interface Products {
 function products_rent() {
   // const { showNav, setShowNav } = GlobalContent()
   const [search, setSearch] = useState('')
+  const [user, setUser] = useState<any>({})
   // Initializing the set data states
-  const [data, setData] = useState<Products>([])
+  const [data, setData] = useState<any>([])
   const [loading, setLoading] = useState(false)
 
   // Initializing the error states
@@ -183,12 +184,12 @@ function products_rent() {
   //   typeof window !== 'undefined' ? localStorage.getItem('user') : null
   // const user = JSON.parse(localValue || '{}')
   // const authToken = user.token // You can use any method to store the auth token
-  const localValue =
-    typeof window !== 'undefined' ? localStorage.getItem('user') : null
-  const user = JSON.parse(localValue || '{}')
+  // const localValue =
+  // typeof window !== 'undefined' ? localStorage.getItem('user') : null
+  // const user = JSON.parse(localValue || '{}')
 
   // const token = JSON.parse(localStorage.getItem('token') || '')
-  console.log(`token: ${user.token}`)
+  // console.log(`token: ${user.token}`)
   // Search filter function
 
   // const searchFilter = (array: any[]) => {
@@ -200,6 +201,17 @@ function products_rent() {
   //Applying our search filter function to our array of countries recieved from the API
 
   // const filtered = searchFilter(topInterest)
+
+  useEffect(() => {
+    let r =
+      typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('user') || '{}')
+        : ''
+
+    setUser(r)
+  }, [])
+
+  console.log(user.token, 'this is token')
 
   //Handling the input on our search bar
   const handleChange = (e: {
@@ -227,7 +239,7 @@ function products_rent() {
   }
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [user])
 
   console.log(data, 'This is my products data')
   return (
