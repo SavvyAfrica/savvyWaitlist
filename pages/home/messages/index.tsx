@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import defaultProfile from '../../../assets/png/defaultProfile.png'
+import defaultProfile from '../../../assets/png/defaultlogo.png'
 import Smiley from '../../../assets/png/smiley.png'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 import { Text } from '../../../components/typography/typography'
