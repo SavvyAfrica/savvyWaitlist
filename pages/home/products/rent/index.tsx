@@ -6,7 +6,7 @@ import { Text } from '../../../../components/typography/typography'
 import { GlobalContent } from '../../../../global/store'
 import Image from 'next/image'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-// import Profile from '../../../../assets/png/logo.png'
+import Profile from '../../../../assets/png/defaultProfile.png'
 import Link from 'next/link'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
@@ -25,106 +25,6 @@ import getConfig from 'next/config'
 import axios from 'axios'
 import { API_BASE_URL } from '../../../../constant'
 import SkeletonLoader from '../../../../helpers/skeletonLoader'
-
-const topInterest = [
-  {
-    id: 1,
-    src: Iphone13promax,
-    type: 'iPhone 13 Pro Max',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-  {
-    id: 2,
-    src: microsoftsurface,
-    type: 'Microsoft Surface 2',
-    model: 'Microsoft',
-    amount: '₦240,500',
-  },
-  {
-    id: 3,
-    src: samsunggalaxy,
-    type: 'Samsung Galaxy S22',
-    model: 'Samsung',
-    amount: '₦530,500',
-  },
-  {
-    id: 4,
-    src: applewatchseries,
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-  {
-    id: 5,
-    src: nokiatablet,
-    type: 'Nokia Tablet T267',
-    model: 'Nokia',
-    amount: '₦530,500',
-  },
-]
-
-const popularBrands = [
-  {
-    id: 1,
-    src: Apple,
-  },
-  {
-    id: 2,
-    src: Apple,
-  },
-  {
-    id: 3,
-    src: Apple,
-  },
-  {
-    id: 4,
-    src: Apple,
-  },
-  {
-    id: 5,
-    src: Apple,
-  },
-]
-
-const latestModel = [
-  {
-    id: 1,
-    src: Iphone13promax,
-    type: 'iPhone 13 Pro Max',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-  {
-    id: 2,
-    src: applewatchseries,
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-  {
-    id: 3,
-    src: applewatchseries,
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-  {
-    id: 4,
-    src: applewatchseries,
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-  {
-    id: 5,
-    src: applewatchseries,
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '₦530,500',
-  },
-]
-
 const categories = [
   {
     id: 1,
@@ -155,6 +55,10 @@ const categories = [
     text: 'Others',
   },
 ]
+interface Image {
+  id: string
+  image: string
+}
 interface Products {
   [x: string]: any
   products: SetStateAction<Products>
@@ -162,34 +66,29 @@ interface Products {
   name: string
   brand: string
   price: number
-  images: { image: string }[]
+  images: Image[]
 }
-// interface ApiResponse {
-//   products: Products[]
-// }
 
 function products_rent() {
-  // const { showNav, setShowNav } = GlobalContent()
+  // const { showNav, setShowNav } = GlobalContent(false)
+  const [globalContent, setGlobalContent] = useState<GlobalContent>({
+    showNav: false,
+    setShowNav: () => {},
+  })
+
   const [search, setSearch] = useState('')
   const [user, setUser] = useState<any>({})
   // Initializing the set data states
   const [data, setData] = useState<any>([])
   const [loading, setLoading] = useState(false)
-
+  const toggleNav = () => {
+    setGlobalContent({
+      ...globalContent,
+      showNav: !globalContent.showNav,
+    })
+  }
   // Initializing the error states
   const [error, setError] = useState<Error | null>(null)
-  //Getting token from local Storage
-
-  // const localValue =
-  //   typeof window !== 'undefined' ? localStorage.getItem('user') : null
-  // const user = JSON.parse(localValue || '{}')
-  // const authToken = user.token // You can use any method to store the auth token
-  // const localValue =
-  // typeof window !== 'undefined' ? localStorage.getItem('user') : null
-  // const user = JSON.parse(localValue || '{}')
-
-  // const token = JSON.parse(localStorage.getItem('token') || '')
-  // console.log(`token: ${user.token}`)
   // Search filter function
 
   // const searchFilter = (array: any[]) => {
@@ -246,13 +145,13 @@ function products_rent() {
   return (
     <>
       <DashboardLayout>
-        <div className='w-full pb-16 flex justify-between items-start'>
+        <div className='w-full pt-9 pb-16 flex justify-between items-start'>
           <div>
             <div className='lg:hidden -translate-x-1'>
-              {/* <HiOutlineBars3BottomLeft
+              <HiOutlineBars3BottomLeft
                 className='h-8 w-8 cursor-pointer text-gray-700'
-                onClick={() => setShowNav(!showNav)}
-              /> */}
+                onClick={toggleNav}
+              />
             </div>
 
             <div className='w-auto lg:mt-0 mt-7 flex flex-row items-center'>
@@ -274,13 +173,13 @@ function products_rent() {
               <Link href={'/dashboard/account'}>
                 <a className='flex w-full justify-center items-center'>
                   <span className='inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]'>
-                    {/* <Image
+                    <Image
                       src={Profile}
                       width='100%'
                       height='100%'
                       alt='profile picture'
                       className='rounded-full h-8 md:mr-4 border-2 border-white shadow-xl'
-                    /> */}
+                    />
                   </span>
 
                   <div className='md:block hidden ml-3 flex flex-col items-start'>
@@ -288,7 +187,7 @@ function products_rent() {
                       variant='paragraph_4'
                       className='font-semibold text-gray-700'
                     >
-                      Karim Andrei
+                      {user.firstName} {user.lastName}
                     </Text>
                     <Text variant='paragraph_4' className='font-normal'>
                       User
@@ -338,25 +237,25 @@ function products_rent() {
           </> */}
 
           {loading ? (
-            <div className=' flex justify-between items-center flex-col space-y-4 w-full bg-white rounded-[21.53px] h-[255.13px] px-4 py-4 overflow-auto'>
+            <div className=' grid grid-cols-4 items-center flex-col gap-5 w-full bg-white rounded-[21.53px] h-[255.13px] px-4 py-4 overflow-auto'>
               <SkeletonLoader
                 width='100%'
-                height='30px'
+                height='143.51px'
                 borderRadius='21.53px'
               />
               <SkeletonLoader
                 width='100%'
-                height='30px'
+                height='143.51px'
                 borderRadius='21.53px'
               />
               <SkeletonLoader
                 width='100%'
-                height='30px'
+                height='143.51px'
                 borderRadius='21.53px'
               />
               <SkeletonLoader
                 width='100%'
-                height='30px'
+                height='143.51px'
                 borderRadius='21.53px'
               />
             </div>
@@ -365,7 +264,7 @@ function products_rent() {
               {data.map(
                 (topInt: {
                   id: React.Key | null | undefined
-                  images: string[]
+                  images: Image[]
                   name:
                     | string
                     | number
@@ -403,7 +302,7 @@ function products_rent() {
                     | null
                     | undefined
                 }) => (
-                  <Product key={topInt.id} src={topInt.images[0]}>
+                  <Product key={topInt.id} src={topInt.images[0].image}>
                     <ProductInfo
                       type={topInt.name}
                       model={topInt.brand}
@@ -430,17 +329,57 @@ function products_rent() {
               <Image src={Vector3} alt='vector' />
             </span>
           </div>
-
-          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
+          {loading ? (
+            <div className=' grid grid-cols-4 items-center flex-col gap-5 w-full bg-white rounded-[21.53px] h-[176px] px-4 py-4 overflow-auto'>
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+            </div>
+          ) : (
+            <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4 h-[176px]'>
+              {data.map(
+                (popularBrand: {
+                  id: React.Key | null | undefined
+                  images: Image[]
+                }) => (
+                  <Product
+                    key={popularBrand.id}
+                    src={popularBrand.images[0].image}
+                  />
+                )
+              )}
+            </div>
+          )}
+          {/* <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
             {data.map(
               (popularBrand: {
                 id: React.Key | null | undefined
-                images: string[]
+                images: Image[]
               }) => (
-                <Product key={popularBrand.id} src={popularBrand.images[0]} />
+                <Product
+                  key={popularBrand.id}
+                  src={popularBrand.images[0].image}
+                />
               )
             )}
-          </div>
+          </div> */}
 
           <div className='mb-2.5 flex justify-between items-center'>
             <Text className='font-bold text-base tracking-tight text-[#292D32]'>
@@ -458,58 +397,83 @@ function products_rent() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
-            {data.map(
-              (topInt: {
-                id: React.Key | null | undefined
-                images: string[]
-                name:
-                  | string
-                  | number
-                  | boolean
-                  | React.ReactElement<
-                      any,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | React.ReactFragment
-                  | React.ReactPortal
-                  | null
-                  | undefined
-                brand:
-                  | string
-                  | number
-                  | boolean
-                  | React.ReactElement<
-                      any,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | React.ReactFragment
-                  | React.ReactPortal
-                  | null
-                  | undefined
-                price:
-                  | string
-                  | number
-                  | boolean
-                  | React.ReactElement<
-                      any,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | React.ReactFragment
-                  | React.ReactPortal
-                  | null
-                  | undefined
-              }) => (
-                <Product key={topInt.id} src={topInt.images[0]}>
-                  <ProductInfo
-                    type={topInt.name}
-                    model={topInt.brand}
-                    amount={topInt.price}
-                  />
-                </Product>
-              )
-            )}
-          </div>
+          {loading ? (
+            <div className=' grid grid-cols-4 items-center flex-col gap-5 w-full bg-white rounded-[21.53px] h-[255.13px] px-4 py-4 overflow-auto'>
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+            </div>
+          ) : (
+            <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4 h-[255.13px]'>
+              {data.map(
+                (topInt: {
+                  id: React.Key | null | undefined
+                  images: Image[]
+                  name:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  brand:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  price:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                }) => (
+                  <Product key={topInt.id} src={topInt.images[0].image}>
+                    <ProductInfo
+                      type={topInt.name}
+                      model={topInt.brand}
+                      amount={topInt.price}
+                    />
+                  </Product>
+                )
+              )}
+            </div>
+          )}
         </div>
       </DashboardLayout>
     </>

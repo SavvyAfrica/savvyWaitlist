@@ -24,35 +24,35 @@ import { withAuth } from '../../../../components/views/protectedRoute'
 const topInterest = [
   {
     id: 1,
-    src: 'Iphone13promax',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'iPhone 13 Pro Max',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 2,
-    src: 'microsoftsurface',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Microsoft Surface 2',
     model: 'Microsoft',
     amount: '₦240,500',
   },
   {
     id: 3,
-    src: 'samsunggalaxy',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Samsung Galaxy S22',
     model: 'Samsung',
     amount: '₦530,500',
   },
   {
     id: 4,
-    src: 'applewatchseries',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 5,
-    src: 'nokiatablet',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Nokia Tablet T267',
     model: 'Nokia',
     amount: '₦530,500',
@@ -62,58 +62,58 @@ const topInterest = [
 const popularBrands = [
   {
     id: 1,
-    src: 'Apple',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
   },
   {
     id: 2,
-    src: 'Apple',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
   },
   {
     id: 3,
-    src: 'Apple',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
   },
   {
     id: 4,
-    src: 'Apple',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
   },
   {
     id: 5,
-    src: 'Apple',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
   },
 ]
 
 const latestModel = [
   {
     id: 1,
-    src: 'Iphone13promax',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'iPhone 13 Pro Max',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 2,
-    src: 'applewatchseries',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 3,
-    src: 'applewatchseries',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 4,
-    src: 'applewatchseries',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
   },
   {
     id: 5,
-    src: 'applewatchseries',
+    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
     amount: '₦530,500',
