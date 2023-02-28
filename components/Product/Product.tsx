@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 interface IMyProp {
   src: string
@@ -12,7 +12,7 @@ function Product({ src, children }: IMyProp) {
       <div className='w-full h-[143.51px] bg-[#f2f7fc] flex justify-center items-center rounded-[21.53px] relative'>
         <Image
           src={src}
-          width='93.29px'
+          width='100%'
           height='100%'
           className='absolute top-0 right-0 left-0 bottom-0'
         />
