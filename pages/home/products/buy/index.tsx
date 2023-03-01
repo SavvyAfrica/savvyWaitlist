@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { Text } from '../../../../components/typography/typography'
 // import { useGlobalContext } from '../../../../global/store'
 import Image from 'next/image'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-// import Profile from '../../../../assets/png/logo.png'
+import Profile from '../../../../assets/png/defaultProfile.png'
 import Link from 'next/link'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
@@ -27,35 +27,35 @@ const topInterest = [
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'iPhone 13 Pro Max',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 2,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Microsoft Surface 2',
     model: 'Microsoft',
-    amount: '₦240,500',
+    amount: '240,500',
   },
   {
     id: 3,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Samsung Galaxy S22',
     model: 'Samsung',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 4,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 5,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Nokia Tablet T267',
     model: 'Nokia',
-    amount: '₦530,500',
+    amount: '530,500',
   },
 ]
 
@@ -88,35 +88,35 @@ const latestModel = [
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'iPhone 13 Pro Max',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 2,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 3,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 4,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
   {
     id: 5,
     src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
     type: 'Apple Watch Series 6',
     model: 'Apple',
-    amount: '₦530,500',
+    amount: '530,500',
   },
 ]
 
@@ -153,7 +153,16 @@ const categories = [
 
 function products_buy() {
   // const { showNav, setShowNav } = useGlobalContext()
+  const [user, setUser] = useState<any>({})
 
+  useEffect(() => {
+    let r =
+      typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('user') || '{}')
+        : ''
+
+    setUser(r)
+  }, [])
   const [search, setSearch] = useState('')
 
   // Search filter function
@@ -178,7 +187,7 @@ function products_buy() {
   return (
     <>
       <DashboardLayout>
-        <div className='w-full pb-16 flex justify-between items-start'>
+        <div className='w-full pb-9 pt-9 flex justify-between items-start'>
           <div>
             <div className='lg:hidden -translate-x-1'>
               {/* <HiOutlineBars3BottomLeft
@@ -206,13 +215,13 @@ function products_buy() {
               <Link href={'/dashboard/account'}>
                 <a className='flex w-full justify-center items-center'>
                   <span className='inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]'>
-                    {/* <Image 
-                      src={Profile} 
-                      width='100%' 
-                      height='100%' 
-                      alt="profile picture" 
-                      className="rounded-full h-8 md:mr-4 border-2 border-white shadow-xl" 
-                    /> */}
+                    <Image
+                      src={Profile}
+                      width='100%'
+                      height='100%'
+                      alt='profile picture'
+                      className='rounded-full h-8 md:mr-4 border-2 border-white shadow-xl'
+                    />
                   </span>
 
                   <div className='md:block hidden ml-3 flex flex-col items-start'>
@@ -220,7 +229,7 @@ function products_buy() {
                       variant='paragraph_4'
                       className='font-semibold text-gray-700'
                     >
-                      Karim Andrei
+                      {user.firstName} {user.lastName}
                     </Text>
                     <Text variant='paragraph_4' className='font-normal'>
                       User
@@ -266,7 +275,7 @@ function products_buy() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white inline-block inline-flex items-center flex-wrap rounded-[21.53px]'>
+          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] h-[255.13px] px-4 py-4'>
             {topInterest.map((topInt) => (
               <Product key={topInt.id} src={topInt.src}>
                 <ProductInfo
@@ -294,7 +303,7 @@ function products_buy() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white inline-block inline-flex items-center flex-wrap rounded-[21.53px]'>
+          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4 h-[176px]'>
             {popularBrands.map((popularBrand) => (
               <Product key={popularBrand.id} src={popularBrand.src} />
             ))}
@@ -316,7 +325,7 @@ function products_buy() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white inline-block inline-flex items-center flex-wrap rounded-[21.53px]'>
+          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center px-4 py-4 rounded-[21.53px] h-[255.13px]'>
             {latestModel.map((latestMod) => (
               <Product key={latestMod.id} src={latestMod.src}>
                 <ProductInfo
