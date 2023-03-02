@@ -150,4 +150,4 @@ const DashboardTopBar = () => {
     )
 }
 
-export default DashboardTopBar;
+export default DashboardTopBar
