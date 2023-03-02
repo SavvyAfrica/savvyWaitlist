@@ -8,7 +8,8 @@ export interface GlobalContent {
 
 export const AppStore = createContext<GlobalContent>({
   showNav: true,
-  setShowNav: () => {},
+  setShowNav: () => {}
+
 })
 
 
@@ -23,6 +24,6 @@ export const globalState = () => {
   
   return {
     showNav,
-    setShowNav,
+    setShowNav
   }
 }
