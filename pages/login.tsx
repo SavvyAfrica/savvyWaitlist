@@ -42,9 +42,12 @@ function login() {
             router.push(returnUrl);
             setIsLoading(false)
             notify('Logged in successfully', 'success');
-        } catch {
-            setIsLoading(false)
-            notify('Invalid User', 'error');
+
+        } catch (event: any) {
+            notify(event.message, 'error');
+
+        } finally {
+            setIsLoading(false);
         }
     }
 
