@@ -17,7 +17,7 @@ function handleGetItem(){
 
 
 const { publicRuntimeConfig } = getConfig();
-const baseUrl = `${publicRuntimeConfig.apiUrl}/auth`;
+const baseUrl = `${publicRuntimeConfig.apiUrl}`;
 const userSubject = new BehaviorSubject(typeof window !== 'undefined' ? handleGetItem() : null);
 
 const userService = {
@@ -35,7 +35,7 @@ export default userService;
 
 
 async function login(user: IFormValues) {
-    const userLogin = await fetchWrapper.post(`${baseUrl}/login`, user);
+    const userLogin = await fetchWrapper.post(`${baseUrl}/auth/login`, user);
     // publish user to subscribers and store in local storage to stay logged in between page refreshes
     userSubject.next(userLogin);
 
@@ -57,11 +57,11 @@ function logout() {
 }
 
 function register(user: IFormValues) {
-    return fetchWrapper.post(`${baseUrl}/register`, user)
+    return fetchWrapper.post(`${baseUrl}/auth/register`, user)
 }
 
-async function update(params: any) {
-    const userUpdate = await fetchWrapper.put(`${baseUrl}/users/account`, params);
+async function update(url: string, params: any) {
+    const userUpdate = await fetchWrapper.put(`${baseUrl}/users/${url}`, params);
     // update stored user if the logged in user updated their own record
 
     // update local storage
