@@ -43,9 +43,12 @@ function register() {
       router.push('/login');
       setIsLoading(false)
       notify('Registration successful', 'success');
-    } catch {
-      setIsLoading(false)
-      notify('Unsuccessful registration', 'error');
+
+    } catch (event: any) {
+      notify(event.message, 'error');
+
+    } finally {
+      setIsLoading(false);
     }
   }
   
