@@ -34,7 +34,7 @@ const userService = {
 export default userService;
 
 
-async function login(user: IFormValues) {
+async function login(user: any) {
     const userLogin = await fetchWrapper.post(`${baseUrl}/auth/login`, user);
     // publish user to subscribers and store in local storage to stay logged in between page refreshes
     userSubject.next(userLogin);
