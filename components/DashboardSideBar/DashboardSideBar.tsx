@@ -16,7 +16,7 @@ import HomeIcon from '../../assets/png/homeIcon.png'
 import AccountIcon from '../../assets/png/walletIcon.png'
 import MessageIcon from '../../assets/png/messageIcon.png'
 import FavouriteIcon from '../../assets/png/favouriteIcon.png'
-import { Button } from '../button/button'
+import { Button } from '../Button/Button'
 
 const DashboardSideBar = () => {
   const { showNav, setShowNav } = useAppStore()
