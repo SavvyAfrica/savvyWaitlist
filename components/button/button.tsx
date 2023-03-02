@@ -7,12 +7,19 @@ export const Button = (props: IButton) => {
   const { className, children, isLoading, onClick } = props;
   
   return (
-    <button
-      className={`hover:scale-95 transition-all ease-in flex items-center justify-center ${className}`}
-      onClick={onClick}
-      disabled={isLoading}
-    >
-      {isLoading ? <Spinner /> : children}
-    </button>
+    <div className="flex justify-center items-center">
+      {isLoading 
+        ?
+        <Spinner /> 
+        :
+        <button
+          className={`hover:scale-95 transition-all ease-in flex items-center justify-center ${className}`}
+          onClick={onClick}
+          disabled={isLoading}
+        >
+          {children}
+        </button>
+      }
+    </div>
   );
 };
