@@ -8,7 +8,7 @@ import { Text } from '../../../../components/typography/typography'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 import Link from 'next/link'
 import Image from 'next/image'
-import Profile from '../../../../assets/png/logo.png'
+import Profile from '../../../../assets/png/defaultProfile.png'
 import { GrStatusGood } from 'react-icons/gr'
 import { Button } from '../../../../components/button/button'
 import iphone13pro from '../../../../assets/png/iphone13promax.png'
@@ -52,7 +52,7 @@ function products_buy_details() {
   return (
     <div>
       <DashboardLayout>
-        <div className='w-full pb-16 flex justify-between items-start'>
+        <div className='w-full pb-4 pt-9 flex justify-between items-start'>
           <div>
             {/* <div className='lg:hidden -translate-x-1'>
               <HiOutlineBars3BottomLeft

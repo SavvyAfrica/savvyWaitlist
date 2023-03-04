@@ -1,6 +1,6 @@
 import React from 'react'
 import { BiPlus } from 'react-icons/bi'
-import { Button } from '../Button/Button'
+import { Button } from '../button/button'
 import { Text } from '../typography/typography'
 
 function FundWalletModal({ accountNumber, accountName, bankName }: any) {
