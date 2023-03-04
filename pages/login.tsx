@@ -7,7 +7,7 @@ import { Input } from '../components/Input/Input'
 import { Label } from '../components/Label/Label'
 import { FormHead } from '../components/formHeader/formHeader'
 import { Text } from '../components/typography/typography'
-import { Button } from '../components/Button/Button'
+import { Button } from '../components/button/button'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -31,24 +31,21 @@ function login() {
   const { handleChange, handleLoginSubmit, loginState, formErrors } =
     useForm(loginForm)
 
-
-    // Callback function when form is submitted!
-    async function loginForm(formData: any) {
-        try {
-            setIsLoading(true)
-            await userService.login(formData);
-            const returnUrl = (router.query.returnUrl || '/home') as string;
-            router.push(returnUrl);
-            setIsLoading(false)
-            notify('Logged in successfully', 'success');
-
-        } catch (event: any) {
-            notify(event.message, 'error');
-
-        } finally {
-            setIsLoading(false);
-        }
+  // Callback function when form is submitted!
+  async function loginForm(formData: any) {
+    try {
+      setIsLoading(true)
+      await userService.login(formData)
+      const returnUrl = (router.query.returnUrl || '/home') as string
+      router.push(returnUrl)
+      setIsLoading(false)
+      notify('Logged in successfully', 'success')
+    } catch (event: any) {
+      notify(event.message, 'error')
+    } finally {
+      setIsLoading(false)
     }
+  }
 
   return (
     <>
