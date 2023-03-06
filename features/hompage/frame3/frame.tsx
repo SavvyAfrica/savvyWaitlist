@@ -25,7 +25,7 @@ const Frame = () => {
           deals. express delivery, and more
         </Text>
 
-        <div className='w-full'>
+        <div className='w-full border-2'>
           <Button className='bg-white border border-[#00B0F0] w-[118px] h-[39px] rounded-lg mt-4'>
             <Link href='#'>
               <a>
