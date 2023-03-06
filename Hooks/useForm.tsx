@@ -35,7 +35,6 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         homeAddress:'',
         idUpload:'',
     })
-
     //FormErrors
     const [formErrors, setFormErrors] = useState<any>({
         firstName:'',
@@ -68,7 +67,6 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         });
         return result;
     }
-
 
     const validate = (event: any, name: string, value: string) => {
         // A function to validate each input values
@@ -329,7 +327,7 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
                 break;
         }
     }
-
+    
     
     // Handle  Input Change 
     const handleChange = (event: any) => {
@@ -395,7 +393,7 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         formErrors,
         handleRegisterSubmit,
         handleLoginSubmit,
-        handleChange
+        handleChange,
     }
     
 }

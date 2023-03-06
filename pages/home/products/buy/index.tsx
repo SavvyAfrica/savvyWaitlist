@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { Text } from '../../../../components/typography/typography'
@@ -20,6 +20,8 @@ import ProductsCategoryBox from '../../../../components/ProductsCategoryBox/Prod
 import Vector3 from '../../../../assets/png/Vector3.png'
 import Apple from '../../../../assets/png/Apple.png'
 import { withAuth } from '../../../../components/views/protectedRoute'
+import { userService } from '../../../../services'
+import DashboardProfileDetails from '../../../../components/DashboardProfileDetails/DashboardProfileDetails'
 
 const topInterest = [
   {
@@ -175,10 +177,20 @@ function products_buy() {
     setSearch(e.target.value)
   }
 
+    const [currentSubject, setCurrentSubject] = useState<any>();
+    useEffect(() => {
+        // Getting current logged in user
+        const subject = userService.userValue;
+
+        if (subject !== undefined){
+           setCurrentSubject(subject);
+        }
+    }, []);
+
   return (
     <>
       <DashboardLayout>
-        <div className='w-full pb-16 flex justify-between items-start'>
+        <div className='w-full pt-9 pb-16 flex justify-between items-start'>
           <div>
             <div className='lg:hidden -translate-x-1'>
               {/* <HiOutlineBars3BottomLeft
@@ -202,33 +214,7 @@ function products_buy() {
               {/* </Link> */}
             </div>
 
-            <div className='w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]'>
-              <Link href={'/dashboard/account'}>
-                <a className='flex w-full justify-center items-center'>
-                  <span className='inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]'>
-                    {/* <Image 
-                      src={Profile} 
-                      width='100%' 
-                      height='100%' 
-                      alt="profile picture" 
-                      className="rounded-full h-8 md:mr-4 border-2 border-white shadow-xl" 
-                    /> */}
-                  </span>
-
-                  <div className='md:block hidden ml-3 flex flex-col items-start'>
-                    <Text
-                      variant='paragraph_4'
-                      className='font-semibold text-gray-700'
-                    >
-                      Karim Andrei
-                    </Text>
-                    <Text variant='paragraph_4' className='font-normal'>
-                      User
-                    </Text>
-                  </div>
-                </a>
-              </Link>
-            </div>
+            <DashboardProfileDetails currentSubject={currentSubject} />
           </div>
         </div>
 

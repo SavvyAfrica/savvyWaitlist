@@ -25,6 +25,8 @@ import getConfig from 'next/config'
 import axios from 'axios'
 import { API_BASE_URL } from '../../../../constant'
 import SkeletonLoader from '../../../../helpers/skeletonLoader'
+import DashboardProfileDetails from '../../../../components/DashboardProfileDetails/DashboardProfileDetails'
+import { userService } from '../../../../services'
 const categories = [
   {
     id: 1,
@@ -142,6 +144,18 @@ function products_rent() {
   }, [user])
 
   console.log(data, 'This is my products data')
+
+
+    const [currentSubject, setCurrentSubject] = useState<any>();
+    useEffect(() => {
+        // Getting current logged in user
+        const subject = userService.userValue;
+
+        if (subject !== undefined){
+           setCurrentSubject(subject);
+        }
+    }, []);
+
   return (
     <>
       <DashboardLayout>
@@ -169,33 +183,7 @@ function products_rent() {
               {/* </Link> */}
             </div>
 
-            <div className='w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]'>
-              <Link href={'/dashboard/account'}>
-                <a className='flex w-full justify-center items-center'>
-                  <span className='inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]'>
-                    <Image
-                      src={Profile}
-                      width='100%'
-                      height='100%'
-                      alt='profile picture'
-                      className='rounded-full h-8 md:mr-4 border-2 border-white shadow-xl'
-                    />
-                  </span>
-
-                  <div className='md:block hidden ml-3 flex flex-col items-start'>
-                    <Text
-                      variant='paragraph_4'
-                      className='font-semibold text-gray-700'
-                    >
-                      {user.firstName} {user.lastName}
-                    </Text>
-                    <Text variant='paragraph_4' className='font-normal'>
-                      User
-                    </Text>
-                  </div>
-                </a>
-              </Link>
-            </div>
+            <DashboardProfileDetails currentSubject={currentSubject} />
           </div>
         </div>
 

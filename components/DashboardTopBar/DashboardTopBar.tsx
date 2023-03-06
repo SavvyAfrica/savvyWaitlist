@@ -1,26 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2';
 import { Text } from '../typography/typography';
 import { useAppStore } from '../../global/store';
 import { userService } from '../../services';
+import DashboardProfileDetails from '../DashboardProfileDetails/DashboardProfileDetails';
 
-
-// const CLOUDINARY_UPLOAD_PRESET  = 'inm54fsh';
-// const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dfrp4wi75'
 
 const DashboardTopBar = () => {
-    const [createObjectURL, setCreateObjectURL] = useState<string>('http://cdn.onlinewebfonts.com/svg/img_569204.png');
-    const [profileImage, setProfileImage] = useState<any>({
-        profilePicture:''
-    });
-
-    const profilePictureRef = React.useRef<HTMLInputElement>(null);
-
-
     // useContext
     const { showNav, setShowNav } = useAppStore();
-
 
     const [currentSubject, setCurrentSubject] = useState<any>();
     useEffect(() => {
@@ -30,46 +19,6 @@ const DashboardTopBar = () => {
         if (subject !== undefined){
            setCurrentSubject(subject);
         }
-    }, []);
-
-
-    const onSubmit = useCallback(
-        async () => {
-            try {
-                // const formData = new FormData();
-
-                // formData.append('profilePicture', profileImage);
-
-                await userService.update('image', profileImage);
-
-            } catch (e) {
-                // toast.error(e.message);
-
-            } finally {
-                // setIsLoading(false);
-            }
-    }, []);
-
-
-    // profile picture upload to client/server
-    const onAvatarChange = useCallback((event: any) => {
-        if (event.target.files && event.target.files[0]) {
-            const file = event.target.files[0];
-
-            // const formData = new FormData();
-            // formData.append('profilePicture', file);
-            // formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-            
-            setProfileImage({
-                profilePicture: file,
-            });
-
-            console.log(file);
-
-            setCreateObjectURL(URL.createObjectURL(file));
-        }
-
-        onSubmit()
     }, []);
     
 
@@ -104,46 +53,7 @@ const DashboardTopBar = () => {
                     </div>
 
                 
-                    <div 
-                        className="w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl flex w-full justify-center items-center"
-                    >
-                        <div className="inline-block sm:h-10 h-[25px] sm:w-10 w-[25px] relative">
-                            {currentSubject === undefined ?
-                                <img
-                                    className='inline-flex justify-center items-center h-full w-full rounded-full'
-                                    src={createObjectURL}
-                                    alt='profile'
-                                /> : 
-                                <img
-                                    className='inline-flex justify-center items-center h-full w-full rounded-full'
-                                    src={createObjectURL}
-                                    alt='profile'
-                                />
-                            }
-
-                            <input
-                                aria-label="Your Avatar"
-                                type="file"
-                                accept="image/*"
-                                ref={profilePictureRef}
-                                onChange={onAvatarChange}
-                                title=" "
-                                className='absolute inset-0 w-full h-full opacity-0 z-[1] cursor-pointer'
-                            />
-                        </div>
-                            
-                        <div className="md:block hidden ml-3 flex flex-col items-start">
-                            <Text variant='paragraph_4' className="font-semibold text-gray-700">
-                                {`${currentSubject === undefined ? 
-                                    'Guest' : 
-                                    `${currentSubject.firstName} ${currentSubject.lastName}`
-                                }`}
-                            </Text>
-                            <Text variant='paragraph_4' className='font-normal capitalize'>
-                                {`${currentSubject === undefined ? 'User' : currentSubject.userType}`}
-                            </Text>
-                        </div>
-                    </div>
+                    <DashboardProfileDetails currentSubject={currentSubject} />
                 </div>
             </div>
         </div>

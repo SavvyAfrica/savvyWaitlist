@@ -12,6 +12,7 @@ import { userService } from '../../../services'
 import DbMessageBox from '../../../components/DbMessageBox/DbMessageBox'
 import FeedbackModal from '../../../components/Modals/FeedbackModal'
 import { withAuth } from '../../../components/views/protectedRoute'
+import DashboardProfileDetails from '../../../components/DashboardProfileDetails/DashboardProfileDetails'
 
 function messages() {
   const { showNav, setShowNav } = useAppStore()
@@ -21,7 +22,6 @@ function messages() {
   useEffect(() => {
     // Getting current logged in user
     const subject = userService.userValue
-    // const isLoggedIn = subject && subject.token;
 
     if (subject !== undefined) {
       setCurrentSubject(subject)
@@ -54,54 +54,7 @@ function messages() {
               {/* </Link> */}
             </div>
 
-            <div className='w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]'>
-              <Link href={'/home/account'}>
-                <a className='inline-block flex w-full justify-center items-center'>
-                  <span className='inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]'>
-                    {currentSubject === undefined ? (
-                      <Image
-                        src={defaultProfile}
-                        width='100%'
-                        height='100%'
-                        alt='profile picture'
-                        className='rounded-full h-8 md:mr-4'
-                      />
-                    ) : (
-                      <Image
-                        src={defaultProfile}
-                        width='100%'
-                        height='100%'
-                        alt='profile picture'
-                        className='rounded-full h-8 md:mr-4'
-                      />
-                    )}
-                  </span>
-
-                  <div className='md:block hidden ml-3 flex flex-col items-start'>
-                    <Text
-                      variant='paragraph_4'
-                      className='font-semibold text-gray-700'
-                    >
-                      {`${
-                        currentSubject === undefined
-                          ? 'Guest'
-                          : `${currentSubject.firstName} ${currentSubject.lastName}`
-                      }`}
-                    </Text>
-                    <Text
-                      variant='paragraph_4'
-                      className='font-normal capitalize'
-                    >
-                      {`${
-                        currentSubject === undefined
-                          ? 'User'
-                          : currentSubject.userType
-                      }`}
-                    </Text>
-                  </div>
-                </a>
-              </Link>
-            </div>
+            <DashboardProfileDetails currentSubject={currentSubject} />
           </div>
         </div>
 

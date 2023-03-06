@@ -23,7 +23,7 @@ function dashboard() {
 
         <section className='w-full flex md:flex-row flex-col h-auto md:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5'>
           <DashboardContentBox className='md:w-4/6 sm:flex-row flex-col items-center justify-center'>
-            <div className='flex items-center sm:ml-auto ml-0'>
+            <div className='flex items-center'>
               <Image src={Vector1} alt='vector' className='w-16 h-16' />
             </div>
 
@@ -33,7 +33,7 @@ function dashboard() {
               </p>
             </div>
 
-            <Button className='w-[150px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 sm:mr-auto mr-0 text-sm'>
+            <Button className='w-[125px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 text-sm'>
               <Link href='/home/account'>
                 <a>Go there</a>
               </Link>
