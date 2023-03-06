@@ -58,13 +58,13 @@ function register(user: IFormValues) {
     return fetchWrapper.post(`${baseUrl}/auth/register`, user)
 }
 
-async function update(url: string, params: any) {
-    const userUpdate = await fetchWrapper.put(`${baseUrl}/users/${url}`, params);
+async function update(url: string, data: object) {
+    const userUpdate = await fetchWrapper.put(`${baseUrl}/users/${url}`, data);
     // update stored user if the logged in user updated their own record
 
 
   // update local storage
-  const user = { ...userSubject.value, ...params }
+  const user = { ...userSubject.value, ...data }
 
   typeof window !== 'undefined'
     ? localStorage.setItem('user', JSON.stringify(user))
