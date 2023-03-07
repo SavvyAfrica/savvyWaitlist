@@ -9,7 +9,7 @@ const Frame = () => {
   return (
     <div
       className={`maxWidth mx-auto w-full flex md:justify-center justify-between 
-        items-center md:flex-row flex-col-reverse px-5 py-5 md:mb-36 mb-20 border-2`}
+        items-center md:flex-row flex-col-reverse px-5 py-5 md:mb-36 mb-20 `}
     >
       <div className='md:w-[35%] w-full md:ml-auto md:mr-0 mr-auto'>
         <Text
@@ -25,7 +25,7 @@ const Frame = () => {
           deals. express delivery, and more
         </Text>
 
-        <div className='w-full border-2'>
+        <div className='w-full'>
           <Button className='bg-white border border-[#00B0F0] w-[118px] h-[39px] rounded-lg mt-4'>
             <Link href='#'>
               <a>
