@@ -88,7 +88,9 @@ const Frame = () => {
   }, [card, move])
 
   return (
-    <div className='w-full grid grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20 h-[320px]'>
+    <div
+      className={`maxWidth mx-auto w-full grid grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20 h-[320px]`}
+    >
       <div className='space-y-4'>
         <Text variant='paragraph_4' className='text-[#A6A6A6]'>
           Customer Review
