@@ -42,7 +42,7 @@ preferred location.`,
 
 const Frame = () => {
   return (
-    <div className='w-full flex flex-col items-center justify-center mb-20  py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20'>
+    <div className='w-full flex flex-col items-center justify-center mb-20  py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10'>
       <div className='flex justify-center items-center flex-col'>
         <Text
           variant='home_heading_3_32px'

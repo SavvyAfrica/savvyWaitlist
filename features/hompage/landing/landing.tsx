@@ -11,7 +11,7 @@ import { Carousel } from 'react-responsive-carousel'
 
 function Landing() {
   return (
-    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20 mt-3 '>
+    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 mt-3 '>
       <div className='w-full flex md:flex-row flex-col justify-around items-center'>
         <div className='md:w-[50%] w-full'>
           <div className='lg:max-w-[450px] md:max-w-[300px] sm:max-w-[45%] max-w-full'>
