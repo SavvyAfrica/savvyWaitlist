@@ -9,7 +9,7 @@ const cards = [
     <div className='w-[60px] h-[60px] rounded-full absolute z-[9999]'>
       <Image src={User} height={100} width={100} className='w-full h-full' />
     </div>
-    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[2rem] top-[2.5rem] space-y-3 bg-white'>
+    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[3.5rem] 2xl:right-[8rem] top-[2rem] space-y-3 bg-white'>
       <Text variant='paragraph_4' className='text-[#5E6282]'>
         We were on the hunt for better work tools with a small budget before we
         discovered Savvy. Their service really increased the productivity of our
@@ -27,7 +27,7 @@ const cards = [
     <div className='w-[60px] h-[60px] rounded-full absolute z-[9999]'>
       <Image src={User} height={100} width={100} className='w-full h-full' />
     </div>
-    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[2rem] top-[2.5rem] space-y-3 bg-white'>
+    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[3.5rem] 2xl:right-[8rem] top-[2rem] space-y-3 bg-white'>
       <Text variant='paragraph_4' className='text-[#5E6282]'>
         We were on the hunt for better work tools with a small budget before we
         discovered Savvy. Their service really increased the productivity of our
@@ -82,7 +82,7 @@ const Frame = () => {
   useEffect(() => {
     // if(!timeout) return
 
-    const id = setTimeout(() => move(1), 1500)
+    const id = setTimeout(() => move(1), 5000)
 
     return () => clearTimeout(id)
   }, [card, move])
