@@ -11,7 +11,7 @@ const Frame = () => {
       className={`maxWidth mx-auto w-full flex md:justify-center justify-between 
         items-center md:flex-row flex-col-reverse py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 md:mb-36 mb-20`}
     >
-      <div className='md:w-[35%] w-full md:ml-auto md:mr-0 mr-auto'>
+      <div className='md:w-[35%] w-full  md:mr-0 mr-auto'>
         <Text
           variant='home_heading_3_32px'
           className='font-semibold sm:text-[32px] text-[25px] lg:mb-8 sm:mb-6 mb-[20px]'
@@ -40,7 +40,7 @@ const Frame = () => {
 
       <div
         className={`md:w-[50%] w-full md:mr-auto mr-0 md:ml-0 ml-auto 
-        inline-flex md:justify-end justify-center`}
+        inline-flex md:justify-center justify-center`}
       >
         <Image src={IMAGE} width='250' height='250' />
       </div>
