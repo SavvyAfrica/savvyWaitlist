@@ -14,7 +14,7 @@ function footer() {
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false)
 
   return (
-    <div className='maxWidth mx-auto w-full flex flex-col py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20'>
+    <div className='maxWidth mx-auto w-full flex flex-col py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10'>
       <div className='w-full flex md:flex-row flex-col justify-between h-full  mb-[90px]'>
         <div className='md:w-[30%] w-[35%] md:mb-0 mb-[34px]'>
           <div className='w-full'>
