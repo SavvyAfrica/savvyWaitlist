@@ -13,12 +13,14 @@ import FundWalletModal from '../../../components/Modals/FundWalletModal'
 import VerificationOptions from '../../../components/Modals/VerificationOptions'
 import getConfig from 'next/config'
 import { withAuth } from '../../../components/views/protectedRoute'
+import SkeletonLoader from '../../../helpers/skeletonLoader'
 
 const { publicRuntimeConfig } = getConfig()
 const baseUrl = `${publicRuntimeConfig.apiUrl}`
 
 function account() {
   const [walletState, setWalletState] = useState<any>()
+  const [loading, setLoading] = useState<Boolean>(false)
   const [transactionHistoryState, setTransactionHistoryState] =
     useState<Object>({})
 
@@ -46,24 +48,31 @@ function account() {
   useEffect(() => {
     async function fetchTransactionData() {
       try {
+        setLoading(true)
         const transactionHistoryData = await fetchWrapper.get(
           `${baseUrl}/transactions`
         )
 
-        setTransactionHistoryState({
-          ...transactionHistoryState,
-          transactionHistoryData,
-        })
+        if (transactionHistoryData.status === 200 || 201) {
+          setTransactionHistoryState({
+            ...transactionHistoryState,
+            transactionHistoryData,
+          })
+          setLoading(false)
+        }
       } catch (error) {}
     }
 
     async function fetchWalletData() {
       try {
+        setLoading(true)
         const walletData = await fetchWrapper.get(
           `${baseUrl}/transactions/wallet`
         )
-
-        setWalletState(walletData)
+        if (walletData.status === 200 || 201) {
+          setWalletState(walletData)
+          setLoading(false)
+        }
       } catch (error) {}
     }
 
@@ -93,20 +102,40 @@ function account() {
               <Text variant='paragraph_3' className='text-[#A3AED0] font-bold'>
                 Wallet Balance
               </Text>
-              <span className='block text-[#1B2559] font-bold text-xl'>
-                {walletState === undefined
-                  ? '₦0.00'
-                  : `₦${walletState.walletBalance}`}
-              </span>
+              {loading ? (
+                <>
+                  <SkeletonLoader
+                    width='100%'
+                    height='15px'
+                    borderRadius='21.53px'
+                  />
+                </>
+              ) : (
+                <span className='block text-[#1B2559] font-bold text-xl'>
+                  {walletState === undefined
+                    ? '₦0.00'
+                    : `₦${walletState.walletBalance}`}
+                </span>
+              )}
             </div>
 
             <div className='flex flex-col justify-start sm:items-start items-center sm:mx-auto mx-0 sm:mb-0 mb-6'>
               <Text variant='paragraph_3' className='text-[#A3AED0] font-bold'>
                 Account Number
               </Text>
-              <span className='block text-[#1B2559] font-bold text-xl'>
-                {accountNumber}
-              </span>
+              {loading ? (
+                <>
+                  <SkeletonLoader
+                    width='100%'
+                    height='15px'
+                    borderRadius='21.53px'
+                  />
+                </>
+              ) : (
+                <span className='block text-[#1B2559] font-bold text-xl'>
+                  {accountNumber}
+                </span>
+              )}
             </div>
 
             <FundWalletModal
@@ -151,25 +180,52 @@ function account() {
             </div>
 
             <div className='scrollbar overflow-auto'>
-              {transactions.map((transaction) => (
-                <DbTransactionBox
-                  key={transaction.id}
-                  productName={transaction.productName}
-                  unitPrice={transaction.unitPrice}
-                  dueDate={transaction.dueDate}
-                  currentDate={transaction.currentDate}
-                  className={transaction.className}
-                >
-                  {/* <RenewOption1 ctaBtn={transaction.ctaBtn} /> */}
-                  {/* <RenewOption2 ctaBtn={transaction.ctaBtn} /> */}
-                  {/* <ReturnOption1 ctaBtn={transaction.ctaBtn} /> */}
-                  {/* <ReturnOption2 ctaBtn={transaction.ctaBtn} /> */}
+              {loading ? (
+                <div className='flex flex-col space-y-2'>
+                  <SkeletonLoader
+                    width='100%'
+                    height='40px'
+                    borderRadius='10px'
+                  />
+                  <SkeletonLoader
+                    width='100%'
+                    height='40px'
+                    borderRadius='10px'
+                  />
+                  <SkeletonLoader
+                    width='100%'
+                    height='40px'
+                    borderRadius='10px'
+                  />
+                  <SkeletonLoader
+                    width='100%'
+                    height='40px'
+                    borderRadius='10px'
+                  />
+                </div>
+              ) : (
+                <>
+                  {transactions.map((transaction) => (
+                    <DbTransactionBox
+                      key={transaction.id}
+                      productName={transaction.productName}
+                      unitPrice={transaction.unitPrice}
+                      dueDate={transaction.dueDate}
+                      currentDate={transaction.currentDate}
+                      className={transaction.className}
+                    >
+                      {/* <RenewOption1 ctaBtn={transaction.ctaBtn} /> */}
+                      {/* <RenewOption2 ctaBtn={transaction.ctaBtn} /> */}
+                      {/* <ReturnOption1 ctaBtn={transaction.ctaBtn} /> */}
+                      {/* <ReturnOption2 ctaBtn={transaction.ctaBtn} /> */}
 
-                  {/* <SwapOption1 ctaBtn={transaction.ctaBtn} /> */}
-                  {/* <SwapOption2 ctaBtn={transaction.ctaBtn} /> */}
-                  {/* <SwapOption3 ctaBtn={transaction.ctaBtn} /> */}
-                </DbTransactionBox>
-              ))}
+                      {/* <SwapOption1 ctaBtn={transaction.ctaBtn} /> */}
+                      {/* <SwapOption2 ctaBtn={transaction.ctaBtn} /> */}
+                      {/* <SwapOption3 ctaBtn={transaction.ctaBtn} /> */}
+                    </DbTransactionBox>
+                  ))}
+                </>
+              )}
             </div>
           </DashboardContentBox>
 

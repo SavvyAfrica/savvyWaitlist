@@ -9,7 +9,7 @@ const cards = [
     <div className='w-[60px] h-[60px] rounded-full absolute z-[9999]'>
       <Image src={User} height={100} width={100} className='w-full h-full' />
     </div>
-    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[5.5rem] top-[2.5rem] space-y-3 bg-white'>
+    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[2rem] top-[2.5rem] space-y-3 bg-white'>
       <Text variant='paragraph_4' className='text-[#5E6282]'>
         We were on the hunt for better work tools with a small budget before we
         discovered Savvy. Their service really increased the productivity of our
@@ -27,7 +27,7 @@ const cards = [
     <div className='w-[60px] h-[60px] rounded-full absolute z-[9999]'>
       <Image src={User} height={100} width={100} className='w-full h-full' />
     </div>
-    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[5.5rem] top-[2.5rem] space-y-3 bg-white'>
+    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[2rem] top-[2.5rem] space-y-3 bg-white'>
       <Text variant='paragraph_4' className='text-[#5E6282]'>
         We were on the hunt for better work tools with a small budget before we
         discovered Savvy. Their service really increased the productivity of our
@@ -88,7 +88,7 @@ const Frame = () => {
   }, [card, move])
 
   return (
-    <div className='w-full grid grid-cols-2 gap-5 items-center px-5 h-[320px]'>
+    <div className='w-full grid grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20 h-[320px]'>
       <div className='space-y-4'>
         <Text variant='paragraph_4' className='text-[#A6A6A6]'>
           Customer Review

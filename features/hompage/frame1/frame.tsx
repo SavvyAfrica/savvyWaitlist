@@ -4,7 +4,7 @@ import { Text } from '../../../components/typography/typography'
 
 function Frame() {
   return (
-    <div className='maxWidth mx-auto w-full flex flex-col justify-center items-center px-5 py-3 md:mb-36 mb-20'>
+    <div className='maxWidth mx-auto w-full flex flex-col justify-center items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20 md:mb-36 mb-20'>
       <div
         className={`frame rounded-[10px] xl:w-[52%] lg:w-[70%] 
         md:w-[80%] w-full sm:h-[98px] h-auto flex justify-center items-center`}

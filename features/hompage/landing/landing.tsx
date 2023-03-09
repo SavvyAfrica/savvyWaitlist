@@ -11,7 +11,7 @@ import { Carousel } from 'react-responsive-carousel'
 
 function Landing() {
   return (
-    <div className='heading maxWidth mx-auto w-full px-5 py-5 mt-3'>
+    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-20 lg:pr-20 mt-3 '>
       <div className='w-full flex md:flex-row flex-col justify-around items-center'>
         <div className='md:w-[50%] w-full'>
           <div className='lg:max-w-[450px] md:max-w-[300px] sm:max-w-[45%] max-w-full'>
@@ -27,7 +27,7 @@ function Landing() {
           <div className='lg:max-w-[470px] md:max-w-[399px] max-w-[80%]'>
             <Text
               variant='paragraph_3'
-              className={`font-medium text-[#292D32] mb-4 w-full 
+              className={`font-medium text-[#292D32] w-full 
                 sm:mx-0 mx-auto lg:mb-[55px] mb-[35px]`}
             >
               Savvy is the smartest way to buy and rent quality tech products
@@ -37,7 +37,7 @@ function Landing() {
 
           <div className='w-full mb-4'>
             <Button className='bg-[#00B0F0] w-[118px] h-[39px] rounded-lg'>
-              <Link href='#'>
+              <Link href='/login'>
                 <a>
                   <Text variant='paragraph_4' className='font-medium'>
                     Try it Out
