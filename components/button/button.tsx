@@ -7,10 +7,12 @@ export const Button = (props: IButton) => {
   const { className, children, isLoading, onClick } = props;
   
   return (
-    <div className="w-auto flex justify-start items-center">
+    <div className="w-auto flex items-center">
       {isLoading 
         ?
-        <Spinner /> 
+        <span className="block w-full flex items-center justify-center">
+          <Spinner /> 
+        </span>
         :
         <button
           className={`hover:scale-95 transition-all ease-in flex items-center justify-center ${className}`}
