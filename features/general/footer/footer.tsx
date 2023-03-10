@@ -30,7 +30,7 @@ function footer() {
         </div>
 
         <div
-          className={`ft-section flex flex-col items-start w-[23.333%] md:mb-0 mb-[30px] ${
+          className={`ft-section md:w-[23.333%] w-full flex-initial flex flex-col items-start md:mb-0 mb-[30px] ${
             websiteIsOpen ? '' : 'isOpen'
           }`}
         >
@@ -84,7 +84,7 @@ function footer() {
         </div>
 
         <div
-          className={`ft-section flex flex-col items-start w-[23.333%] md:mb-0 mb-[30px] ${
+          className={`ft-section md:w-[23.333%] w-full flex-initial flex flex-col items-start md:mb-0 mb-[30px] ${
             companyIsOpen ? '' : 'isOpen'
           }`}
         >
@@ -140,7 +140,7 @@ function footer() {
         </div>
 
         <div
-          className={`ft-section flex flex-col items-start w-[23.333%] md:mb-0 mb-[30px] ${
+          className={`ft-section md:w-[23.333%] w-full flex-initial flex flex-col items-start md:mb-0 mb-[30px] ${
             resourcesIsOpen ? '' : 'isOpen'
           }`}
         >
