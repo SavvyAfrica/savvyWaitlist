@@ -142,9 +142,6 @@ a {
   justify-content: flex-start;
 }
 
-.ft-section {
-  flex: 0 1 auto;
-}
 .ft-section.isOpen .ft-nav {
   height: auto;
 }
@@ -161,10 +158,6 @@ a {
   .ft-nav {
     height: 0;
     overflow: hidden;
-  }
-
-  .ft-section {
-    width: 100%;
   }
 }
 
