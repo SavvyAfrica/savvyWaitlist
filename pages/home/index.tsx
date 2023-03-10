@@ -33,11 +33,13 @@ function dashboard() {
               </p>
             </div>
 
-            <Button className='w-[125px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 text-sm'>
-              <Link href='/home/account'>
-                <a>Go there</a>
-              </Link>
-            </Button>
+            <div className="w-auto">
+              <Button className='w-[125px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 text-sm'>
+                <Link href='/home/account'>
+                  <a>Go there</a>
+                </Link>
+              </Button>
+            </div>
           </DashboardContentBox>
 
           <DashboardContentBox className='md:w-2/6 md:block hidden py-0 px-0'>
@@ -48,14 +50,14 @@ function dashboard() {
 
         <section className='w-full h-auto md:h-[340px] flex md:flex-row flex-col items-center justify-center gap-3.5 flex-initial mb-3.5'>
           <DashboardContentBox className='md:w-4/6 items-center justify-center'>
-            <div className='sm:ml-auto ml-0 sm:text-left text-center'>
-              <span>
+            <div className='sm:ml-auto ml-0 sm:text-left'>
+              <span className='text-center'>
                 <Text variant='paragraph_1' className='font-bold'>
                   Rent A Gadget
                 </Text>
               </span>
 
-              <span className='max-w-[269px] inline-block my-6'>
+              <span className='max-w-[269px] inline-block my-6 text-center'>
                 <Text
                   variant='paragraph_4'
                   className='font-medium text-[#A3AED0]'
@@ -65,7 +67,7 @@ function dashboard() {
                 </Text>
               </span>
 
-              <div className='flex sm:justify-start justify-center'>
+              <div className='flex justify-center'>
                 <Button className='bg-[#00B0f0] text-white border border-solid rounded-3xl py-2 px-5'>
                   <Link href='/home/products/rent'>
                     <a>Rent Now</a>
