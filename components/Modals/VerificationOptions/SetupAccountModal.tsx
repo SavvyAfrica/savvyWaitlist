@@ -49,7 +49,7 @@ function SetupAccountModal({
   return (
     <>
       <div
-        onClick={() => setShowSetupAccModal(false)}
+        // onClick={() => setShowSetupAccModal(false)}
         className='left-0 top-0 overflow-auto fixed inset-0 z-50 outline-none focus:outline-none'
       >
         <div
@@ -90,11 +90,11 @@ function SetupAccountModal({
                       key={index}
                       onClick={() => setSetupAcctSelected(element)}
                       className={`cursor-pointer inline-block py-2 pl-2 relative pr-4 mb-2.5 rounded-xl flex justify-start items-center 
-                                    ${
-                                      setupAcctSelected === element
-                                        ? 'bg-[#E6F0FB]'
-                                        : 'bg-[#F6F6F6] hover:bg-[#E6F0FB]'
-                                    }`}
+                                  ${
+                                    setupAcctSelected === element
+                                      ? 'bg-[#E6F0FB]'
+                                      : 'bg-[#F6F6F6] hover:bg-[#E6F0FB]'
+                                  }`}
                     >
                       <Text
                         variant='paragraph_4'
@@ -111,7 +111,7 @@ function SetupAccountModal({
               </div>
 
               <Button
-                className='w-full rounded-xl font-semibold text-center py-2.5 px-4 bg-[#00B0F0]'
+                className='w-full grow rounded-xl font-semibold text-center py-2.5 px-4 bg-[#00B0F0]'
                 onClick={handleContinueClick}
               >
                 <Text variant='paragraph_4' className='font-bold text-white'>

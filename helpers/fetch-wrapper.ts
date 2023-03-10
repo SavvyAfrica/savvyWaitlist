@@ -32,7 +32,7 @@ async function post(url: string, user: any) {
     return handleResponse(response);
 }
 
-async function put(url: string, data: object) {
+async function put(url: string, data: any) {
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },

@@ -11,8 +11,6 @@ const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dfrp4wi75/image/upload'
 const DashboardTopBar = ({currentSubject}: any) => {
     const [createObjectURL, setCreateObjectURL] = useState<string>('http://cdn.onlinewebfonts.com/svg/img_569204.png');
 
-    const [profileImage, setProfileImage] = useState({})
-
     
     // profile picture upload to client
     const handleUploadProfileImageToClient = (event: any) => {
@@ -33,43 +31,39 @@ const DashboardTopBar = ({currentSubject}: any) => {
         const file = fileInput.files[0];
 
 
-        let cloudinaryFormData = new FormData();
-        cloudinaryFormData.append('file', file);
-        cloudinaryFormData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
+        // formData.forEach((value, key) => {
+        //     console.log(key,':', value);
+        // })
 
         const data = await fetch(CLOUDINARY_URL, {
             method: 'POST',
-            body: cloudinaryFormData 
+            body: formData 
         }).then(res => res.json());
 
 
         if (data.secure_url !== '') {
             const profilePicture = data.secure_url;
 
-            // let profilePictureFormData = new FormData();
-            // profilePictureFormData.append('profilePicture', profilePicture);
+            const formData = new FormData();
+            formData.append('profilePicture', profilePicture);
             
-            // profilePictureFormData.forEach((value, key) => {
+            // formData.forEach((value, key) => {
             //     console.log(key,':', value);
             // })
 
-            setProfileImage({
-                profilePicture: profilePicture
-            });
-            
-
             try {
-                // setIsLoading(true)
-                await userService.update('image', profileImage);
-                // setIsLoading(false)
+                if(formData.keys === profilePicture){
+                    await userService.update('image', formData);
+                }
             
             } catch (event: any) {
                 // console.log(event.message);
             
-            } finally {
-                // setIsLoading(false);
-            }
+            } finally {}
         }
     };
 

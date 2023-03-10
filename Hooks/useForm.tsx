@@ -21,20 +21,16 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         companyLoc:'',
         validDoc:'',
     });
-    const [employeeState, setEmployeeState] = useState<any>({
+    const [employee_Student_State, setEmployee_Student_State] = useState<any>({
         bvn:'',
         income:'',
         residentState:'',
-        homeAddress:'',
-        idUpload:'',
-    })
-    const [studentState, setStudentState] = useState<any>({
-        bvn:'',
         schoolName:'',
         matricNumber:'',
         homeAddress:'',
         idUpload:'',
     })
+    
     //FormErrors
     const [formErrors, setFormErrors] = useState<any>({
         firstName:'',
@@ -322,6 +318,58 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
                     setFormErrors(errorObj);
                 }
                 break;
+
+            case 'schoolName':
+                if(value === ""){
+                    setFormErrors({
+                        ...formErrors,
+                        schoolName:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "schoolName");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'matricNumber':
+                if(value === ""){
+                    setFormErrors({
+                        ...formErrors,
+                        matricNumber:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "matricNumber");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'homeAddress':
+                if(value === ""){
+                    setFormErrors({
+                        ...formErrors,
+                        homeAddress:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "homeAddress");
+                    setFormErrors(errorObj);
+                }
+                break;
+
+            case 'idUpload':
+                if(value === ""){
+                    setFormErrors({
+                        ...formErrors,
+                        idUpload:'Field is required'
+                    })
+                }
+                else{
+                    let errorObj = omit(formErrors, "idUpload");
+                    setFormErrors(errorObj);
+                }
+                break;
             
             default:
                 break;
@@ -345,6 +393,14 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         })
         setLoginState({
             ...loginState,
+            [name]:val
+        })
+        setEmployeeCompanystate({
+            ...employeeCompanyState,
+            [name]:val
+        })
+        setEmployee_Student_State({
+            ...employee_Student_State,
             [name]:val
         })
     }
@@ -374,12 +430,29 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
     const handleEmployeeCompanySubmit = (event: any) => {
         if(event) event.preventDefault();
         
-        if(Object.keys(formErrors).length === 12){
+        if(Object.keys(formErrors).length === 13){
             // Callback function that recieves the form data as an argument
             callback(employeeCompanyState);
 
+            console.log(employeeCompanyState);
+
             // Reset the form fields after submission 
             setEmployeeCompanystate({bvn:'',companyRole:'',companyReg:'',companyLoc:'',validDoc:''})
+        }
+    }
+
+    const handleEmployee_StudentSubmit = (event: any) => {
+        if(event) event.preventDefault();
+        
+        if(Object.keys(formErrors).length === 13){
+            // Callback function that recieves the form data as an argument
+            callback(employee_Student_State);
+
+            console.log(employee_Student_State);
+
+
+            // Reset the form fields after submission 
+            setEmployee_Student_State({bvn:'',income:'',residentState:'',schoolName:'',matricNumber:'',homeAddress:'',idUpload:''})
         }
     }
     
@@ -388,12 +461,13 @@ const useForm = (callback: { (formData: any): Promise<void>;}) => {
         registerState,
         loginState,
         employeeCompanyState,
-        employeeState,
-        studentState,
+        employee_Student_State,
         formErrors,
         handleRegisterSubmit,
         handleLoginSubmit,
         handleChange,
+        handleEmployeeCompanySubmit,
+        handleEmployee_StudentSubmit,
     }
     
 }

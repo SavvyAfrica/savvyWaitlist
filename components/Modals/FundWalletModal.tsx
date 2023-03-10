@@ -13,13 +13,15 @@ function FundWalletModal({ accountNumber, accountName, bankName }: any) {
 
   return (
     <>
-      <Button
-        className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4'
-        onClick={() => setShowModal(true)}
-      >
-        <BiPlus className='mr-2' />
-        Add Fund
-      </Button>
+      <div className="w-auto">
+        <Button
+          className='w-[163px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4'
+          onClick={() => setShowModal(true)}
+        >
+          <BiPlus className='mr-2' />
+          Add Fund
+        </Button>
+      </div>
 
       {showModal ? (
         <>

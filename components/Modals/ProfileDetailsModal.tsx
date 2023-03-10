@@ -84,7 +84,6 @@ function ProfileDetailsModal({ currentSubject, createObjectURL, handleUploadProf
                           type="file"
                           name='file'
                           accept="image/*"
-                          // onChange={handleUploadToClient}
                           title=" "
                           className='absolute inset-0 w-full h-full opacity-0 z-[1] text-[0px] cursor-pointer'
                         />
@@ -103,13 +102,12 @@ function ProfileDetailsModal({ currentSubject, createObjectURL, handleUploadProf
 
                   <Button 
                     className='button w-full rounded-xl font-semibold text-center py-2.5 px-4 bg-[#00B0F0]'
-                    // onClick={handleUploadToServer}
                   >
                     <Text
                       variant='paragraph_4'
                       className='font-bold text-white'
                     >
-                      Upload
+                      Save
                     </Text>
                   </Button>
                 </form>

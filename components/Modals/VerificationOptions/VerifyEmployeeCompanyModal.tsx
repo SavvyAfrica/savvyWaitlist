@@ -22,8 +22,7 @@ function VerifyEmployeeCompanyModal({
     e.stopPropagation()
   }
 
-  const { handleChange, employeeCompanyState, formErrors } =
-    useForm(employeeCompanyForm)
+  const { handleChange, employeeCompanyState, formErrors, handleEmployeeCompanySubmit } = useForm(employeeCompanyForm);
 
   // Callback function when form is submitted!
   async function employeeCompanyForm(formData: any) {
@@ -40,7 +39,7 @@ function VerifyEmployeeCompanyModal({
   return (
     <>
       <div
-        onClick={() => setShowVerifyEmployeeCompModal(false)}
+        // onClick={() => setShowVerifyEmployeeCompModal(false)}
         className={`left-0 top-0 overflow-auto fixed inset-0 z-50 outline-none focus:outline-none`}
       >
         <div
@@ -75,7 +74,7 @@ function VerifyEmployeeCompanyModal({
                 Kindly fill in the information below.
               </Text>
 
-              <form className='w-full flex flex-col items-center justify-start mt-8'>
+              <form className='w-full flex flex-col items-center justify-start mt-8' onSubmit={handleEmployeeCompanySubmit}>
                 <div className='pb-1.5 mb-1.5 md:w-11/12 w-full'>
                   <Label htmlFor='bvn'>
                     Bank Verification Number (BVN)
@@ -182,8 +181,9 @@ function VerifyEmployeeCompanyModal({
                     value={employeeCompanyState.validDoc}
                     onChange={handleChange}
                     aria-describedby='file_input'
+                    title=" "
                     className={`block w-full text-sm text-gray-900 border border-gray-300 rounded cursor-pointer bg-gray-50 
-                    dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400`}
+                    dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 px-2 py-[6px]`}
                   />
                   <p
                     className='mt-1 md:text-sm text-xs text-gray-500 dark:text-gray-300'
@@ -204,7 +204,7 @@ function VerifyEmployeeCompanyModal({
                   <BsArrowRight className='sm:ml-auto ml-0 sm:block hidden' />
                 </Button> */}
 
-                <Button className='py-2.5 px-4 mt-6 w-full flex-auto block bg-[#00B0F0] rounded-xl'>
+                <Button className='py-2.5 grow px-4 mt-6 w-full block bg-[#00B0F0] rounded-xl'>
                   <Text variant='paragraph_4' className='font-bold text-white'>
                     Submit
                   </Text>
