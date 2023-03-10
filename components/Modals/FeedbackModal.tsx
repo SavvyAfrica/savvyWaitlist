@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { BiPlus } from 'react-icons/bi'
-import { Button } from '../Button/Button'
+import { Button } from '../button/button'
 import { Text } from '../typography/typography'
 import Image from 'next/image'
 import EditIcon from '../../assets/png/edit_black.png'

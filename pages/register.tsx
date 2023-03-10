@@ -7,7 +7,7 @@ import { Input } from '../components/Input/Input'
 import { Label } from '../components/Label/Label'
 import { FormHead } from '../components/formHeader/formHeader'
 import { Text } from '../components/typography/typography'
-import { Button } from '../components/Button/Button'
+import { Button } from '../components/button/button'
 import PhoneNumInput from '../components/PhoneNumInput/PhoneNumInput'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -39,13 +39,11 @@ function register() {
       await userService.register(formData)
       router.push('/login')
       setIsLoading(false)
-      notify('Registration successful', 'success');
-
+      notify('Registration successful', 'success')
     } catch (event: any) {
-      notify(event.message, 'error');
-
+      notify(event.message, 'error')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 

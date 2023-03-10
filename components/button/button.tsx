@@ -1,11 +1,10 @@
-import React from "react";
-import { IButton } from "../../type/type";
-import Spinner from "../Spinner/Spinner";
-
+import React from 'react'
+import { IButton } from '../../type/type'
+import Spinner from '../Spinner/Spinner'
 
 export const Button = (props: IButton) => {
-  const { className, children, isLoading, onClick } = props;
-  
+  const { className, children, isLoading, onClick } = props
+
   return (
     <div className="w-auto flex items-center">
       {isLoading 
@@ -23,5 +22,5 @@ export const Button = (props: IButton) => {
         </button>
       }
     </div>
-  );
-};
+  )
+}

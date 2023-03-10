@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { GrStatusGood } from 'react-icons/gr'
-import { Button } from '../../Button/Button'
+import { Button } from '../../button/button'
 import { Text } from '../../typography/typography'
 
 interface MyProps {

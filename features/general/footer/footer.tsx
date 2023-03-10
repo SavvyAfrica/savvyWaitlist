@@ -14,9 +14,9 @@ function footer() {
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false)
 
   return (
-    <div className='maxWidth mx-auto w-full flex flex-col px-5'>
-      <div className='w-full flex md:flex-row flex-col justify-between items-start h-full py-5 mb-[90px]'>
-        <div className='md:w-[30%] sm:w-[50%] w-[70%] md:mb-0 mb-[34px]'>
+    <div className='maxWidth mx-auto w-full flex flex-col py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10'>
+      <div className='w-full flex md:flex-row flex-col justify-between h-full  mb-[90px]'>
+        <div className='md:w-[30%] w-[35%] md:mb-0 mb-[34px]'>
           <div className='w-full'>
             <Image src={Logo} alt='Logo' />
 
@@ -113,7 +113,7 @@ function footer() {
           </div>
 
           <div className='ft-nav mt-4'>
-            <Link href='#'>
+            <Link href='/about'>
               <a>
                 <Text variant='paragraph_3' className='font-medium mb-4'>
                   About Us
@@ -176,7 +176,7 @@ function footer() {
                 </Text>
               </a>
             </Link>
-            <Link href='#'>
+            <Link href='/blog'>
               <a>
                 <Text variant='paragraph_3' className='font-medium'>
                   Blog

@@ -2,14 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Phones from '../../../assets/png/phones.png'
-import { Button } from '../../../components/Button/Button'
+import { Button } from '../../../components/button/button'
 import { Text } from '../../../components/typography/typography'
 
 function Frame() {
   return (
     <div
       className={`maxWidth mx-auto w-full flex justify-between 
-        items-center md:flex-row flex-col-reverse px-5 py-5 md:mb-36 mb-20`}
+        items-center md:flex-row flex-col-reverse py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 md:mb-36 mb-20`}
     >
       <div className='md:w-[35%] w-full md:mr-auto mr-0'>
         <Text
