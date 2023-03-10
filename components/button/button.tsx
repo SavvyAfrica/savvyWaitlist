@@ -7,7 +7,7 @@ export const Button = (props: IButton) => {
   const { className, children, isLoading, onClick } = props;
   
   return (
-    <div className="flex justify-center items-center">
+    <div className="w-auto flex justify-start items-center">
       {isLoading 
         ?
         <Spinner /> 
