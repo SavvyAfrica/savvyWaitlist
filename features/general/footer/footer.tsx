@@ -15,8 +15,8 @@ function footer() {
 
   return (
     <div className='maxWidth mx-auto w-full flex flex-col px-5'>
-      <div className='w-full flex md:flex-row flex-col justify-between h-full py-5 mb-[90px]'>
-        <div className='md:w-[30%] w-[35%] md:mb-0 mb-[34px]'>
+      <div className='w-full flex md:flex-row flex-col justify-between items-start h-full py-5 mb-[90px]'>
+        <div className='md:w-[30%] sm:w-[50%] w-[70%] md:mb-0 mb-[34px]'>
           <div className='w-full'>
             <Image src={Logo} alt='Logo' />
 
@@ -90,7 +90,7 @@ function footer() {
         >
           <div className={`ft-head md:w-auto w-full`}>
             <Text variant='paragraph_1' className='font-semibold inline-block'>
-              Comapny
+              Company
             </Text>
 
             <span className='ft-icon inline-block'>
@@ -146,7 +146,7 @@ function footer() {
         >
           <div className={`ft-head md:w-auto w-full`}>
             <Text variant='paragraph_1' className='font-semibold inline-block'>
-              Comapny
+              Resources
             </Text>
 
             <span className='ft-icon inline-block'>
