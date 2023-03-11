@@ -145,16 +145,15 @@ function products_rent() {
 
   console.log(data, 'This is my products data')
 
+  const [currentSubject, setCurrentSubject] = useState<any>()
+  useEffect(() => {
+    // Getting current logged in user
+    const subject = userService.userValue
 
-    const [currentSubject, setCurrentSubject] = useState<any>();
-    useEffect(() => {
-        // Getting current logged in user
-        const subject = userService.userValue;
-
-        if (subject !== undefined){
-           setCurrentSubject(subject);
-        }
-    }, []);
+    if (subject !== undefined) {
+      setCurrentSubject(subject)
+    }
+  }, [])
 
   return (
     <>
@@ -210,7 +209,7 @@ function products_rent() {
               Top Interest
             </Text>
 
-            <span className='flex items-center cursor-pointer inline-block'>
+            <span className=' items-center cursor-pointer inline-block'>
               <Text
                 variant='paragraph_3'
                 className='text-[#F4B183] font-bold mr-2'
@@ -374,7 +373,7 @@ function products_rent() {
               Latest Model
             </Text>
 
-            <span className='flex items-center cursor-pointer inline-block'>
+            <span className=' items-center cursor-pointer inline-block'>
               <Text
                 variant='paragraph_3'
                 className='text-[#F4B183] font-bold mr-2'
