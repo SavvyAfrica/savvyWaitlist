@@ -33,7 +33,7 @@ function dashboard() {
               </p>
             </div>
 
-            <div className="w-auto">
+            <div className='w-auto'>
               <Button className='w-[125px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 text-sm'>
                 <Link href='/home/account'>
                   <a>Go there</a>
