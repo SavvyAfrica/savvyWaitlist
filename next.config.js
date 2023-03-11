@@ -19,6 +19,6 @@ module.exports = {
         : 'https://savvy-backend.onrender.com/api/v1', // production api
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'www.pexels.com'],
   },
 }

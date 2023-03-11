@@ -22,7 +22,12 @@ function VerifyEmployeeCompanyModal({
     e.stopPropagation()
   }
 
-  const { handleChange, employeeCompanyState, formErrors, handleEmployeeCompanySubmit } = useForm(employeeCompanyForm);
+  const {
+    handleChange,
+    employeeCompanyState,
+    formErrors,
+    handleEmployeeCompanySubmit,
+  } = useForm(employeeCompanyForm)
 
   // Callback function when form is submitted!
   async function employeeCompanyForm(formData: any) {
@@ -74,7 +79,10 @@ function VerifyEmployeeCompanyModal({
                 Kindly fill in the information below.
               </Text>
 
-              <form className='w-full flex flex-col items-center justify-start mt-8' onSubmit={handleEmployeeCompanySubmit}>
+              <form
+                className='w-full flex flex-col items-center justify-start mt-8'
+                onSubmit={handleEmployeeCompanySubmit}
+              >
                 <div className='pb-1.5 mb-1.5 md:w-11/12 w-full'>
                   <Label htmlFor='bvn'>
                     Bank Verification Number (BVN)
@@ -181,7 +189,7 @@ function VerifyEmployeeCompanyModal({
                     value={employeeCompanyState.validDoc}
                     onChange={handleChange}
                     aria-describedby='file_input'
-                    title=" "
+                    title=' '
                     className={`block w-full text-sm text-gray-900 border border-gray-300 rounded cursor-pointer bg-gray-50 
                     dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 px-2 py-[6px]`}
                   />

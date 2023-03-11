@@ -8,8 +8,6 @@ import { Input } from '../../Input/Input'
 import useForm from '../../../Hooks/useForm'
 import { userService } from '../../../services'
 
-
-
 interface MyProps {
   setShowVerifyEmp_StudModal: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -150,14 +148,18 @@ function VerifyEmp_StudModal({ setShowVerifyEmp_StudModal }: MyProps) {
     ],
   })
 
-
-  const { handleChange, employee_Student_State, formErrors, handleEmployee_StudentSubmit } = useForm(empl_StudForm);
+  const {
+    handleChange,
+    employee_Student_State,
+    formErrors,
+    handleEmployee_StudentSubmit,
+  } = useForm(empl_StudForm)
 
   // Callback function when form is submitted!
   async function empl_StudForm(empl_StudData: any) {
     try {
-      await userService.update('account', empl_StudData);
-  
+      await userService.update('account', empl_StudData)
+
       // notify('Registration successful', 'success');
     } catch {
       // notify('Unsuccessful registration', 'error');
@@ -165,7 +167,7 @@ function VerifyEmp_StudModal({ setShowVerifyEmp_StudModal }: MyProps) {
   }
 
   // Prevents child element from inheriting parent element's onClick
-  const handleChildElementClick = (e: any) => { 
+  const handleChildElementClick = (e: any) => {
     e.stopPropagation()
   }
 
@@ -226,9 +228,15 @@ function VerifyEmp_StudModal({ setShowVerifyEmp_StudModal }: MyProps) {
                         key={idx}
                         className={classNames('rounded-xl bg-white')}
                       >
-                        <form className='w-full flex flex-col items-center justify-start' onSubmit={handleEmployee_StudentSubmit}>
+                        <form
+                          className='w-full flex flex-col items-center justify-start'
+                          onSubmit={handleEmployee_StudentSubmit}
+                        >
                           {forms.map((form) => (
-                            <div key={form.id} className='pb-1.5 mb-1.5 md:w-11/12 w-full'>
+                            <div
+                              key={form.id}
+                              className='pb-1.5 mb-1.5 md:w-11/12 w-full'
+                            >
                               <Label htmlFor={form.htmlFor}>
                                 {form.children}
                               </Label>
@@ -237,12 +245,15 @@ function VerifyEmp_StudModal({ setShowVerifyEmp_StudModal }: MyProps) {
                                 name={form.name}
                                 type={form.type}
                                 value={employee_Student_State.name}
-                                title=" "
-                                className={`${form.type === 'file' ? 
-                                `text-sm text-gray-900 border border-gray-300 rounded cursor-pointer 
+                                title=' '
+                                className={`${
+                                  form.type === 'file'
+                                    ? `text-sm text-gray-900 border border-gray-300 rounded cursor-pointer 
                                 bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 
                                 dark:border-gray-600 px-2 py-[6px]
-                                ` : null }`}
+                                `
+                                    : null
+                                }`}
                                 onChange={handleChange}
                               />
                               {formErrors.name && (
@@ -257,9 +268,7 @@ function VerifyEmp_StudModal({ setShowVerifyEmp_StudModal }: MyProps) {
                                   <BsArrowRight className='sm:ml-auto ml-0 sm:block hidden' />
                                 </Button> */}
 
-                          <Button 
-                            className='py-2.5 grow px-4 mt-6 w-full block bg-[#00B0F0] rounded-xl'
-                          >
+                          <Button className='py-2.5 grow px-4 mt-6 w-full block bg-[#00B0F0] rounded-xl'>
                             <Text
                               variant='paragraph_4'
                               className='font-bold text-white'
