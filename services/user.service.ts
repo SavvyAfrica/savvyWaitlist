@@ -81,8 +81,8 @@ function _delete(id: any) {
   return fetchWrapper.delete(`${baseUrl}/${id}`)
 }
 
-function getAll() {
-  return fetchWrapper.get(baseUrl)
+function getAll(url: string) {
+  return fetchWrapper.get(`${baseUrl}/${url}`)
 }
 
 function getById(id: any) {
