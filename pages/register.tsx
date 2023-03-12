@@ -7,7 +7,7 @@ import { Input } from '../components/Input/Input'
 import { Label } from '../components/Label/Label'
 import { FormHead } from '../components/formHeader/formHeader'
 import { Text } from '../components/typography/typography'
-import { Button } from '../components/button/button'
+import { Button } from '../components/Button/button'
 import PhoneNumInput from '../components/PhoneNumInput/PhoneNumInput'
 
 import { ToastContainer, toast } from 'react-toastify'
