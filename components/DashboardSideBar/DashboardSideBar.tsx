@@ -16,7 +16,7 @@ import HomeIcon from '../../assets/png/homeIcon.png'
 import AccountIcon from '../../assets/png/walletIcon.png'
 import MessageIcon from '../../assets/png/messageIcon.png'
 import FavouriteIcon from '../../assets/png/favouriteIcon.png'
-import { Button } from '../button/button'
+import { Button } from '../Button/button'
 
 const DashboardSideBar = () => {
   const { showNav, setShowNav } = useAppStore()
@@ -57,7 +57,7 @@ const DashboardSideBar = () => {
               className={`block flex items-center pl-6 py-3 mx-7 mb-3 rounded 
               text-center cursor-pointer transition-colors text-[#292D32]
               ${
-                router.asPath === '/home'
+                router.asPath === '/home' || router.asPath === '/home/products/rent' || router.asPath === '/home/products/buy'
                   ? 'bg-[#00B0F0]'
                   : 'bg-white hover:bg-[#dcebf9]'
               }`}

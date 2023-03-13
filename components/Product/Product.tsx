@@ -8,7 +8,7 @@ interface IMyProp {
 
 function Product({ src, children }: IMyProp) {
   return (
-    <div className='flex flex-col flex-initial rounded-[21.53px] curs'>
+    <div className='flex flex-col flex-initial rounded-[21.53px] cursor-pointer'>
       <div className='w-full h-[143.51px] bg-[#f2f7fc] flex justify-center items-center rounded-[21.53px] relative'>
         <Image
           src={src}
