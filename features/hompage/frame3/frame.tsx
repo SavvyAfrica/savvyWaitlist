@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import IMAGE from '../../../assets/png/ui2.png'
-import { Button } from '../../../components/button/button'
+import { Button } from '../../../components/Button/button'
 import { Text } from '../../../components/typography/typography'
 
 const Frame = () => {
