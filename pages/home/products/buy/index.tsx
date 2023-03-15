@@ -105,8 +105,10 @@ function products_buy() {
       setIsLoading(true)
       const response = await userService.getAll('products')
       const data = response.products
+
+      const filteredData = data.filter((item: any) => item.salesOption === "BUY")
       
-      setProductsData(data)
+      setProductsData(filteredData)
 
       setIsLoading(false)
     } catch (error) {
@@ -258,6 +260,8 @@ function products_buy() {
                     | React.ReactPortal
                     | null
                     | undefined
+                  salesOption:
+                    | string
                   price:
                     | string
                     | number
@@ -271,7 +275,7 @@ function products_buy() {
                     | null
                     | undefined
                 }) => (
-                  <Product key={topInt.id} src={topInt.images[0].image}>
+                  <Product key={topInt.id} id={topInt.id} option={topInt.salesOption.toLowerCase()} src={topInt.images[0].image}>
                     <ProductInfo
                       type={topInt.name}
                       model={topInt.brand}
@@ -438,6 +442,8 @@ function products_buy() {
                     | React.ReactPortal
                     | null
                     | undefined
+                  salesOption:
+                    | string
                   price:
                     | string
                     | number
@@ -451,7 +457,7 @@ function products_buy() {
                     | null
                     | undefined
                 }) => (
-                  <Product key={topInt.id} src={topInt.images[0].image}>
+                  <Product key={topInt.id} id={topInt.id} option={topInt.salesOption.toLowerCase()} src={topInt.images[0].image}>
                     <ProductInfo
                       type={topInt.name}
                       model={topInt.brand}
