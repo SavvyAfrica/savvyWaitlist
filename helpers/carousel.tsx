@@ -2,8 +2,11 @@ import { useEffect } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Image from 'next/image'
-
-const MobileCarousel = () => {
+interface CarouselProps {
+  src: string
+  // children?: React.ReactNode
+}
+const MobileCarousel = ({ src }: CarouselProps) => {
   useEffect(() => {
     const scrollHandler = (e: Event) => {
       const delta = Math.sign((e as WheelEvent).deltaX)
@@ -30,28 +33,13 @@ const MobileCarousel = () => {
     <div className='mobile-carousel'>
       <Carousel showThumbs={false} showStatus={false}>
         <div>
-          <Image
-            src='https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg'
-            alt='Carousel image'
-            height={100}
-            width={100}
-          />
+          <Image src={src} alt='Carousel image' height={100} width={100} />
         </div>
         <div>
-          <Image
-            src='https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg'
-            alt='Carousel image'
-            height={100}
-            width={100}
-          />
+          <Image src={src} alt='Carousel image' height={100} width={100} />
         </div>
         <div>
-          <Image
-            src='https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg'
-            alt='Carousel image'
-            height={100}
-            width={100}
-          />
+          <Image src={src} alt='Carousel image' height={100} width={100} />
         </div>
       </Carousel>
 

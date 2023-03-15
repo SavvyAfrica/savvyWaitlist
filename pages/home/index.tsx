@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DashboardLayout from '../../components/DashboardLayout/DashboardLayout'
 import Vector1 from '../../assets/png/Vector1.png'
 import Vector2 from '../../assets/png/Vector2.png'
@@ -14,34 +14,47 @@ import DashboardTopBar from '../../components/DashboardTopBar/DashboardTopBar'
 import Link from 'next/link'
 import { withAuth } from '../../components/views/protectedRoute'
 import SkeletonLoader from '../../helpers/skeletonLoader'
+import { userService } from '../../services'
 
 function dashboard() {
+  const [currentSubject, setCurrentSubject] = useState<any>()
+  useEffect(() => {
+    // Getting current logged in user
+    const subject = userService.userValue
+
+    if (subject !== undefined) {
+      setCurrentSubject(subject)
+    }
+  }, [])
+
+  console.log(currentSubject, 'this is my current user')
   return (
     <>
       <DashboardLayout>
         <DashboardTopBar />
 
         <section className='w-full flex md:flex-row flex-col h-auto md:h-[156.79px] items-center justify-center gap-3.5 flex-initial mb-3.5'>
-          <DashboardContentBox className='md:w-4/6 sm:flex-row flex-col items-center justify-center'>
-            <div className='flex items-center'>
-              <Image src={Vector1} alt='vector' className='w-16 h-16' />
-            </div>
+          {currentSubject?.isCompleted === false && (
+            <DashboardContentBox className='md:w-4/6 sm:flex-row flex-col items-center justify-center'>
+              <div className='flex items-center'>
+                <Image src={Vector1} alt='vector' className='w-16 h-16' />
+              </div>
 
-            <div className='max-w-[280px] sm:my-0 my-6'>
-              <p className='text-base font-medium text-center sm:px-5 px-0'>
-                Do you know how to complete account set up?
-              </p>
-            </div>
+              <div className='max-w-[280px] sm:my-0 my-6'>
+                <p className='text-base font-medium text-center sm:px-5 px-0'>
+                  Do you know how to complete account set up?
+                </p>
+              </div>
 
-            <div className='w-auto'>
-              <Button className='w-[125px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 text-sm'>
-                <Link href='/home/account'>
-                  <a>Go there</a>
-                </Link>
-              </Button>
-            </div>
-          </DashboardContentBox>
-
+              <div className='w-auto'>
+                <Button className='w-[125px] border border-[#00B0f0] border-solid rounded-3xl py-2 px-4 text-sm'>
+                  <Link href='/home/account'>
+                    <a>Go there</a>
+                  </Link>
+                </Button>
+              </div>
+            </DashboardContentBox>
+          )}
           <DashboardContentBox className='md:w-2/6 md:block hidden py-0 px-0'>
             {/* <Image src={Rectangle} alt='rectangle' className='object-cover' /> */}
           </DashboardContentBox>

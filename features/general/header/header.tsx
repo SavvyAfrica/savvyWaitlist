@@ -10,8 +10,10 @@ function header() {
     <>
       <div className='w-full maxWidth mx-auto shadow2 px-5 py-2.5 sticky lg:block hidden'>
         <div className='flex justify-around items-center'>
-          <div className='w-[20%]'>
-            <Image src={Logo} alt='Logo' />
+          <div className='w-[20%] cursor-pointer'>
+            <Link href={'/'}>
+              <Image src={Logo} alt='Logo' />
+            </Link>
           </div>
 
           <div className='flex justify-around items-center w-[60%]'>

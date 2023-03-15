@@ -24,7 +24,7 @@ function ProductInfo({ type, model, amount }: IMyProp) {
           <span className='text-[9px] text-[#2F294D]'>/per month</span>
         </span>
 
-        <span className='w-[31.89px] h-[31.89px] bg-[#E5E5E5] rounded-full block flex justify-center items-center cursor-pointer'>
+        <span className='w-[31.89px] h-[31.89px] bg-[#E5E5E5] rounded-full block lg:flex justify-center items-center cursor-pointer'>
           <MdOutlineFavoriteBorder className='w-[13.96px] h-[12.46px]' />
         </span>
       </div>
