@@ -1,126 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { SetStateAction, useEffect, useState } from 'react'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { Text } from '../../../../components/typography/typography'
-// import { useGlobalContext } from '../../../../global/store'
+import { useAppStore } from '../../../../global/store'
 import Image from 'next/image'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-import Profile from '../../../../assets/png/defaultProfile.png'
 import Link from 'next/link'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
 import Product from '../../../../components/Product/Product'
 import ProductInfo from '../../../../components/Product/ProductInfo'
-import Iphone13promax from '../../../../assets/png/iphone13promax.png'
-import microsoftsurface from '../../../../assets/png/microsoft-surface.png'
-import samsunggalaxy from '../../../../assets/png/samsung-galaxy.png'
-import applewatchseries from '../../../../assets/png/apple-watch-series.png'
-import nokiatablet from '../../../../assets/png/nokia-tablet.png'
 import ProductsCategoryBox from '../../../../components/ProductsCategoryBox/ProductsCategoryBox'
 import Vector3 from '../../../../assets/png/Vector3.png'
-import Apple from '../../../../assets/png/Apple.png'
 import { withAuth } from '../../../../components/views/protectedRoute'
-import { userService } from '../../../../services'
+import SkeletonLoader from '../../../../helpers/skeletonLoader'
 import DashboardProfileDetails from '../../../../components/DashboardProfileDetails/DashboardProfileDetails'
+import { userService } from '../../../../services'
+import { useRouter } from 'next/router'
 
-const topInterest = [
-  {
-    id: 1,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'iPhone 13 Pro Max',
-    model: 'Apple',
-    amount: '530,500',
-  },
-  {
-    id: 2,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Microsoft Surface 2',
-    model: 'Microsoft',
-    amount: '240,500',
-  },
-  {
-    id: 3,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Samsung Galaxy S22',
-    model: 'Samsung',
-    amount: '530,500',
-  },
-  {
-    id: 4,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '530,500',
-  },
-  {
-    id: 5,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Nokia Tablet T267',
-    model: 'Nokia',
-    amount: '530,500',
-  },
-]
-
-const popularBrands = [
-  {
-    id: 1,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-  },
-  {
-    id: 2,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-  },
-  {
-    id: 3,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-  },
-  {
-    id: 4,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-  },
-  {
-    id: 5,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-  },
-]
-
-const latestModel = [
-  {
-    id: 1,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'iPhone 13 Pro Max',
-    model: 'Apple',
-    amount: '530,500',
-  },
-  {
-    id: 2,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '530,500',
-  },
-  {
-    id: 3,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '530,500',
-  },
-  {
-    id: 4,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '530,500',
-  },
-  {
-    id: 5,
-    src: 'https://res.cloudinary.com/duhx38bd0/image/upload/v1653824887/habeep-files/6ca963fe647ffcfaeb9090c4c15243b7165382488157819357.jpg',
-    type: 'Apple Watch Series 6',
-    model: 'Apple',
-    amount: '530,500',
-  },
-]
 
 const categories = [
   {
@@ -153,19 +50,35 @@ const categories = [
   },
 ]
 
+
+interface Image {
+  id: string
+  image: string
+}
+interface Products {
+  [x: string]: any
+  products: SetStateAction<Products>
+  id: number
+  name: string
+  brand: string
+  price: number
+  images: Image[]
+}
+
 function products_buy() {
-  // const { showNav, setShowNav } = useGlobalContext()
-  const [user, setUser] = useState<any>({})
-
-  useEffect(() => {
-    let r =
-      typeof window !== 'undefined'
-        ? JSON.parse(localStorage.getItem('user') || '{}')
-        : ''
-
-    setUser(r)
-  }, [])
+  const { showNav, setShowNav } = useAppStore()
+  
+  // Initializing the search query states
   const [search, setSearch] = useState('')
+
+  // Initializing the set data states
+  const [productsData, setProductsData] = useState<any>([])
+  const [isLoading, setIsLoading] = useState(false)
+
+  
+  // Initializing the error states
+  const [error, setError] = useState<Error | null>(null)
+
 
   // Search filter function
 
@@ -175,9 +88,8 @@ function products_buy() {
   //   )
   // }
 
-  //Applying our search filter function to our array of countries recieved from the API
-
   // const filtered = searchFilter(topInterest)
+
 
   //Handling the input on our search bar
   const handleChange = (e: {
@@ -186,30 +98,53 @@ function products_buy() {
     setSearch(e.target.value)
   }
 
-    const [currentSubject, setCurrentSubject] = useState<any>();
-    useEffect(() => {
-        // Getting current logged in user
-        const subject = userService.userValue;
 
-        if (subject !== undefined){
-           setCurrentSubject(subject);
-        }
-    }, []);
+  //Getting all the products
+  const fetchData = async () => {
+    try {
+      setIsLoading(true)
+      const response = await userService.getAll('products')
+      const data = response.products
+      
+      setProductsData(data)
+
+      setIsLoading(false)
+    } catch (error) {
+      setError(new Error((error as Error).message))
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+
+  const [currentSubject, setCurrentSubject] = useState<any>()
+  useEffect(() => {
+    // Getting current logged in user
+    const subject = userService.userValue
+
+    if (subject !== undefined) {
+      setCurrentSubject(subject)
+    }
+
+    fetchData()
+  }, [])
+
+  const router = useRouter()
 
   return (
     <>
       <DashboardLayout>
-        <div className='w-full pb-9 pt-9 flex justify-between items-start'>
+        <div className='w-full pt-9 pb-16 flex justify-between items-start'>
           <div>
             <div className='lg:hidden -translate-x-1'>
-              {/* <HiOutlineBars3BottomLeft
+              <HiOutlineBars3BottomLeft
                 className='h-8 w-8 cursor-pointer text-gray-700'
                 onClick={() => setShowNav(!showNav)}
-              /> */}
+              />
             </div>
 
             <div className='w-auto lg:mt-0 mt-7 flex flex-row items-center'>
-              <IoArrowBackCircleOutline className='text-2xl pt-1' />
+              <IoArrowBackCircleOutline className='text-2xl pt-1 cursor-pointer' onClick={() => router.push('/home')} />
               <Text className='font-bold ml-2.5 text-[#292d32] lg:text-[30px] sm:text-2xl text-sm'>
                 Buying Product Page
               </Text>
@@ -223,33 +158,7 @@ function products_buy() {
               {/* </Link> */}
             </div>
 
-            <div className='w-full sm:py-1 py-0 sm:px-2 px-0 rounded-xl hover:bg-[#dcebf9]'>
-              <Link href={'/dashboard/account'}>
-                <a className='flex w-full justify-center items-center'>
-                  <span className='inline-block sm:h-10 h-[25px] sm:w-10 w-[25px]'>
-                    <Image
-                      src={Profile}
-                      width='100%'
-                      height='100%'
-                      alt='profile picture'
-                      className='rounded-full h-8 md:mr-4 border-2 border-white shadow-xl'
-                    />
-                  </span>
-
-                  <div className='md:block hidden ml-3 flex flex-col items-start'>
-                    <Text
-                      variant='paragraph_4'
-                      className='font-semibold text-gray-700'
-                    >
-                      {user.firstName} {user.lastName}
-                    </Text>
-                    <Text variant='paragraph_4' className='font-normal'>
-                      User
-                    </Text>
-                  </div>
-                </a>
-              </Link>
-            </div>
+            <DashboardProfileDetails currentSubject={currentSubject} />
           </div>
         </div>
 
@@ -286,18 +195,93 @@ function products_buy() {
               <Image src={Vector3} alt='vector' />
             </span>
           </div>
-
-          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] h-[255.13px] px-4 py-4'>
-            {topInterest.map((topInt) => (
-              <Product key={topInt.id} src={topInt.src}>
-                <ProductInfo
-                  type={topInt.type}
-                  model={topInt.model}
-                  amount={topInt.amount}
-                />
-              </Product>
-            ))}
-          </div>
+          {isLoading ? (
+            <div 
+              className={`mb-[19.36px] grid lg:grid-cols-5 sm:grid-cols-3 grid-col-xs items-center 
+                gap-5 w-full bg-white rounded-[21.53px] h-auto px-4 py-4`}
+            >
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+            </div>
+          ) : (
+            <div className={`mb-[19.36px] bg-white grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 grid-col-xs gap-5 
+              items-center rounded-[21.53px] px-4 py-4 h-auto`}
+            >
+              {productsData.map(
+                (topInt: {
+                  id: React.Key | null | undefined
+                  images: Image[]
+                  name:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  brand:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  price:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                }) => (
+                  <Product key={topInt.id} src={topInt.images[0].image}>
+                    <ProductInfo
+                      type={topInt.name}
+                      model={topInt.brand}
+                      amount={topInt.price}
+                    />
+                  </Product>
+                )
+              )}
+            </div>
+          )}
 
           <div className='mb-2.5 flex justify-between items-center'>
             <Text className='font-bold text-base tracking-tight text-[#292D32]'>
@@ -314,12 +298,67 @@ function products_buy() {
               <Image src={Vector3} alt='vector' />
             </span>
           </div>
-
-          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4 h-[176px]'>
-            {popularBrands.map((popularBrand) => (
-              <Product key={popularBrand.id} src={popularBrand.src} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div 
+              className={`mb-[19.36px] grid lg:grid-cols-5 sm:grid-cols-3 grid-col-xs items-center 
+                gap-5 w-full bg-white rounded-[21.53px] h-auto px-4 py-4`}
+            >
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+            </div>
+          ) : (
+            <div className={`mb-[19.36px] bg-white grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 grid-col-xs gap-5 
+              items-center rounded-[21.53px] px-4 py-4 h-auto`}
+            >
+              {productsData.map(
+                (popularBrand: {
+                  id: React.Key | null | undefined
+                  images: Image[]
+                }) => (
+                  <Product
+                    key={popularBrand.id}
+                    src={popularBrand.images[0].image}
+                  />
+                )
+              )}
+            </div>
+          )}
+          {/* <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center  rounded-[21.53px] px-4 py-4'>
+            {data.map(
+              (popularBrand: {
+                id: React.Key | null | undefined
+                images: Image[]
+              }) => (
+                <Product
+                  key={popularBrand.id}
+                  src={popularBrand.images[0].image}
+                />
+              )
+            )}
+          </div> */}
 
           <div className='mb-2.5 flex justify-between items-center'>
             <Text className='font-bold text-base tracking-tight text-[#292D32]'>
@@ -337,17 +376,92 @@ function products_buy() {
             </span>
           </div>
 
-          <div className='mb-[19.36px] bg-white grid grid-cols-5 gap-5 items-center px-4 py-4 rounded-[21.53px] h-[255.13px]'>
-            {latestModel.map((latestMod) => (
-              <Product key={latestMod.id} src={latestMod.src}>
-                <ProductInfo
-                  type={latestMod.type}
-                  model={latestMod.model}
-                  amount={latestMod.amount}
-                />
-              </Product>
-            ))}
-          </div>
+          {isLoading ? (
+            <div className={`mb-[19.36px] grid lg:grid-cols-5 sm:grid-cols-3 grid-col-xs items-center 
+              gap-5 w-full bg-white rounded-[21.53px] h-auto px-4 py-4`}
+            >
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+              <SkeletonLoader
+                width='100%'
+                height='143.51px'
+                borderRadius='21.53px'
+              />
+            </div>
+          ) : (
+            <div className={`mb-[19.36px] bg-white grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 grid-col-xs gap-5 
+              items-center rounded-[21.53px] px-4 py-4 h-auto`}
+            >
+              {productsData.map(
+                (topInt: {
+                  id: React.Key | null | undefined
+                  images: Image[]
+                  name:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  brand:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                  price:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                }) => (
+                  <Product key={topInt.id} src={topInt.images[0].image}>
+                    <ProductInfo
+                      type={topInt.name}
+                      model={topInt.brand}
+                      amount={topInt.price}
+                    />
+                  </Product>
+                )
+              )}
+            </div>
+          )}
         </div>
       </DashboardLayout>
     </>
