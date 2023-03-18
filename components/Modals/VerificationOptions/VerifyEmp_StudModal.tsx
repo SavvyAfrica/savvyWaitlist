@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
-import { Button } from '../../Button/button'
+import { Button } from '../../button/button'
 import { Text } from '../../typography/typography'
 import { Tab } from '@headlessui/react'
 import { Label } from '../../Label/Label'

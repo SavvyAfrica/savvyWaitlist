@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../../components/Button/button'
+import { Button } from '../../../components/button/button'
 import { Text } from '../../../components/typography/typography'
 
 function Faqs() {

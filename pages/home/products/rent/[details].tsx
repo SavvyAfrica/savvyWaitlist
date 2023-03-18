@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import DashboardLayout from '../../../../components/DashboardLayout/DashboardLayout'
 import { HiOutlineBars3BottomLeft } from 'react-icons/hi2'
@@ -19,7 +19,6 @@ import { withAuth } from '../../../../components/views/protectedRoute'
 import { Tab } from '@headlessui/react'
 import SkeletonLoader from '../../../../helpers/skeletonLoader'
 
-
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
@@ -29,7 +28,7 @@ function productsRentDetails() {
 
   const router = useRouter()
   const { details } = router.query
-  
+
   console.log(details)
 
   const [selected, setSelected] = useState('For 2 Weeks')
@@ -63,16 +62,16 @@ function productsRentDetails() {
   // Initializing the set data states
   const [productsDetailsData, setProductsDetailsData] = useState<any>([])
   const [isLoading, setIsLoading] = useState(false)
-  
+
   // Initializing the error states
   const [error, setError] = useState<Error | null>(null)
-  
+
   // //Getting all the products
   const fetchData = async () => {
     try {
       setIsLoading(true)
       const response = await userService.getAll(`products/${details}`)
-      
+
       setProductsDetailsData(response)
 
       setIsLoading(false)
@@ -83,7 +82,6 @@ function productsRentDetails() {
     }
   }
 
-
   const [currentSubject, setCurrentSubject] = useState<any>()
   useEffect(() => {
     // Getting current logged in user
@@ -92,11 +90,9 @@ function productsRentDetails() {
     if (subject !== undefined) {
       setCurrentSubject(subject)
     }
-    
+
     fetchData()
   }, [])
-
-
 
   let [categories] = useState({
     Overview: [
@@ -105,19 +101,20 @@ function productsRentDetails() {
         children: (
           <>
             <span className=''>
-              15 cm (6.1-inch) Super Retina XDR display
-              Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
-              Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording
-              12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording
-              A15 Bionic chip for lightning-fast performance
-              Up to 19 hours of video playback
-              Durable design with Ceramic Shield
-              Industry-leading IP68 water resistance
-              iOS 15 packs new features to do more with iPhone than ever before
-              Supports MagSafe accessories for easy attachment and faster wireless charging
+              15 cm (6.1-inch) Super Retina XDR display Cinematic mode adds
+              shallow depth of field and shifts focus automatically in your
+              videos Advanced dual-camera system with 12MP Wide and Ultra Wide
+              cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby
+              Vision HDR recording 12MP TrueDepth front camera with Night mode,
+              4K Dolby Vision HDR recording A15 Bionic chip for lightning-fast
+              performance Up to 19 hours of video playback Durable design with
+              Ceramic Shield Industry-leading IP68 water resistance iOS 15 packs
+              new features to do more with iPhone than ever before Supports
+              MagSafe accessories for easy attachment and faster wireless
+              charging
             </span>
           </>
-        )
+        ),
       },
     ],
     Specifications: [
@@ -126,20 +123,21 @@ function productsRentDetails() {
         children: (
           <>
             <span className=''>
-              15 cm (6.1-inch) Super Retina XDR display
-              Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
-              Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording
-              12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording
-              A15 Bionic chip for lightning-fast performance
-              Up to 19 hours of video playback
-              Durable design with Ceramic Shield
-              Industry-leading IP68 water resistance
-              iOS 15 packs new features to do more with iPhone than ever before
-              Supports MagSafe accessories for easy attachment and faster wireless charging
+              15 cm (6.1-inch) Super Retina XDR display Cinematic mode adds
+              shallow depth of field and shifts focus automatically in your
+              videos Advanced dual-camera system with 12MP Wide and Ultra Wide
+              cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby
+              Vision HDR recording 12MP TrueDepth front camera with Night mode,
+              4K Dolby Vision HDR recording A15 Bionic chip for lightning-fast
+              performance Up to 19 hours of video playback Durable design with
+              Ceramic Shield Industry-leading IP68 water resistance iOS 15 packs
+              new features to do more with iPhone than ever before Supports
+              MagSafe accessories for easy attachment and faster wireless
+              charging
             </span>
           </>
-        )
-      }
+        ),
+      },
     ],
     Accessories: [
       {
@@ -147,20 +145,21 @@ function productsRentDetails() {
         children: (
           <>
             <span className=''>
-              15 cm (6.1-inch) Super Retina XDR display
-              Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
-              Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording
-              12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording
-              A15 Bionic chip for lightning-fast performance
-              Up to 19 hours of video playback
-              Durable design with Ceramic Shield
-              Industry-leading IP68 water resistance
-              iOS 15 packs new features to do more with iPhone than ever before
-              Supports MagSafe accessories for easy attachment and faster wireless charging
+              15 cm (6.1-inch) Super Retina XDR display Cinematic mode adds
+              shallow depth of field and shifts focus automatically in your
+              videos Advanced dual-camera system with 12MP Wide and Ultra Wide
+              cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby
+              Vision HDR recording 12MP TrueDepth front camera with Night mode,
+              4K Dolby Vision HDR recording A15 Bionic chip for lightning-fast
+              performance Up to 19 hours of video playback Durable design with
+              Ceramic Shield Industry-leading IP68 water resistance iOS 15 packs
+              new features to do more with iPhone than ever before Supports
+              MagSafe accessories for easy attachment and faster wireless
+              charging
             </span>
           </>
-        )
-      }
+        ),
+      },
     ],
   })
 
@@ -177,7 +176,10 @@ function productsRentDetails() {
             </div>
 
             <div className='w-auto lg:mt-0 mt-7 flex flex-row items-center'>
-              <IoArrowBackCircleOutline className='text-2xl pt-1 cursor-pointer' onClick={() => router.back()} />
+              <IoArrowBackCircleOutline
+                className='text-2xl pt-1 cursor-pointer'
+                onClick={() => router.back()}
+              />
               <Text className='font-bold ml-2.5 text-[#292d32] lg:text-[30px] sm:text-2xl text-sm'>
                 Product Details
               </Text>
@@ -196,15 +198,11 @@ function productsRentDetails() {
         </div>
 
         {isLoading ? (
-          <div 
+          <div
             className={`w-full bg-white rounded-[20px] pt-[22px] pb-[27px] sm:pl-[22px] pl-[16px] 
             xl:pr-[60px] sm:pr-[22px] pr-[16px] mb-5`}
           >
-            <SkeletonLoader
-              width='100%'
-              height='400px'
-              borderRadius='20px'
-            />
+            <SkeletonLoader width='100%' height='400px' borderRadius='20px' />
           </div>
         ) : (
           <div
@@ -214,7 +212,13 @@ function productsRentDetails() {
           >
             <div className='sm:w-1/2 w-full'>
               <div className='h-[427px] bg-[#E6F0FB] rounded-[22px] flex justify-center items-center mb-[21px]'>
-                <Image src={iphone13pro} alt='iphone' width={240} height={290} className='rounded-[22px]' />
+                <Image
+                  src={iphone13pro}
+                  alt='iphone'
+                  width={240}
+                  height={290}
+                  className='rounded-[22px]'
+                />
               </div>
 
               <div className='gap-3 flex items-center xl:justify-between justify-center xl:flex-nowrap flex-wrap'>
@@ -331,21 +335,16 @@ function productsRentDetails() {
           </div>
         )}
 
-
         {isLoading ? (
-          <div 
+          <div
             className={`w-full flex flex-col items-start bg-white rounded-[20px] 
               md:pl-[36px] sm:pl-[22px] pl-[16px] pb-[22px] pt-[18px] md:pr-[243px] 
               sm:pr-[22px] pr-[16px] mb-5 flex-initial`}
           >
-            <SkeletonLoader
-              width='100%'
-              height='200px'
-              borderRadius='20px'
-            />
+            <SkeletonLoader width='100%' height='200px' borderRadius='20px' />
           </div>
         ) : (
-          <div 
+          <div
             className={`w-full flex flex-col items-start bg-white rounded-[20px] 
               md:pl-[36px] sm:pl-[22px] pl-[16px] pb-[22px] pt-[18px] md:pr-[243px] 
               sm:pr-[22px] pr-[16px] mb-5 flex-initial`}
@@ -375,14 +374,9 @@ function productsRentDetails() {
                     key={idx}
                     className={classNames('rounded-xl bg-white')}
                   >
-                    <div
-                      className='w-full flex flex-col items-center justify-start'
-                    >
+                    <div className='w-full flex flex-col items-center justify-start'>
                       {details.map((detail, idx) => (
-                        <div
-                          key={idx}
-                          className='w-full'
-                        >
+                        <div key={idx} className='w-full'>
                           <Text
                             variant='paragraph_4'
                             className='text-[#2F294D] font-normal not-italic'
@@ -399,24 +393,35 @@ function productsRentDetails() {
           </div>
         )}
 
-        <div className="w-full  flex sm:flex-row flex-col items-stretch gap-5">
-          <div className={`sm:w-3/5 w-full bg-white rounded-[20px] pt-[18px] 
+        <div className='w-full  flex sm:flex-row flex-col items-stretch gap-5'>
+          <div
+            className={`sm:w-3/5 w-full bg-white rounded-[20px] pt-[18px] 
             sm:pl-[27px] pl-[16px] sm:pr-[21.8px] pr-[16px] pb-[24px] flex 
             flex-col items-start justify-start`}
           >
-            <Text variant='paragraph_1' className='font-bold mb-[28.28px] text-[#292D32] not-italic'>Are you aware?</Text>
-            <Text variant='paragraph_3' className='font-normal text-[#2F294D] not-italic'>
-              That every year since 2019, Africa generates more than 2.9 metric tons of electronic waste. 
-              When disposed of in open dumpsites, they are often limited to crude processing means 
-              (for example, smashing to break open casings and remove electronic boards, then burning the rest of the materials). 
-              These methods have devastating impacts on your health and the environment. For these reasons, we help you reduce 
-              electronic waste which is good for the planet.
+            <Text
+              variant='paragraph_1'
+              className='font-bold mb-[28.28px] text-[#292D32] not-italic'
+            >
+              Are you aware?
+            </Text>
+            <Text
+              variant='paragraph_3'
+              className='font-normal text-[#2F294D] not-italic'
+            >
+              That every year since 2019, Africa generates more than 2.9 metric
+              tons of electronic waste. When disposed of in open dumpsites, they
+              are often limited to crude processing means (for example, smashing
+              to break open casings and remove electronic boards, then burning
+              the rest of the materials). These methods have devastating impacts
+              on your health and the environment. For these reasons, we help you
+              reduce electronic waste which is good for the planet.
             </Text>
           </div>
-        
-          <div className="sm:w-2/5 w-full bg-white rounded-[20px] flex flex-col items-center justify-center py-[40px] px-[20px]">
-            <Text 
-              variant='paragraph_1' 
+
+          <div className='sm:w-2/5 w-full bg-white rounded-[20px] flex flex-col items-center justify-center py-[40px] px-[20px]'>
+            <Text
+              variant='paragraph_1'
               className='font-bold mb-[28.28px] text-[#292D32] not-italic max-w-[192px] text-[24px] text-center mb-[45px] leading-8'
             >
               Get help while you shop Online

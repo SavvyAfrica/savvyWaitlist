@@ -64,7 +64,7 @@ const handelRequestErrors: React.FC<handelRequestErrorsProps> = ({ data }) => {
           onClose={handleToasterClose}
         />
       )}
-      {/* <button onClick={handleApiRequest}>Make API request</button> */}
+      {/* <button onClick={handleApiRequest}>Make API request</Button> */}
       <p>{data}</p>
     </>
   )

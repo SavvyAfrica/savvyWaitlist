@@ -10,8 +10,6 @@ interface IMyProp {
 }
 
 function Product({ src, children, id, option }: IMyProp) {
-
-
   return (
     <>
       <Link href={`/home/products/${option}/${id}`}>

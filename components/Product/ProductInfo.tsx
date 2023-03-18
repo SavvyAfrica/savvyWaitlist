@@ -18,13 +18,13 @@ function ProductInfo({ type, model, amount }: IMyProp) {
         {model}
       </Text>
 
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center w-full pl-10 pr-10 lg:pr-0 lg:pl-0'>
         <span className='text-[15.3464px] font-medium text-[#2F294D] tracking-wide leading-5'>
           ₦ {amount}
           <span className='text-[9px] text-[#2F294D]'>/per month</span>
         </span>
 
-        <span className='w-[31.89px] h-[31.89px] bg-[#E5E5E5] rounded-full block lg:flex justify-center items-center cursor-pointer'>
+        <span className='w-[31.89px] h-[31.89px] bg-[#E5E5E5] rounded-full flex justify-center items-center cursor-pointer'>
           <MdOutlineFavoriteBorder className='w-[13.96px] h-[12.46px]' />
         </span>
       </div>

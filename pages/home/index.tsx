@@ -7,7 +7,7 @@ import Rectangle from '../../assets/png/Rectangle.png'
 import Products from '../../assets/png/Products.png'
 import Cart from '../../assets/png/empty_cart.png'
 import Image from 'next/image'
-import { Button } from '../../components/Button/button'
+import { Button } from '../../components/button/button'
 import { Text } from '../../components/typography/typography'
 import DashboardContentBox from '../../components/DashboardContentBox/DashboardContentBox'
 import DashboardTopBar from '../../components/DashboardTopBar/DashboardTopBar'
@@ -89,7 +89,7 @@ function dashboard() {
               </div>
             </div>
 
-            <div className='max-w-[267.12px] h-[164.53px] gap-3 flex items-center sm:block hidden sm:mr-auto mr-0'>
+            <div className='max-w-[267.12px] h-[164.53px] gap-3 lg:flex items-center sm:block hidden sm:mr-auto mr-0'>
               <Image src={Products} alt='products' className='w-full h-full' />
             </div>
           </DashboardContentBox>
@@ -97,7 +97,7 @@ function dashboard() {
           <DashboardContentBox className='md:w-2/6 pt-8 pb-6 px-6 justify-center'>
             <div className='flex items-center justify-center'>
               <div className='flex md:flex-col flex-row-reverse justify-center items-center'>
-                <div className='w-[68px] h-[68px] bg-[#F6F8FD] rounded-full flex justify-center items-center md:inline-flex hidden'>
+                <div className='w-[68px] h-[68px] bg-[#F6F8FD] rounded-full lg:flex justify-center items-center md:inline-flex hidden'>
                   <Image src={Vector2} alt='Vector' className='w-full h-full' />
                 </div>
 

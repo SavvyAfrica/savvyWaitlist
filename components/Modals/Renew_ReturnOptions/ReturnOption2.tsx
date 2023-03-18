@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
-import { Button } from '../../Button/button'
+import { Button } from '../../button/button'
 import { Input } from '../../Input/Input'
 import { Label } from '../../Label/Label'
 import { Text } from '../../typography/typography'
@@ -23,14 +23,14 @@ function ReturnOption2({ ctaBtn }: IMyProp) {
 
   return (
     <>
-      <button
+      <Button
         className='bg-white hover:bg-[#dcebf9] w-[140px] h-[41px] rounded-lg flex justify-center items-center'
         onClick={() => setShowModal(true)}
       >
         <span className='inline-block text-sm font-medium text-[#0F2137]'>
           {ctaBtn}
         </span>
-      </button>
+      </Button>
 
       {showModal ? (
         <>

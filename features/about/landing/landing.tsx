@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import About from '../../../assets/png/About.png'
-import { Button } from '../../../components/Button/button'
+import { Button } from '../../../components/button/button'
 import { Text } from '../../../components/typography/typography'
 
 function Landing() {

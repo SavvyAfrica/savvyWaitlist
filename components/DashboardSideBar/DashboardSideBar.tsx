@@ -53,7 +53,9 @@ const DashboardSideBar = () => {
               className={`block flex items-center pl-6 py-3 mx-7 mb-3 rounded 
               text-center cursor-pointer transition-colors text-[#292D32]
               ${
-                router.asPath === '/home' || router.asPath === '/home/products/rent' || router.asPath === '/home/products/buy'
+                router.asPath === '/home' ||
+                router.asPath === '/home/products/rent' ||
+                router.asPath === '/home/products/buy'
                   ? 'bg-[#00B0F0]'
                   : 'bg-white hover:bg-[#dcebf9]'
               }`}

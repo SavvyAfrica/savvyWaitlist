@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { GrStatusGood } from 'react-icons/gr'
-import { Button } from '../../Button/button'
+import { Button } from '../../button/button'
 import { Text } from '../../typography/typography'
 
 interface IMyProp {
@@ -32,14 +32,14 @@ function RenewOption2({ ctaBtn }: IMyProp) {
 
   return (
     <>
-      <button
+      <Button
         className='bg-white hover:bg-[#dcebf9] w-[140px] h-[41px] rounded-lg flex justify-center items-center'
         onClick={() => setShowModal(true)}
       >
         <span className='inline-block text-sm font-medium text-[#0F2137]'>
           {ctaBtn}
         </span>
-      </button>
+      </Button>
 
       {showModal ? (
         <>

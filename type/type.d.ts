@@ -1,18 +1,18 @@
-import { UseFormRegisterReturn } from "react-hook-form";
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 interface IText {
-  children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
+  children: React.ReactNode
+  className?: string
+  onClick?: () => void
   variant?:
-    | "home_heading_50px"
-    | "home_heading_2_40px"
-    | "home_heading_3_32px"
-    | "home_heading_4_32px"
-    | "paragraph_1"
-    | "paragraph_2"
-    | "paragraph_3"
-    | "paragraph_4";
+    | 'home_heading_50px'
+    | 'home_heading_2_40px'
+    | 'home_heading_3_32px'
+    | 'home_heading_4_32px'
+    | 'paragraph_1'
+    | 'paragraph_2'
+    | 'paragraph_3'
+    | 'paragraph_4'
   // | "lowest_body_regular"
   // | "lower_body_bold"
   // | "lower_body_medium"
@@ -32,63 +32,61 @@ interface IText {
 }
 
 interface ITypography {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
-
 
 interface IButton {
-  children: React.ReactNode;
-  className?: string;
-  isLoading?: boolean;
-  onClick?: () => void;
+  children: React.ReactNode
+  className?: string
+  isLoading?: boolean
+  onClick?: () => void
+  // disabled?: boolean //
 }
-
 
 interface IFormValues {
-  firstName?: string;
-  lastName?: string;
-  phoneNumber?: string;
-  countryCode?: string;
-  email?: string;
-  password?: string;
+  firstName?: string
+  lastName?: string
+  phoneNumber?: string
+  countryCode?: string
+  email?: string
+  password?: string
 }
 
-
 interface IFormHead {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 interface PProps {
-  children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
+  children: React.ReactNode
+  className?: string
+  onClick?: () => void
 }
 
 interface IListProps {
-  price: string;
-  name: string;
-  img: string;
+  price: string
+  name: string
+  img: string
 }
 
 interface ICheckboxProps {
-  text: string;
+  text: string
 }
 
 interface IRadioProps {
-  text: string;
+  text: string
 }
 
 interface PriceOption {
-  readonly value: string;
-  readonly label: string;
+  readonly value: string
+  readonly label: string
 }
 
 interface IOfferProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 interface IFooterCommunityData {
-  id: number;
-  icon: React.Element;
-  link: string;
+  id: number
+  icon: React.Element
+  link: string
 }
