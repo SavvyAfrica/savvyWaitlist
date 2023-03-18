@@ -18,7 +18,7 @@ import { userService } from '../../../../services'
 import { withAuth } from '../../../../components/views/protectedRoute'
 import { Tab } from '@headlessui/react'
 import SkeletonLoader from '../../../../helpers/skeletonLoader'
-import { Button } from '../../../../components/Button/button'
+import { Button } from '../../../../components/button/button'
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
