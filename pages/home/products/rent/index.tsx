@@ -138,7 +138,7 @@ function products_rent() {
     fetchData()
   }, [user])
 
-  console.log(data, 'This is my products data')
+  // console.log(data, 'This is my products data')
 
   useEffect(() => {
     // Getting current logged in user

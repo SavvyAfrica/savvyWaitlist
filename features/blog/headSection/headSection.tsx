@@ -5,10 +5,10 @@ import Image from 'next/image'
 
 function HeadSection() {
   return (
-    <div className='heading w-full grid grid-cols-2 px-8 py-8 mt-8'>
+    <div className='heading w-full grid grid-cols-2 py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 mt-8'>
       <div className='flex flex-col justify-between space-y-6'>
         <div>
-          <Text variant='paragraph_2' className='text-black'>
+          <Text variant='paragraph_2' className='text-black uppercase'>
             Useful tips
           </Text>
           <Text variant='home_heading_4_32px' className='text-black font-bold'>

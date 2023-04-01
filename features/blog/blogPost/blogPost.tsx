@@ -6,8 +6,8 @@ import { Button } from '../../../components/button/button'
 function BlogPost() {
   return (
     <div className='w-full flex justify-center items-center flex-col space-x-10  mt-[4rem] pb-[4rem]'>
-      <div className='grid grid-cols-2 gap-[4rem]'>
-        <div>
+      <div className='grid grid-cols-2 gap-[4rem] justify-center items-center'>
+        <div className=''>
           <div className='blog-img'></div>
           <div className='mt-5 space-y-4'>
             <div>
@@ -68,7 +68,7 @@ function BlogPost() {
           </div>
         </div>
       </div>
-      <div className='w-full flex justify-center items-center mt-8'>
+      <div className='w-full flex justify-center items-center mt-[4rem]'>
         <Button className='border border-[#F4B183] rounded-[10px] w-[152px] h-[50px] space-x-2'>
           <Text variant='paragraph_4' className='font-light'>
             Load More

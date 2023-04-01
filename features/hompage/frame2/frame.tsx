@@ -34,7 +34,7 @@ const Frame = () => {
 
         <div className='w-full'>
           <Button className='bg-white border border-[#00B0F0] w-[118px] h-[39px] rounded-lg mt-4'>
-            <Link href='#'>
+            <Link href='/login'>
               <a>
                 <Text variant='paragraph_4' className='font-medium'>
                   Rent Now

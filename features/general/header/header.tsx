@@ -17,14 +17,14 @@ function header() {
           </div>
 
           <div className='flex justify-around items-center w-[60%]'>
-            <Link href='#'>
+            <Link href='/login'>
               <a className='ml-auto'>
                 <Text variant='paragraph_4' className='font-medium'>
                   Rent & Renew
                 </Text>
               </a>
             </Link>
-            <Link href='#'>
+            <Link href='/login'>
               <a className='ml-auto'>
                 <Text variant='paragraph_4' className='font-medium'>
                   Buy & Return

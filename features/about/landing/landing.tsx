@@ -7,7 +7,7 @@ import { Text } from '../../../components/typography/typography'
 
 function Landing() {
   return (
-    <div className='heading w-full px-5 py-5 mt-3'>
+    <div className='heading w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 mt-3'>
       <div className='w-full flex justify-between items-center'>
         <div className='w-[50%]'>
           <Text

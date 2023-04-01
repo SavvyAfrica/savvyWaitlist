@@ -25,11 +25,19 @@ function classNames(...classes: any) {
 
 function productsRentDetails() {
   const { showNav, setShowNav } = useAppStore()
+  // Initializing the set data states
+  const [productsDetailsData, setProductsDetailsData] = useState<any>([])
+  // Loading states
+  const [isLoading, setIsLoading] = useState(false)
+  // Specification State
+  const [specifications, setSpecifications] = useState<any>([])
 
+  // Initializing the error states
+  const [error, setError] = useState<Error | null>(null)
   const router = useRouter()
   const { details } = router.query
 
-  console.log(details)
+  // console.log(details)
 
   const [selected, setSelected] = useState('For 2 Weeks')
 
@@ -59,22 +67,16 @@ function productsRentDetails() {
     }
   }
 
-  // Initializing the set data states
-  const [productsDetailsData, setProductsDetailsData] = useState<any>([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  // Initializing the error states
-  const [error, setError] = useState<Error | null>(null)
-
   // //Getting all the products
   const fetchData = async () => {
     try {
       setIsLoading(true)
       const response = await userService.getAll(`products/${details}`)
-
-      setProductsDetailsData(response)
-
-      setIsLoading(false)
+      if (response.status === 200 || 201) {
+        setIsLoading(false)
+        setProductsDetailsData(response)
+        setSpecifications(response.specifications)
+      }
     } catch (error) {
       setError(new Error((error as Error).message))
     } finally {
@@ -92,7 +94,9 @@ function productsRentDetails() {
     }
 
     fetchData()
-  }, [])
+  }, [router, details])
+
+  console.log(specifications, ' specifications Data')
 
   let [categories] = useState({
     Overview: [
@@ -122,18 +126,30 @@ function productsRentDetails() {
         id: 1,
         children: (
           <>
-            <span className=''>
-              15 cm (6.1-inch) Super Retina XDR display Cinematic mode adds
-              shallow depth of field and shifts focus automatically in your
-              videos Advanced dual-camera system with 12MP Wide and Ultra Wide
-              cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby
-              Vision HDR recording 12MP TrueDepth front camera with Night mode,
-              4K Dolby Vision HDR recording A15 Bionic chip for lightning-fast
-              performance Up to 19 hours of video playback Durable design with
-              Ceramic Shield Industry-leading IP68 water resistance iOS 15 packs
-              new features to do more with iPhone than ever before Supports
-              MagSafe accessories for easy attachment and faster wireless
-              charging
+            <span>
+              Yolllooooo
+              {specifications.map(
+                (spec: {
+                  id: React.Key | null | undefined
+
+                  specifications:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | React.ReactFragment
+                    | React.ReactPortal
+                    | null
+                    | undefined
+                }) => (
+                  <h2 className='text-black' key={spec.id}>
+                    {spec.specifications}
+                  </h2>
+                )
+              )}
             </span>
           </>
         ),
@@ -295,7 +311,7 @@ function productsRentDetails() {
               <div className='flex flex-row justify-between items-center mb-[52px]'>
                 <div className=''>
                   <Text className='font-semibold xl:text-[40.54px] md:text-[30px] sm:text-[24px] text-[18px]'>
-                    ₦13,000
+                    ₦ {productsDetailsData.price}
                   </Text>
                   <Text className='font-medium sm:text-[14.74px] text-[12px] text[#2F294D]'>
                     2 Weeks rent
@@ -358,7 +374,7 @@ function productsRentDetails() {
                       classNames(
                         'w-auto md:text-base sm:text-sm text-xs font-semibold leading-5',
                         selected
-                          ? 'text-[#1E1F4B] border-b-2 border-[#00B0f0] border-solid'
+                          ? 'text-[#1E1F4B] border-b-2 border-[#00B0f0] outline-none'
                           : 'text-[#1E1F4B] opacity-50'
                       )
                     }
