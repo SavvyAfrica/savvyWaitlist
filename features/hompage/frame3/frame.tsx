@@ -1,16 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import IMAGE from '../../../assets/png/ui2.png'
 import { Button } from '../../../components/button/button'
 import { Text } from '../../../components/typography/typography'
+import CustomModal from '../../../components/modal/Modal'
 
 const Frame = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div
       className={`maxWidth mx-auto w-full flex md:justify-center justify-between 
         items-center md:flex-row flex-col-reverse py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 md:mb-36 mb-20`}
     >
+      <CustomModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <div className='md:w-[35%] w-full  md:mr-0 mr-auto'>
         <Text
           variant='home_heading_3_32px'
@@ -26,14 +30,13 @@ const Frame = () => {
         </Text>
 
         <div className='w-full'>
-          <Button className='bg-white border border-[#00B0F0] w-[118px] h-[39px] rounded-lg mt-4'>
-            <Link href='#'>
-              <a>
-                <Text variant='paragraph_4' className='font-medium'>
-                  Buy Now
-                </Text>
-              </a>
-            </Link>
+          <Button
+            className='bg-white border border-[#00B0F0] w-[146px] h-[39px] rounded-lg mt-4'
+            onClick={() => setIsModalOpen(true)}
+          >
+            <Text variant='paragraph_4' className='font-medium '>
+              Join the waitlist
+            </Text>
           </Button>
         </div>
       </div>

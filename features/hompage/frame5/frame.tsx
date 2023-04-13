@@ -9,7 +9,7 @@ const cards = [
     <div className='w-[60px] h-[60px] rounded-full absolute z-[9999]'>
       <Image src={User} height={100} width={100} className='w-full h-full' />
     </div>
-    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[3.5rem] 2xl:right-[8rem] top-[2rem] space-y-3 bg-white'>
+    <div className='lg:w-[450px] pt-3 pb-3 pl-16 lg:p-5 h-[180px] lg:absolute  rounded-[10px] customer right-[3.5rem] 2xl:right-[8rem] top-[2rem] space-y-3 bg-white'>
       <Text variant='paragraph_4' className='text-[#5E6282]'>
         We were on the hunt for better work tools with a small budget before we
         discovered Savvy. Their service really increased the productivity of our
@@ -27,7 +27,7 @@ const cards = [
     <div className='w-[60px] h-[60px] rounded-full absolute z-[9999]'>
       <Image src={User} height={100} width={100} className='w-full h-full' />
     </div>
-    <div className='w-[450px] p-5 h-[180px] absolute  rounded-[10px] customer right-[3.5rem] 2xl:right-[8rem] top-[2rem] space-y-3 bg-white'>
+    <div className='lg:w-[450px] pt-3 pb-3 pl-16 lg:p-5 h-[180px] lg:absolute  rounded-[10px] customer right-[3.5rem] 2xl:right-[8rem] top-[2rem] space-y-3 bg-white'>
       <Text variant='paragraph_4' className='text-[#5E6282]'>
         We were on the hunt for better work tools with a small budget before we
         discovered Savvy. Their service really increased the productivity of our
@@ -89,7 +89,7 @@ const Frame = () => {
 
   return (
     <div
-      className={`maxWidth mx-auto w-full grid grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 h-[320px]`}
+      className={`maxWidth mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 h-[320px] mb-8`}
     >
       <div className='space-y-4'>
         <Text variant='paragraph_4' className='text-[#A6A6A6]'>
@@ -104,7 +104,7 @@ const Frame = () => {
           <div className='w-[10px] h-[10px] bg-[#E5E5E5] rounded-full cursor-pointer'></div>
         </div>
       </div>
-      <div className='p-5 relative h-full'>
+      <div className='lg:p-5 relative h-full'>
         <AnimatePresence initial={false} custom={direction}>
           {React.cloneElement(cards[childIndex], {
             key: card,

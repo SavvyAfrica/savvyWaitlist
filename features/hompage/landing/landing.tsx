@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Mask from '../../../assets/png/mask.png'
 import Mask2 from '../../../assets/png/mask2.png'
 import Mask3 from '../../../assets/png/mask3.png'
@@ -9,7 +9,11 @@ import { Text } from '../../../components/typography/typography'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 
+import CustomModal from '../../../components/modal/Modal'
+
 function Landing() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 mt-3 '>
       <div className='w-full flex md:flex-row flex-col justify-around items-center'>
@@ -35,15 +39,18 @@ function Landing() {
             </Text>
           </div>
 
+          <CustomModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
           <div className='w-full mb-4'>
-            <Button className='bg-[#00B0F0] w-[118px] h-[39px] rounded-lg'>
-              <Link href='/login'>
-                <a>
-                  <Text variant='paragraph_4' className='font-medium'>
-                    Try it Out
-                  </Text>
-                </a>
-              </Link>
+            <Button
+              className='bg-[#00B0F0] w-[146px] h-[39px] rounded-lg'
+              onClick={() => setIsModalOpen(true)}
+            >
+              <Text variant='paragraph_4' className='font-medium text-white'>
+                Join the waitlist
+              </Text>
             </Button>
           </div>
         </div>

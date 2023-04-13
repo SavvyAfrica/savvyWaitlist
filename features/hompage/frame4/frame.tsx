@@ -54,13 +54,13 @@ const Frame = () => {
           You don’t need extra hassle and confusion with Savvy
         </Text>
       </div>
-      <div className='mt-10 w-full flex items-center justify-center space-x-8'>
+      <div className='mt-10 w-full flex flex-col space-y-7 lg:space-y-0 lg:flex-row items-center justify-center lg:space-x-8'>
         {Info.map((InfoItems, id) => {
           // const Icon = Icons[InfoItems.icon]
           return (
             <div
               key={id}
-              className='border border-[#00B0F0] rounded-[16px] h-[230px] w-[290px] flex items-center justify-center p-2  flex-col'
+              className='w-full border border-[#00B0F0] rounded-[16px] h-[230px] lg:w-[290px] flex items-center justify-center p-2  flex-col'
             >
               <div>
                 {/* <Icon /> */}

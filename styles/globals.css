@@ -191,12 +191,8 @@ a {
   transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
-
-
-@media screen and (max-width: 425px){
+@media screen and (max-width: 425px) {
   .grid-col-xs {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
-
-

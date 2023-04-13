@@ -1,6 +1,6 @@
 import React from 'react'
 import { IButton } from '../../type/type'
-import Spinner from '../Spinner/Spinner'
+// import Spinner from '../Spinner/Spinner'
 
 export const Button = (props: IButton) => {
   const { className, children, isLoading, onClick } = props
@@ -9,7 +9,8 @@ export const Button = (props: IButton) => {
     <div className='w-auto flex items-center'>
       {isLoading ? (
         <span className='block w-full flex items-center justify-center'>
-          <Spinner />
+          {/* <Spinner /> */}
+          <h1>Hello</h1>
         </span>
       ) : (
         <button

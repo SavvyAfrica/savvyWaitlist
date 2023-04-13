@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import IMAGE from '../../../assets/png/ui.png'
 import { Button } from '../../../components/button/button'
 import { Text } from '../../../components/typography/typography'
+import CustomModal from '../../../components/modal/Modal'
 
 const Frame = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div
       className={`maxWidth mx-auto w-full flex md:justify-center justify-between 
@@ -25,7 +28,10 @@ const Frame = () => {
         >
           Rent With Ease
         </Text>
-
+        <CustomModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
         <Text variant='paragraph_3' className='font-normal text-[#A6A6A6]'>
           Rent tech products for a small amount, renew or end your subscription
           anytime through your account. Complete online verification, order,
@@ -33,14 +39,13 @@ const Frame = () => {
         </Text>
 
         <div className='w-full'>
-          <Button className='bg-white border border-[#00B0F0] w-[118px] h-[39px] rounded-lg mt-4'>
-            <Link href='/login'>
-              <a>
-                <Text variant='paragraph_4' className='font-medium'>
-                  Rent Now
-                </Text>
-              </a>
-            </Link>
+          <Button
+            className='bg-white border border-[#00B0F0] w-[146px] h-[39px] rounded-lg mt-4'
+            onClick={() => setIsModalOpen(true)}
+          >
+            <Text variant='paragraph_4' className='font-medium '>
+              Join the waitlist
+            </Text>
           </Button>
         </div>
       </div>
