@@ -16,7 +16,7 @@ function footer() {
   return (
     <div className='maxWidth mx-auto w-full flex flex-col px-5 py-2.5'>
       <div className='w-full grid grid-cols-3 h-full  mb-[90px]'>
-        <div className=' md:mb-0 mb-[34px] border-2'>
+        <div className=' md:mb-0 mb-[34px] '>
           <div className='w-full'>
             <Image src={Logo} alt='Logo' />
 
@@ -28,7 +28,7 @@ function footer() {
             </Text>
           </div>
         </div>
-        <div className='border-2'>
+        <div className=' pt-3'>
           <Text variant='paragraph_1' className='font-semibold text-center'>
             Send us a messages
           </Text>
@@ -36,7 +36,7 @@ function footer() {
             Info@savvy.africa
           </Text>
         </div>
-        <div className='border-2'>
+        <div className=' pt-3'>
           <Text variant='paragraph_1' className='font-semibold'>
             Follow us
           </Text>
