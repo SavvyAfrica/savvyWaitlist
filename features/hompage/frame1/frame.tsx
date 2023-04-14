@@ -27,30 +27,6 @@ function Frame() {
           gaming gadgets, drones, and more without the usual stress.
         </Text>
       </div>
-
-      <div className='flex justify-around items-center'>
-        <div className='w-[50%] mx-auto'>
-          <Text
-            variant='paragraph_1'
-            className='font-semibold text-[#292D32] underline decoration-1 mb-3'
-          >
-            Explore all features
-          </Text>
-          <Text
-            variant='paragraph_4'
-            className='font-normal text-[#A6A6A6] mb-3'
-          >
-            Take a quick tour and check out all that Savvy has to offer.
-          </Text>
-        </div>
-
-        <div
-          className={`sm:w-[80px] w-[60px] sm:h-[80px] h-[60px] rounded-full bg-[#F4F7FE] flex justify-center 
-          items-center hover:scale-105 transition-all ease-in-out mx-auto cursor-pointer`}
-        >
-          <ArrowRight size={30} />
-        </div>
-      </div>
     </div>
   )
 }
