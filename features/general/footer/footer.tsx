@@ -9,13 +9,13 @@ import { BiMinus } from 'react-icons/bi'
 // import Collapsible from 'react-collapsible';
 
 function footer() {
-  const [websiteIsOpen, setWebsiteIsOpen] = useState<boolean>(false)
-  const [companyIsOpen, setCompanyIsOpen] = useState<boolean>(false)
-  const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false)
+  // const [websiteIsOpen, setWebsiteIsOpen] = useState<boolean>(false)
+  // const [companyIsOpen, setCompanyIsOpen] = useState<boolean>(false)
+  // const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false)
 
   return (
     <div className='maxWidth mx-auto w-full flex flex-col px-5 py-2.5'>
-      <div className='w-full grid grid-cols-3 h-full  mb-[90px]'>
+      <div className='w-full grid grid-cols-1 lg:grid-cols-3 h-full  mb-[90px] space-y-4 lg:space-y-0'>
         <div className=' md:mb-0 mb-[34px] '>
           <div className='w-full'>
             <Image src={Logo} alt='Logo' />
@@ -29,10 +29,10 @@ function footer() {
           </div>
         </div>
         <div className=' pt-3'>
-          <Text variant='paragraph_1' className='font-semibold text-center'>
+          <Text variant='paragraph_1' className='font-semibold lg:text-center'>
             Send us a messages
           </Text>
-          <Text variant='paragraph_4' className='font-semibold text-center'>
+          <Text variant='paragraph_4' className='font-semibold lg:text-center'>
             Info@savvy.africa
           </Text>
         </div>
