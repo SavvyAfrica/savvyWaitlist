@@ -179,6 +179,19 @@ a {
     overflow: hidden;
   }
 }
+/* Toaster */
+.rotate {
+  animation: rotate 0.3s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* landing */
 .carousel-container {

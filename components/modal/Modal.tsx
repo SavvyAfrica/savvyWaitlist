@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { Text } from '../typography/typography'
+import axios from 'axios'
+import { API_BASE_URL } from '../../constant'
+import toaster from '../../Toaster'
+import SmallLoader from '../../Spinner'
 
 interface ModalProps {
   isOpen: boolean
@@ -13,15 +17,40 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     name: '',
     email: '',
   })
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState<boolean>(false)
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    const name = e.target.name
+    const value = e.target.value
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    })
+    console.log(inputValue, ' My input values')
+  }
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
     // Do something with the input value here
-    setInputValue({
-      name: '',
-      email: '',
-    })
-    onClose()
+    try {
+      setLoading(true)
+      const response = axios.post(`${API_BASE_URL}/waitlist`, inputValue)
+      // console.log((await response).status)
+      if ((await response).status === 200 || 201) {
+        toaster('Successfully Added to Waitlist', 'success')
+
+        setLoading(false)
+        setInputValue({
+          name: '',
+          email: '',
+        })
+        // onClose()
+      }
+    } catch (error: any) {
+      setLoading(false)
+      // console.log(error)
+      toaster(`${error.response.data.error}`, 'error')
+    }
+
+    // onClose()
   }
 
   return (
@@ -33,7 +62,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className='absolute inset-0 bg-black opacity-50 blur-0 p-8' />
+          <div className='absolute inset-0 p-8 bg-black opacity-50 blur-0' />
           <motion.div
             className='relative flex items-center justify-center'
             initial={{ opacity: 0, y: -50 }}
@@ -48,7 +77,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               exit={{ y: -50 }}
               transition={{ duration: 0.2 }}
             >
-              <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0 h-full'>
+              <div className='grid h-full grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-0'>
                 <motion.div
                   className='h-full '
                   initial={{ opacity: 0 }}
@@ -56,7 +85,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   exit={{ opacity: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <div className=' h-full flex justify-center items-center flex-col'>
+                  <div className='flex flex-col items-center justify-center h-full '>
                     <div
                       className='w-full h-[40px] lg:hidden flex justify-end items-end cursor-pointer '
                       onClick={onClose}
@@ -88,8 +117,8 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                         Be the first to know once we go live!
                       </Text>
                     </div>
-                    <form
-                      onSubmit={handleSubmit}
+                    <div
+                      // onSubmit={handleSubmit}
                       className='flex flex-col items-center justify-center'
                     >
                       <input
@@ -99,6 +128,9 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                         // onChange={(e) => setInputValue(e.target.value)}
                         className='w-[279px] h-[36px] p-4 border rounded-md mb-4 bg-white text-sm outline-none'
                         placeholder='Enter your name here'
+                        name='name'
+                        onChange={handleChange}
+                        value={inputValue.name}
                       />
                       <input
                         type='text'
@@ -107,14 +139,24 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                         // onChange={(e) => setInputValue(e.target.value)}
                         className='h-[36px] p-4 border rounded-md mb-4 bg-white text-sm outline-none w-[279px]'
                         placeholder='Enter your email address'
+                        name='email'
+                        onChange={handleChange}
+                        value={inputValue.email}
                       />
                       <button
                         type='submit'
                         className='bg-[#00B0F0] text-white rounded-md px-4 py-2 w-[279px]'
+                        onClick={handleSubmit}
                       >
-                        Submit
+                        {loading ? (
+                          <div className='flex items-center justify-center'>
+                            <SmallLoader size={30} thickness={3} color='#fff' />
+                          </div>
+                        ) : (
+                          'Submit'
+                        )}
                       </button>
-                    </form>
+                    </div>
                   </div>
                 </motion.div>
                 <motion.div

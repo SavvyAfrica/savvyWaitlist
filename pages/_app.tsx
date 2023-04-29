@@ -4,6 +4,7 @@ import '../styles/globals.css'
 // import { AppStore } from '../global/store';
 // import { globalState } from '../global/store';
 import 'react-tooltip/dist/react-tooltip.css'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const {showNav, setShowNav} = globalState();
@@ -11,6 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Component {...pageProps} />
+      <Toaster position='top-right' reverseOrder={false} />
     </Layout>
   )
 }
