@@ -11,12 +11,12 @@ function header() {
 
   return (
     <>
-      <div className='w-full maxWidth mx-auto shadow2 px-5 py-2.5 sticky lg:block hidden'>
+      <div className='w-full maxWidth mx-auto shadow2 px-5 py-2.5 sticky lg:block top-0 bg-white z-[1000]'>
         <CustomModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
-        <div className='flex justify-between items-center'>
+        <div className='flex items-center justify-between'>
           <div className='w-[20%] cursor-pointer'>
             <Link href={'/'}>
               <Image src={Logo} alt='Logo' />
