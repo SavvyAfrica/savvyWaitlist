@@ -29,7 +29,6 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   }
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
-    // Do something with the input value here
     try {
       setLoading(true)
       const response = axios.post(`${API_BASE_URL}/waitlist`, inputValue)
