@@ -15,7 +15,7 @@ function Landing() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-[6rem] lg:pr-[6rem] mt-3 '>
+    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-[6rem] lg:pr-[6rem] mt-[4rem] border-2'>
       <div className='flex flex-col items-center justify-around w-full md:flex-row'>
         <div className='md:w-[50%] w-full'>
           <div className='lg:max-w-[450px] md:max-w-[300px] sm:max-w-[45%] max-w-full'>

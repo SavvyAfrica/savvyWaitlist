@@ -11,7 +11,7 @@ function header() {
 
   return (
     <>
-      <div className='w-full  mx-auto shadow2 px-5 py-2.5 fixed lg:block top-0 bg-white z-10'>
+      <div className='w-full  mx-auto shadow2 px-[3rem] py-2.5 fixed lg:block top-0 bg-white z-10'>
         <CustomModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}

@@ -6,15 +6,17 @@ import Logo from '../../../assets/png/logo.png'
 import { Text } from '../../../components/typography/typography'
 import { GoPlusSmall } from 'react-icons/go'
 import { BiMinus } from 'react-icons/bi'
+import { useRouter } from 'next/router'
 // import Collapsible from 'react-collapsible';
 
 function footer() {
+  const router = useRouter()
   // const [websiteIsOpen, setWebsiteIsOpen] = useState<boolean>(false)
   // const [companyIsOpen, setCompanyIsOpen] = useState<boolean>(false)
   // const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false)
 
   return (
-    <div className='maxWidth mx-auto w-full flex flex-col px-5 py-2.5'>
+    <div className='maxWidth mx-auto w-full flex flex-col px-[3rem] py-2.5'>
       <div className='w-full grid grid-cols-1 lg:grid-cols-3 h-full  mb-[90px] space-y-4 lg:space-y-0'>
         <div className=' md:mb-0 mb-[34px] '>
           <div className='w-full'>
@@ -28,7 +30,7 @@ function footer() {
             </Text>
           </div>
         </div>
-        <div className=' pt-3'>
+        <div className='pt-3 '>
           <Text variant='paragraph_1' className='font-semibold lg:text-center'>
             Send us a messages
           </Text>
@@ -36,21 +38,41 @@ function footer() {
             Info@savvy.africa
           </Text>
         </div>
-        <div className=' pt-3'>
+        <div className='pt-3 '>
           <Text variant='paragraph_1' className='font-semibold'>
             Follow us
           </Text>
           <div className='flex items-center space-x-5'>
-            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1'>
+            {/* <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer
+            '
+            
+            onClick={() => router.push()}>
               <Facebook color='#444444' size={18} fill='#444444' />
-            </div>
-            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1'>
+            </div> */}
+            <div
+              className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'
+              onClick={() =>
+                router.push(
+                  'https://instagram.com/savvyafricahq?igshid=NTc4MTIwNjQ2YQ=='
+                )
+              }
+            >
               <Instagram color='#444444' size={18} />
             </div>
-            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1'>
+            <div
+              className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'
+              onClick={() => router.push('https://twitter.com/savvyafricahq')}
+            >
               <Twitter color='#444444' size={18} fill='#444444' />
             </div>
-            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1'>
+            <div
+              className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'
+              onClick={() =>
+                router.push(
+                  'https://instagram.com/savvyafricahq?igshid=NTc4MTIwNjQ2YQ=='
+                )
+              }
+            >
               <Linkedin color='#444444' size={18} fill='#444444' />
             </div>
           </div>
@@ -61,7 +83,7 @@ function footer() {
         {/* <Text variant='paragraph_4' className='font-semibold'>
           Info@savvy.africa
         </Text> */}
-        {/* <div className='flex justify-between items-center space-x-5'>
+        {/* <div className='flex items-center justify-between space-x-5'>
           <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1'>
             <Facebook color='#444444' size={18} fill='#444444' />
           </div>
