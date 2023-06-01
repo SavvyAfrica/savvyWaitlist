@@ -64,7 +64,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className='absolute inset-0 p-8 bg-black opacity-50 blur-0' />
+          <div className='absolute inset-0 p-8 bg-black opacity-50 blur-sm' />
           <motion.div
             className='relative flex items-center justify-center'
             initial={{ opacity: 0, y: -50 }}
