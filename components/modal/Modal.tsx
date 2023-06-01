@@ -31,7 +31,10 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     event.preventDefault()
     try {
       setLoading(true)
-      const response = axios.post(`${API_BASE_URL}/waitlist`, inputValue)
+      const response = axios.post(
+        `https://savvy-backend-apis.herokuapp.com/api/v1/waitlist`,
+        inputValue
+      )
       // console.log((await response).status)
       if ((await response).status === 200 || 201) {
         toaster('Successfully Added to Waitlist', 'success')
