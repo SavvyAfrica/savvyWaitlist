@@ -89,7 +89,7 @@ const Frame = () => {
 
   return (
     <div
-      className={`maxWidth mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 h-[320px] mb-8`}
+      className={`maxWidth mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-5 items-center py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-[6rem] lg:pr-[6rem] h-[320px] mb-8`}
     >
       <div className='space-y-4'>
         <Text variant='paragraph_4' className='text-[#A6A6A6]'>
@@ -104,7 +104,7 @@ const Frame = () => {
           <div className='w-[10px] h-[10px] bg-[#E5E5E5] rounded-full cursor-pointer'></div>
         </div>
       </div>
-      <div className='lg:p-5 relative h-full'>
+      <div className='relative h-full lg:p-5'>
         <AnimatePresence initial={false} custom={direction}>
           {React.cloneElement(cards[childIndex], {
             key: card,

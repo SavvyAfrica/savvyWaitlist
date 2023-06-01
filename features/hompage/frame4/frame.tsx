@@ -42,8 +42,8 @@ preferred location.`,
 
 const Frame = () => {
   return (
-    <div className='w-full flex flex-col items-center justify-center mb-20  py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10'>
-      <div className='flex justify-center items-center flex-col'>
+    <div className='flex flex-col items-center justify-center w-full px-5 py-5 mb-20 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10'>
+      <div className='flex flex-col items-center justify-center'>
         <Text
           variant='home_heading_3_32px'
           className='font-semibold text-[24px]'
@@ -54,7 +54,7 @@ const Frame = () => {
           You don’t need extra hassle and confusion with Savvy
         </Text>
       </div>
-      <div className='mt-10 w-full flex flex-col space-y-7 lg:space-y-0 lg:flex-row items-center justify-center lg:space-x-8'>
+      <div className='flex flex-col items-center justify-center w-full mt-10 space-y-7 lg:space-y-0 lg:flex-row lg:space-x-8'>
         {Info.map((InfoItems, id) => {
           // const Icon = Icons[InfoItems.icon]
           return (

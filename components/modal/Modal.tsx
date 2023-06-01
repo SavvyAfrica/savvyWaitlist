@@ -73,7 +73,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             transition={{ duration: 0.2 }}
           >
             <motion.div
-              className='absolute top-12 rounded-[12px] shadow-xl lg:w-[900px] lg:h-[628px] bg-white'
+              className='w-[321px] h-[450px] absolute top-12 rounded-[12px] shadow-xl lg:w-[900px] lg:h-[628px] bg-white'
               initial={{ y: -50 }}
               animate={{ y: 0 }}
               exit={{ y: -50 }}
@@ -162,7 +162,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   </div>
                 </motion.div>
                 <motion.div
-                  className='bg-[#ccf0fc] h-full lg:rounded-r-xl '
+                  className='bg-[#ccf0fc] h-full lg:rounded-r-xl hidden lg:block'
                   //    initial={{ opacity: 0 }}
                   //    animate={{ opacity: 1 }}
                   //    exit={{ opacity: 0 }}

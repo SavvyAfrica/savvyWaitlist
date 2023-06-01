@@ -15,8 +15,8 @@ function Landing() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 mt-3 '>
-      <div className='w-full flex md:flex-row flex-col justify-around items-center'>
+    <div className='heading maxWidth mx-auto w-full py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-[6rem] lg:pr-[6rem] mt-3 '>
+      <div className='flex flex-col items-center justify-around w-full md:flex-row'>
         <div className='md:w-[50%] w-full'>
           <div className='lg:max-w-[450px] md:max-w-[300px] sm:max-w-[45%] max-w-full'>
             <Text
@@ -56,7 +56,7 @@ function Landing() {
         </div>
 
         <div className='md:w-[50%] w-full'>
-          <div className='w-full h-full flex md:justify-end justify-center items-center'>
+          <div className='flex items-center justify-center w-full h-full md:justify-end'>
             <Carousel
               autoPlay
               showArrows={false}

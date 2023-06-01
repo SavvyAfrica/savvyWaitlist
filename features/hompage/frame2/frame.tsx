@@ -12,7 +12,7 @@ const Frame = () => {
   return (
     <div
       className={`maxWidth mx-auto w-full flex md:justify-center justify-between 
-        items-center md:flex-row flex-col py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10  md:mb-36 mb-20`}
+        items-center md:flex-row flex-col py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-[6rem] lg:pr-[6rem]  md:mb-36 mb-20`}
     >
       <div
         className={`md:w-[50%] w-full  ml-0 md:mr-0 mr-auto 

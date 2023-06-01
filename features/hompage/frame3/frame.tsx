@@ -12,10 +12,10 @@ const Frame = () => {
   return (
     <div
       className={`maxWidth mx-auto w-full flex md:justify-center justify-between 
-        items-center md:flex-row flex-col-reverse py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-10 lg:pr-10 md:mb-36 mb-20`}
+        items-center md:flex-row flex-col-reverse py-5 px-5 lg:pt-5 lg:pb-5 lg:pl-[6rem] lg:pr-[6rem] md:mb-36 mb-20 `}
     >
       <CustomModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <div className='md:w-[35%] w-full  md:mr-0 mr-auto'>
+      <div className='md:w-[35%] w-full  md:mr-0 mr-auto '>
         <Text
           variant='home_heading_3_32px'
           className='font-semibold sm:text-[32px] text-[25px] lg:mb-8 sm:mb-6 mb-[20px]'
