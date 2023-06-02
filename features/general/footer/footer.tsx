@@ -16,8 +16,8 @@ function footer() {
   // const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false)
 
   return (
-    <div className='maxWidth mx-auto w-full flex flex-col px-[2rem] py-2.5'>
-      <div className='w-full grid grid-cols-1 lg:grid-cols-3 h-full  mb-[90px] space-y-4 lg:space-y-0'>
+    <div className='maxWidth mx-auto w-full flex flex-col px-[2rem] lg:px-[5rem] py-2.5'>
+      <div className='w-full flex-col justify-start items-start flex lg:flex-row lg:justify-between lg:items-center h-full  mb-[90px] space-y-4 lg:space-y-0'>
         <div className=' md:mb-0 mb-[34px] '>
           <div className='w-full'>
             <Image src={Logo} alt='Logo' />

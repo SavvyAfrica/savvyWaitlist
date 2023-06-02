@@ -24,7 +24,7 @@ function Landing() {
               className={`font-extrabold lg:text-[40px] text-[30px] w-full 
                 sm:mx-0 mx-auto lg:mb-[59px] mb-[30px]`}
             >
-              One gadget need. More ways to own.
+              Equip Your <br /> Creativity Easily
             </Text>
           </div>
 
