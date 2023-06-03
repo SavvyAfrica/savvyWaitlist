@@ -49,31 +49,49 @@ function footer() {
             onClick={() => router.push()}>
               <Facebook color='#444444' size={18} fill='#444444' />
             </div> */}
-            <div
-              className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'
-              onClick={() =>
-                router.push(
+            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'>
+              <Link
+                href={
                   'https://instagram.com/savvyafricahq?igshid=NTc4MTIwNjQ2YQ=='
-                )
-              }
-            >
-              <Instagram color='#444444' size={18} />
+                }
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <a
+                  href='https://instagram.com/savvyafricahq?igshid=NTc4MTIwNjQ2YQ=='
+                  target='_blank'
+                >
+                  <Instagram color='#444444' size={18} />
+                </a>
+              </Link>
             </div>
             <div
               className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'
-              onClick={() => router.push('https://twitter.com/savvyafricahq')}
+              // onClick={() => router.push('https://twitter.com/savvyafricahq')}
             >
-              <Twitter color='#444444' size={18} fill='#444444' />
+              <Link
+                href={'https://twitter.com/savvyafricahq'}
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <a href='https://twitter.com/savvyafricahq' target='_blank'>
+                  <Twitter color='#444444' size={18} fill='#444444' />
+                </a>
+              </Link>
             </div>
-            <div
-              className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'
-              onClick={() =>
-                router.push(
-                  'https://instagram.com/savvyafricahq?igshid=NTc4MTIwNjQ2YQ=='
-                )
-              }
-            >
-              <Linkedin color='#444444' size={18} fill='#444444' />
+            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center shadow1 cursor-pointer'>
+              <Link
+                href={'https://www.linkedin.com/company/savvy-africa-hq/'}
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <a
+                  href='https://www.linkedin.com/company/savvy-africa-hq/'
+                  target='_blank'
+                >
+                  <Linkedin color='#444444' size={18} fill='#444444' />
+                </a>
+              </Link>
             </div>
           </div>
         </div>

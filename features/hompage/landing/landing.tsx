@@ -22,9 +22,9 @@ function Landing() {
             <Text
               variant='home_heading_50px'
               className={`font-extrabold lg:text-[40px] text-[30px] w-full 
-                sm:mx-0 mx-auto lg:mb-[59px] mb-[30px]`}
+                sm:mx-0 mx-auto lg:mb-[10px] mb-[10px]`}
             >
-              Equip Your <br /> Creativity Easily
+              Equip Your Creativity <br /> With Ease
             </Text>
           </div>
 
@@ -32,7 +32,7 @@ function Landing() {
             <Text
               variant='paragraph_3'
               className={`font-medium text-[#292D32] w-full 
-                sm:mx-0 mx-auto lg:mb-[55px] mb-[35px]`}
+                sm:mx-0 mx-auto lg:mb-[20px] mb-[20px]`}
             >
               Savvy is the smartest way to buy and rent quality tech products
               without weighing it down in your pocket.
