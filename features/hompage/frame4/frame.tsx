@@ -46,7 +46,7 @@ const Frame = () => {
       <div className='flex flex-col items-center justify-center'>
         <Text
           variant='home_heading_3_32px'
-          className='font-semibold text-[24px]'
+          className='font-semibold text-center text-[19px] lg:text-[24px]'
         >
           Built With Simplicity In Mind
         </Text>
