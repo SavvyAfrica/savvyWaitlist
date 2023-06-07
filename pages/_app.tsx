@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       </Head>
       <Component {...pageProps} />
-      <Toaster position='top-center' reverseOrder={false} />
+      <Toaster position='bottom-center' reverseOrder={false} />
     </Layout>
   )
 }
