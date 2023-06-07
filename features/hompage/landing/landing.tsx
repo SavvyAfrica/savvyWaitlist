@@ -55,7 +55,7 @@ function Landing() {
           </div>
         </div>
 
-        <div className='md:w-[50%] w-full'>
+        <div className='hidden lg:block md:w-[50%] w-full'>
           <div className='flex items-center justify-center w-full h-full md:justify-end'>
             <Carousel
               autoPlay
@@ -72,6 +72,25 @@ function Landing() {
               <Image src={Mask2} width='595px' height={500} alt='Mask' />
               <Image src={Mask3} width='595px' height={500} alt='Mask' />
             </Carousel>
+          </div>
+        </div>
+        <div className='md:w-[50%] w-full lg:hidden'>
+          <div className='flex items-center justify-center w-full h-full md:justify-end'>
+            {/* <Carousel
+              autoPlay
+              showArrows={false}
+              width='100%'
+              interval={5000}
+              axis='horizontal'
+              showThumbs={false}
+              infiniteLoop
+              showStatus={false}
+              showIndicators={false}
+            > */}
+            {/* <Image src={Mask} width='595px' height={500} alt='Mask' /> */}
+            {/* <Image src={Mask2} width='595px' height={500} alt='Mask' /> */}
+            <Image src={Mask3} width='595px' height={500} alt='Mask' />
+            {/* </Carousel> */}
           </div>
         </div>
       </div>
