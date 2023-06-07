@@ -25,7 +25,7 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       ...inputValue,
       [name]: value,
     })
-    console.log(inputValue, ' My input values')
+    // console.log(inputValue, ' My input values')
   }
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
@@ -44,12 +44,13 @@ const CustomModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           name: '',
           email: '',
         })
-        // onClose()
+        onClose()
       }
     } catch (error: any) {
       setLoading(false)
       // console.log(error)
       toaster(`${error.response.data.error}`, 'error')
+      onClose()
     }
 
     // onClose()
